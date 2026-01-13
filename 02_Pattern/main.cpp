@@ -550,36 +550,50 @@ using namespace std;
 
 
 // NUMERIC HOLLOW  PYRAMID
-//      1
-//     1 2
-//    1   3
-//   1     4
-//  1       5
-// 1         6
+
+//     1
+//    1 2
+//   1   3
+//  1     4
+// 1 2 3 4 5
 int main(){
     int n;
     cout << "enter n:";
     cin >> n;
+    
+   for(int row=0;row<n;row++){
+    for(int col=0;col<n-row-1;col++){
+        cout<<" ";
+    }
     int start=1;
-    for(int row=0;row<n;row++){
-        // SPACES
-        for(int col=0;col<n-row-1;col++){
+    for(int col=0;col<2*row+1;col++){
+        if(row==0 || row==n-1){
             if(col%2==0){
-                cout<<start;
+             cout<<start;
                 start++;
-            }
-            else{
+            }else{
                 cout<<" ";
             }
         }
+        else if(col==0){
+            cout<<1;
+        }
+        else if(col==2*row){
+            cout<<row+1;
+        }
+        else{
+            cout<<" ";
+        }
     }
-       
+     cout<<endl; 
+    
+   }
+     
 }
 // output:
-// enter n:6
-//      1
-//     1 2
-//    1   3
-//   1     4
-//  1       5
-// 1         6
+// enter n:5
+//     1
+//    1 2
+//   1   3
+//  1     4
+// 1 2 3 4 5
