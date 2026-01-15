@@ -16,6 +16,7 @@ FUNCTION ORDER MEANS YOU HAVE TO DECLARE FUNCTION BEFORE USE
 
 #include <iostream>
 using namespace std;
+#include <cmath>
 
 // void printMyName(){
 //     int n;
@@ -315,29 +316,97 @@ using namespace std;
 
 
 
+// bool checkPrime(int n){
+//     for(int i=2;i<n;i++){
+//         if(n%i==0){
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+
+// Optimal
+// bool checkPrime(int n){
+//     for(int i=2;i<sqrt(n);i++){
+//         if(n%i==0){
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+
+
+// int main(){
+//     int n;
+//     cout<<"Enter a number:";
+//     cin>>n;
+// bool prime = checkPrime(n);
+// if(prime){
+//     cout<<"The number is Prime";
+// }
+// else{
+//     cout<<"The number is Not Prime";
+// }
+//  }
+
+
 // Print all the prime number from 1 to N
 
+// bool checkPrime(int n){
+//     for(int i=2;i<n;i++){
+//         if(n%i==0){
+//             return false;
+//         }
+//     }
+//     return true;
+// }
 
-int printPrimes(int n){
-    if(n<=1){
-        cout<<"No prime numbers";
-        return 0;
-    }
-    for(int i=2;i<=n;i++){
-        if(n%i==0){
-          continue;
-    }
-    cout<<i<<" ";
-}
-
-}
-
-int main(){
-    int n;
-    cout<<"Enter a number:";
-    cin>>n;
-    printPrimes(n);
-    return 0;
-}
 
     
+
+// int main(){
+//     int n;
+//     cout<<"Enter a number:";
+//     cin>>n;
+//     for(int i=2;i<=n;i++){
+//         if(checkPrime(i)){
+//             cout<<i<<" ";
+//         }
+//     }
+//     return 0;
+// }
+
+// Reverse Integer
+
+// int reverseInteger(int n){
+//     bool isnegative = false;
+//     // if( n <= INT_MIN){
+//     //         return 0;
+//     // } 
+//     if(n<0){
+//         isnegative = true;
+//         n = -n;
+//     }
+//     int reversesum=0;
+//     while(n>0){
+//         // if(n> INT_MAX/10){
+//         //     return 0;
+//         // }
+//         int lastdigit = n%10;
+//         reversesum = reversesum*10 + lastdigit;
+//         n = n/10;
+// }
+// return isnegative ? -reversesum: reversesum;
+// }
+
+// int main (){
+//     int n;
+//     cout<<"Enter a number:";
+//     cin>>n;
+//     int result = reverseInteger(n);
+//     cout<<"Reversed Integer is :"<< result;
+//     return 0;
+// }
+
+
+// Kth bit
