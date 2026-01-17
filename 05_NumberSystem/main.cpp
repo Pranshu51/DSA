@@ -1,9 +1,9 @@
 // # dECIMAL TO BINARY CONVERSION
 
 
-// #include <iostream>
-// #include <cmath>
-// using namespace std;    
+#include <iostream>
+#include <cmath>
+using namespace std;    
 // DIVISION METHOD
 
 // int main(){
@@ -53,28 +53,28 @@
 
 
 
-// int binarytoDecimal(int n){
-//     int i =0;
-//     float ans =0;
-//     while(n!=0){
-//         int bit = n%10;
-//         ans= ans+(bit*pow(2,i));
-//         n=n/10;
-//         i++;
-//     }
-//     return ans;
+int binarytoDecimal(int n){
+    int i =0;
+    float ans =0;
+    while(n!=0){
+        int bit = n%10;
+        ans= ans+(bit*pow(2,i));
+        n=n/10;
+        i++;
+    }
+    return ans;
 
-// }
+}
 
 
-// int main(){
-//     int n;
-//     cout<<"Enter a binary number:";
-//     cin>>n;
-//     int decimalNumber = binarytoDecimal(n);
-//     cout<<"Decimal number is :"<< decimalNumber <<endl;
-//     return 0;
-// }
+int main(){
+    int n;
+    cout<<"Enter a binary number:";
+    cin>>n;
+    int decimalNumber = binarytoDecimal(n);
+    cout<<"Decimal number is :"<< decimalNumber <<endl;
+    return 0;
+}
 
 
 
