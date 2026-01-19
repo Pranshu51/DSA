@@ -260,22 +260,239 @@ using namespace std;
 // Reverse of the string
 
 
-int main(){
-    int arr[]={1,2,3,4,5,6};
-    int size=5;
-    int start=0;
-    int end=size-1;
+// int main(){
+//     int arr[]={1,2,3,4,5,6};
+//     int size=5;
+//     int start=0;
+//     int end=size-1;
 
-    while(start<=end){
-        swap(arr[start],arr[end]);
-        start++;
-        end--;
-    }
+//     while(start<=end){
+//         swap(arr[start],arr[end]);
+//         start++;
+//         end--;
+//     }
 
-    for(int i=0;i<size;i++){
-        cout<<arr[i]<<" ";
-    }
-}
+//     for(int i=0;i<size;i++){
+//         cout<<arr[i]<<" ";
+//     }
+// }
 
 
 // Swapppppppppppppppp
+// Here are **all common and important ways to swap two variables in C++**, with **clear explanation + example code**.
+// (Useful for exams, interviews, and practical coding)
+
+// ---
+
+// ## 1️⃣ Swapping using **Third (Temporary) Variable** ✅ *(Most common & safest)*
+
+// ### Logic
+
+// * Store one value in a temporary variable
+// * Replace values
+
+// ### Code
+
+// ```cpp
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     int a = 10, b = 20, temp;
+
+//     temp = a;
+//     a = b;
+//     b = temp;
+
+//     cout << "a = " << a << ", b = " << b;
+//     return 0;
+// }
+// ```
+
+// ---
+
+// ## 2️⃣ Swapping **Without Third Variable (Using + and -)**
+
+// ### Logic
+
+// * Add both values
+// * Subtract to get swapped values
+
+// ### Code
+
+// ```cpp
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     int a = 10, b = 20;
+
+//     a = a + b;
+//     b = a - b;
+//     a = a - b;
+
+//     cout << "a = " << a << ", b = " << b;
+//     return 0;
+// }
+// ```
+
+// ⚠️ **Risk:** Overflow if values are large
+
+// ---
+
+// ## 3️⃣ Swapping **Without Third Variable (Using * and /)**
+
+// ### Logic
+
+// * Multiply then divide
+
+// ### Code
+
+// ```cpp
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     int a = 5, b = 10;
+
+//     a = a * b;
+//     b = a / b;
+//     a = a / b;
+
+//     cout << "a = " << a << ", b = " << b;
+//     return 0;
+// }
+// ```
+
+// ⚠️ **Limitations**
+
+// * `b` must not be `0`
+// * Overflow possible
+
+// ---
+
+// ## 4️⃣ Swapping using **XOR (Bitwise Operator)** 🔥 *(Interview favorite)*
+
+// ### Logic
+
+// * Uses bitwise XOR
+// * No extra memory
+
+// ### Code
+
+// ```cpp
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     int a = 10, b = 20;
+
+//     a = a ^ b;
+//     b = a ^ b;
+//     a = a ^ b;
+
+//     cout << "a = " << a << ", b = " << b;
+//     return 0;
+// }
+// ```
+
+// ✅ No overflow
+// ❌ Works only with integers
+
+// ---
+
+// ## 5️⃣ Swapping using **`std::swap()` (Built-in Function)** ✅ *(Best practice)*
+
+// ### Code
+
+// ```cpp
+// #include <iostream>
+// #include <algorithm>
+// using namespace std;
+
+// int main() {
+//     int a = 10, b = 20;
+
+//     swap(a, b);
+
+//     cout << "a = " << a << ", b = " << b;
+//     return 0;
+// }
+// ```
+
+// ✔ Clean
+// ✔ Safe
+// ✔ Preferred in real projects
+
+// ---
+
+// ## 6️⃣ Swapping using **Function (Call by Reference)**
+
+// ### Logic
+
+// * Pass variables by reference
+// * Changes reflect in `main()`
+
+// ### Code
+
+// ```cpp
+// #include <iostream>
+// using namespace std;
+
+// void swap(int &x, int &y) {
+//     int temp = x;
+//     x = y;
+//     y = temp;
+// }
+
+// int main() {
+//     int a = 10, b = 20;
+
+//     swap(a, b);
+
+//     cout << "a = " << a << ", b = " << b;
+//     return 0;
+// }
+// ```
+
+// ---
+
+// ## 7️⃣ Swapping using **Pointers**
+
+// ### Code
+
+// ```cpp
+// #include <iostream>
+// using namespace std;
+
+// void swap(int *x, int *y) {
+//     int temp = *x;
+//     *x = *y;
+//     *y = temp;
+// }
+
+// int main() {
+//     int a = 10, b = 20;
+
+//     swap(&a, &b);
+
+//     cout << "a = " << a << ", b = " << b;
+//     return 0;
+// }
+// ```
+
+// ---
+
+// ## 📌 Quick Comparison Table
+
+// | Method        | Extra Variable | Safe | Interview Use |
+// | ------------- | -------------- | ---- | ------------- |
+// | Temp variable | ✔              | ✔✔✔  | ✔✔✔           |
+// | + and -       | ❌              | ❌    | ✔             |
+// | * and /       | ❌              | ❌    | ❌             |
+// | XOR           | ❌              | ✔    | ✔✔✔           |
+// | std::swap     | ✔ (internal)   | ✔✔✔  | ✔✔            |
+// | Reference     | ✔              | ✔✔✔  | ✔✔            |
+// | Pointer       | ✔              | ✔✔   | ✔             |
+
+

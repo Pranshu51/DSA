@@ -1,3 +1,5 @@
+
+
 # WHAT IS AN ARRAY?
 Aisa data structure which contains ismilar elemetns in continuous manner(only string ,only char,only int not all simltaenously)
 1. collection of elements
@@ -160,3 +162,37 @@ also by sizeof(arr)=> we can find total no.of blocks in array (4*10=40) but cant
 │                                                            │
 │  Conclusion: Found at position 4 (index 3)                 │
 └─────────────────────────────────────────────────────────────┘
+
+ array is 1-d static array
+# Vector=> data structure,
+To use vector you have to include =>#include <vector>
+but it is dynamic array =>its size is not fixed
+# Vector declaration
+
+vector <int> arr; 
+1. default size=0
+2. jaise hi ye full hota h apne aap ko double kar leta h
+
+# vector Initialization
+vector<int>arr(1,2,3);
+vecotr<int>arr(10,-1); =>10 elements all intialized with 10,
+
+you can also take it dynamically => 
+int n;
+cin>>n;
+vecotr<int>arr(n);
+
+# Insert into vector
+arr.push_back(5); in element you want to add  5
+# remove
+1. arr.pop_back();=>end element removed
+2. arr.size()=>check size
+3. arrempty() =>emptyor not
+
+
+│  ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┐               │
+│  │ 17  │ 23  │  5  │     │     │     │     │               │
+│  └─────┴─────┴─────┴─────┴─────┴─────┴─────┘ 
+    size=3 ..=>kitne element pade h
+    capacity=7 ..=kitne element store kar skta hu 
+#    capacity=>returns total number return te  number of elements that can be held in currently allocated storage
