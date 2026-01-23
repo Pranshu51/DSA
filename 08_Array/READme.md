@@ -196,3 +196,52 @@ arr.push_back(5); in element you want to add  5
     size=3 ..=>kitne element pade h
     capacity=7 ..=kitne element store kar skta hu 
 #    capacity=>returns total number return te  number of elements that can be held in currently allocated storage
+
+
+
+
+
+# 2-D Array
+int arr [1000][1000] => 1000 rows and 1000 column wala 2D array 
+^    ^     ^     ^
+data variable
+type name
+
+Diagram 1: Visual Representation (2D Array as Table)
+┌─────────┬─────────┬─────────┐
+│ [0][0]  │ [0][1]  │ [0][2]  │
+│   1     │   2     │   3     │
+├─────────┼─────────┼─────────┤
+│ [1][0]  │ [1][1]  │ [1][2]  │
+│   4     │   5     │   6     │
+├─────────┼─────────┼─────────┤
+│ [2][0]  │ [2][1]  │ [2][2]  │
+│   7     │   8     │   9     │
+└─────────┴─────────┴─────────┘
+
+
+
+Diagram 2: Memory Representation (Linear Storage)
+Memory Layout (Row-Major Order):
+┌───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┐
+│ Index: 0      │ Index: 1      │ Index: 2      │ Index: 3      │ Index: 4      │
+├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤
+│ [0][0]│ [0][1]│ [0][2]│ [1][0]│ [1][1]│ [1][2]│ [2][0]│ [2][1]│ [2][2]│
+│   1   │   2   │   3   │   4   │   5   │   6   │   7   │   8   │   9   │
+└───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┘
+
+Memory Addresses (assuming 4-byte integers):
++---------+---------+---------+---------+---------+---------+---------+---------+---------+
+| 0x1000  | 0x1004  | 0x1008  | 0x100C  | 0x1010  | 0x1014  | 0x1018  | 0x101C  | 0x1020  |
+| [0][0]  | [0][1]  | [0][2]  | [1][0]  | [1][1]  | [1][2]  | [2][0]  | [2][1]  | [2][2]  |
+|    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |
++---------+---------+---------+---------+---------+---------+---------+---------+---------+
+
+Formula for Row-Major: address = base + (row * COLS + col) * sizeof(element)
+Example: To access arr[2][1] → base + (2*3 + 1)*4 = base + 28 bytes
+
+ 
+arr[1][0]=>memory ke ander kaise pta lagta h ki ye konse inde pe h linear storage meit has a formula
+   ^    ^   formula=> c*i+j ,c=>column,i=ith row,j=jth column like arr[1][2]=> 3*1+2=5 position=>5th
+row    col                                                                                    index
+index  index
