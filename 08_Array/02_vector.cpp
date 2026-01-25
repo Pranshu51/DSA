@@ -2,8 +2,8 @@
 #include <vector>
 using namespace std;
 
-// int main(){
-//     vector<int> arr;
+int main(){
+    vector<int> arr; //you need not mention the size
 
     // int ans = (sizeof(arr))/sizeof(int);
     // cout<<ans<<endl; //3=> this is compiler dependent
@@ -12,10 +12,16 @@ using namespace std;
     // cout<<arr.size()<<endl; //0  =>kitne element pade h
    
     // cout<<arr.capacity()<<endl; //0 =>kitne element store kar skta hu 
-
+//inseting/ input do not use [] we can use but it gives errors sometime
     // insertion
-//     arr.push_back(2);
-//     arr.push_back(4);
+    arr.push_back(2);
+    // arr[1]=2; //do not use because they willnot increase the size of vector
+    arr.push_back(4);
+
+// if you want to updaet/ access you can use []
+ arr[0]=99;
+ cout<<arr[0]<<" ";
+ cout<<arr[1]<<" ";
 
 // for(int i=0;i<arr.size();i++){
 //     cout<<arr[i]<<" "; //2 4
@@ -29,13 +35,17 @@ using namespace std;
 //     cout<<arr[i]<<" "; //2
 // }
 
-//  vector<int> brr(10);
+//  vector<int> brr(10); //intialization + declaration
+// vector<int> v(5,7); //5 elements with value 7
 //  cout<<"Size of b:" <<brr.size() <<endl; //Size of b:10
 //  cout<<"Capacity of b:" <<brr.capacity() <<endl; //Capacity of b:10
 // //  when you explicitely define that 10 elemnts will be there so its capacity and size both become 10
 // for(int i=0;i<brr.size();i++){
 //     cout<<brr[i]<<" "; //0 0 0 0 0 0 0 0 0 0
 // }
+
+//  once the capacity formed you can reduce size by pop_back but capacity will remain same
+
 
 
 // all the elements initialized with 0
@@ -99,7 +109,7 @@ using namespace std;
 //     int uniqueElemnt =find(arr);
 //     cout<<"Unique element is: "<<uniqueElemnt<<endl;
 
-// }
+}
 
 
 
