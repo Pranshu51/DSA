@@ -400,3 +400,91 @@ The result of the merge is [1,2,2,3,5,6] with the underlined elements coming fro
 // }
 
 
+
+
+
+// 42. Trapping Rain Water
+
+// Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+// class Solution {
+// public:
+//     int trap(vector<int>& height) {
+//         int n = height.size();
+//         if (n <= 2) return 0;
+//         // creating prev array for previoius greatest element
+//         vector<int> prev(n);
+//         int max=height[0];
+//          prev[0]=-1;
+//         for(int i=1;i<n;i++){
+//             prev[i]=max;
+//             if(height[i]>max) max=height[i];
+//         }
+//         // creating next array for greatest element
+       
+//         prev[n-1]=-1;
+//         max=height[n-1];
+//         for(int i=n-2;i>=0;i--){
+//            if(max<prev[i]) prev[i]=max;
+//             if(height[i]>max) max=height[i];
+//         }
+
+//         // for printing output of water
+//         int water =0;
+//         for(int i=0;i<n;i++){
+//             if(height[i]<prev[i]){
+//                 water+=prev[i]-height[i];
+//             }
+//         }
+//              return water;
+//     }
+// };
+
+
+
+// 31. Next Permutation
+// A permutation of an array of integers is an arrangement of its members into a sequence or linear order.
+
+// For example, for arr = [1,2,3], the following are all the permutations of arr: [1,2,3], [1,3,2], [2, 1, 3], [2, 3, 1], [3,1,2], [3,2,1].
+// The next permutation of an array of integers is the next lexicographically greater permutation of its integer. More formally, if all the permutations of the array are sorted in one container according to their lexicographical order, then the next permutation of that array is the permutation that follows it in the sorted container. If such arrangement is not possible, the array must be rearranged as the lowest possible order (i.e., sorted in ascending order).
+
+// For example, the next permutation of arr = [1,2,3] is [1,3,2].
+// Similarly, the next permutation of arr = [2,3,1] is [3,1,2].
+// While the next permutation of arr = [3,2,1] is [1,2,3] because [3,2,1] does not have a lexicographical larger rearrangement.
+// Given an array of integers nums, find the next permutation of nums.
+
+// The replacement must be in place and use only constant extra memory.
+
+//  class Solution {
+// public:
+//     void nextPermutation(vector<int>& nums) {
+//         int n=nums.size();
+//         int idx=-1;
+//         // finding the pivot element
+//         for(int i=n-2;i>=0;i--){
+//             if(nums[i]<nums[i+1]){
+//                 idx=i;
+//                 break;
+//             }
+//         }
+//         if(idx==-1){
+//             reverse(nums.begin(),nums.end());
+//             return;
+//         }
+//         // idx+1 se reverse karna h
+//         reverse(nums.begin()+(idx+1),nums.end());
+//         // finding just greater element than index
+//         int j=-1;
+//         for(int i=idx+1;i<n;i++){
+//             if(nums[i]>nums[idx]){
+//                 j=i;
+//                 break;
+//             }
+//         }
+//         //swap idx and j
+        
+//             int temp = nums[idx];
+//              nums[idx] = nums[j];
+//              nums[j] = temp;
+//             return;
+//     }
+// };
