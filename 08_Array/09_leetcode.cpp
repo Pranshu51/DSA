@@ -1,3 +1,7 @@
+// if you have to reverse array from (i,j) => reverse(arr+i,arr+j+1); one extra +1 is required because j is inclusive
+// if you have to normally reverse from start to end => reverse(arr.begin(),arr.end());
+
+
 //Sort 0's and 1's in an array
 #include<iostream>
 #include<vector>
@@ -394,4 +398,5 @@ The result of the merge is [1,2,2,3,5,6] with the underlined elements coming fro
 //     int n=3;
 //     merge(nums1,m,nums2,n);
 // }
+
 
