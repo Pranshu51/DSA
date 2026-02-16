@@ -449,3 +449,131 @@ using namespace std;
            
 
 // };
+
+
+
+// que=>73. Set Matrix Zeroes
+// Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.
+
+// You must do it in place.
+// good method by taking extra space of O(1) by using the first row and first column to store the information about which row and column contains zero and then make those row and column zero
+
+// class Solution {
+//     public void setZeroes(int[][] arr) {
+//         int m =arr.length;
+//         int n = arr[0].length;
+//         boolean zeroRow =false;
+//         boolean zeroCol =false;
+//         //check the zeroth row
+//         for(int j=0;j<n;j++){
+//             if(arr[0][j]==0){
+//                 zeroRow=true;
+//                 break;
+//             }
+//         }
+//         //check the zeroth Col
+//         for(int i=0;i<m;i++){
+//             if(arr[i][0]==0){
+//                 zeroCol=true;
+//                 break;
+//             }
+//         }
+//         //traversing from 1 to check 0 and fill it to respective 1 row or columns
+//         for(int i=1;i<m;i++){
+//             for(int j=1;j<n;j++){
+//                 if(arr[i][j]==0){
+//                     arr[i][0]=0;
+//                     arr[0][j]=0;
+//                 }
+//             }
+//         }
+//         //making/setting whole row 0
+//         for(int j=1;j<n;j++){
+//             if(arr[0][j]==0){
+//                 for(int i=0;i<m;i++){
+//                     arr[i][j]=0;
+//                 }
+//             }
+//         }
+//         //making/setting whole col 0
+//         for(int i=1;i<m;i++){
+//             if(arr[i][0]==0){
+//                 for(int j=0;j<n;j++){
+//                     arr[i][j]=0;
+//                 }
+//             }
+//         }
+//         if(zeroRow==true){//checking is zero row also conatins zero
+//             for(int j=0;j<n;j++){
+//                 arr[0][j]=0;
+//             }
+//         }
+//         if(zeroCol==true){
+//             for(int i=0;i<m;i++){
+//                 arr[i][0]=0;
+//             }
+//         }
+//     }
+// }
+
+
+        // bad method
+        // int m=arr.length;
+        // int n = arr[0].length;
+        // int [][] v=new int[m][n];
+        // for(int i=0;i<m;i++){
+        //     for(int j=0;j<n;j++){
+        //         v[i][j]=arr[i][j];
+        //     }
+        // }
+        // for(int i=0;i<m;i++){
+        //     for(int j=0;j<n;j++){
+        //         if(v[i][j]==0){
+        //          for(int b=0;b<n;b++){
+        //             arr[i][b]=0;
+        //          }
+        //           for(int a=0;a<m;a++){
+        //                 arr[a][j]=0;
+        //             }
+        //         }
+                   
+        //     }
+        // }
+
+
+//  2.Method   by takig two extra array to store the row and column which contains zero and then make those row and column zero
+//time complezity0(m+n) and space complexity is O(m+n)
+// class Solution {
+//     public void setZeroes(int[][] arr) {
+//         int m =arr.length;
+//         int n = arr[0].length;
+//         boolean [] row = new boolean[m];
+//         boolean [] col = new boolean[n];
+//         //mark where it is zero first
+//         for(int i =0;i<m;i++){
+//             for(int j=0;j<n;j++){
+//                 if(arr[i][j]==0){
+//                     row[i]=true;
+//                     col[j]=true;
+//                 }
+//             }
+//         }
+//         //fill first ith row =0
+//         for(int i =0;i<m;i++){
+//             if(row[i]==true){
+//                 for(int j=0;j<n;j++){
+//                     arr[i][j]=0;
+//                 }
+//             }
+//         }
+//         //set the true row to be 0
+//         for(int j =0;j<n;j++){
+//             if(col[j]==true){
+//                 for(int i=0;i<m;i++){
+//                     arr[i][j]=0;
+//                 }
+//             }
+//         }
+//     }
+// }
+
