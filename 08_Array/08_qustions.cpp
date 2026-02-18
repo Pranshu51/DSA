@@ -93,12 +93,12 @@ using namespace std;
 
 // Write a program to reverse the array without using any extra array
 
-void display(vector<int> &a){
-    for(int i=0;i<a.size();i++){
-        cout<<a[i]<<" "; 
-    }
-    cout<<endl;
-}
+// void display(vector<int> &a){
+//     for(int i=0;i<a.size();i++){
+//         cout<<a[i]<<" "; 
+//     }
+//     cout<<endl;
+// }
 
 // int main(){
 //     vector<int> v;
@@ -174,33 +174,62 @@ void display(vector<int> &a){
 
 
 // Rotate the given array 'a' by k steps,where k is non-negative
-void reversepart(int i,int j,vector<int> &v){
-    while(i<j){
-       int temp =v[i];
-       v[i]=v[j];
-        v[j]=temp;
-        i++;
-        j--;
+// void reversepart(int i,int j,vector<int> &v){
+//     while(i<j){
+//        int temp =v[i];
+//        v[i]=v[j];
+//         v[j]=temp;
+//         i++;
+//         j--;
+//     }
+//     // cout<<endl;
+// }
+
+// int main(){
+//     int k =15;
+//     vector<int> v;
+//     v.push_back(5);
+//     v.push_back(3);
+//     v.push_back(8);
+//     v.push_back(2);
+//     v.push_back(1);
+//     v.push_back(4);
+//     int n=v.size();
+//      display(v);
+//      if(k>=n){
+//         k=k%n;
+//      }
+//     reversepart(0, n-k-1,v);
+//     reversepart(n-k, n-1,v);
+//     reversepart(0, n-1,v);
+//     display(v);
+// }
+
+
+
+
+
+// MOVE ALL NEGATIVE ELEMENTS TO THE LEFT SIDE OF THE ARRAY AND ALL POSITIVE ELEMENTS TO THE RIGHT SIDE OF THE ARRAY WITHOUT USING ANY EXTRA SPACE  
+
+ void moveAllNegativeToLeft(int a[],int n){
+    int low=0;
+    int high=n-1;
+   while(low<high){
+    if(a[low]<0){
+        low++;
     }
-    // cout<<endl;
-}
+    else if(a[high]>0){
+        high--;
+    }
+    else(swap(a[low],a[high]));
+   }
+ }
 
 int main(){
-    int k =15;
-    vector<int> v;
-    v.push_back(5);
-    v.push_back(3);
-    v.push_back(8);
-    v.push_back(2);
-    v.push_back(1);
-    v.push_back(4);
-    int n=v.size();
-     display(v);
-     if(k>=n){
-        k=k%n;
-     }
-    reversepart(0, n-k-1,v);
-    reversepart(n-k, n-1,v);
-    reversepart(0, n-1,v);
-    display(v);
+    int a[]={-1,2,-3,4,5};
+    int n = sizeof(a)/sizeof(a[0]);
+    moveAllNegativeToLeft( a,n);
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
 }

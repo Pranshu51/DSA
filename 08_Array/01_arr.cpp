@@ -255,7 +255,7 @@ using namespace std;
 //         start++;
 //         end--;
 //     }
-// }
+// }//Extreme values are : 10 70 20 60 30 50 40 
 
 // Reverse of the string
 

@@ -18,7 +18,7 @@ int main(){
     // arr[1]=2; //do not use because they willnot increase the size of vector
     arr.push_back(4);
 
-// if you want to updaet/ access you can use []
+// if you want to update/ access you can use []
  arr[0]=99;
  cout<<arr[0]<<" ";
  cout<<arr[1]<<" ";
