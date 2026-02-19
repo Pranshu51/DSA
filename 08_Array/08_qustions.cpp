@@ -30,8 +30,6 @@ using namespace std;
 //         }
 //     }
 //     cout<<"Last occurance of "<<x<<" is at index: "<<idx<<endl;
-
-  
 // }
 
 
@@ -121,7 +119,7 @@ using namespace std;
     //     j--;
     // }
 
-    //wiht for loop
+    //with for loop
     // for(int i=0,j=v.size()-1;i<j;i++,j--){
     //    int temp =v[i];
     //    v[i]=v[j];
@@ -211,25 +209,25 @@ using namespace std;
 
 // MOVE ALL NEGATIVE ELEMENTS TO THE LEFT SIDE OF THE ARRAY AND ALL POSITIVE ELEMENTS TO THE RIGHT SIDE OF THE ARRAY WITHOUT USING ANY EXTRA SPACE  
 
- void moveAllNegativeToLeft(int a[],int n){
-    int low=0;
-    int high=n-1;
-   while(low<high){
-    if(a[low]<0){
-        low++;
-    }
-    else if(a[high]>0){
-        high--;
-    }
-    else(swap(a[low],a[high]));
-   }
- }
+//  void moveAllNegativeToLeft(int a[],int n){
+//     int low=0;
+//     int high=n-1;
+//    while(low<high){
+//     if(a[low]<0){
+//         low++;
+//     }
+//     else if(a[high]>0){
+//         high--;
+//     }
+//     else(swap(a[low],a[high]));
+//    }
+//  }
 
-int main(){
-    int a[]={-1,2,-3,4,5};
-    int n = sizeof(a)/sizeof(a[0]);
-    moveAllNegativeToLeft( a,n);
-    for(int i=0;i<n;i++){
-        cout<<a[i]<<" ";
-    }
-}
+// int main(){
+//     int a[]={-1,2,-3,4,5};
+//     int n = sizeof(a)/sizeof(a[0]);
+//     moveAllNegativeToLeft( a,n);
+//     for(int i=0;i<n;i++){
+//         cout<<a[i]<<" ";
+//     }
+// }
