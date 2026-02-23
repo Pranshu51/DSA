@@ -33,7 +33,7 @@ using namespace std;
 // //m-1=> total no. of operations =(n-1)*(n-1) => O(n^2) time complexity
 //     // for(int i=0;i<n-1;i++){//n-1 passes always as if 5 elements are there then 4 pasees are required to sort the array
 //     //     //traverse the unsorted array and compare the adjacent elements and swap if they are in wrong order
-//     //     for(int j=0;j<n-1;j++){//j is n-1 because there will be no element after n-1 which is second last element to compare with and -i because after each pass the last i elements will be sorted and we don't need to compare them
+//     //     for(int j=0;j<n-1;j++){//j is n-1 because there will be no element after n-1 which is second last element to compare with  
 //     //         if(arr[j]>arr[j+1]){//swap if the current element is greater than the next element
 //     //             swap(arr[j],arr[j+1]);
 //     //         }
@@ -69,11 +69,11 @@ using namespace std;
 //         }
 // }
 
-// que-> how much maximum no of swapsare needed to sort array of length 6?
+// que-> how much maximum no of swaps are needed to sort array of length 6?
 //total no. operations are n(n-1)/2 => 6*5/2 => 15 swaps are needed to sort the array of length 6 in worst case when the array is sorted in reverse order.
 
 
-// Que-> Sort a string in decreasing order of values associatedafter removal of value smaller than x
+// Que-> Sort a string in decreasing order of values associated after removal of value smaller than x
 
 
 // int main(){

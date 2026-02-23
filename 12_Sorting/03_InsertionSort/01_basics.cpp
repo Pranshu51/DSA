@@ -19,7 +19,7 @@ int main(){
         cout<<arr[i] << " ";
     }
     //M-1
-   for(int i=1;i<n;i++){//it can start with both 0 or 1 becauseo f second condition it becomes false
+   for(int i=1;i<n;i++){//it can start with both 0 or 1 because of second condition it becomes false. But we will start with 1 because we have to compare the current element with the previous element and if we start with 0 then there is no previous element to compare with
     int j=i;
     while(j>=1 && arr[j]<arr[j-1]){ //j>=1 because we have to compare the current element with the previous element and if j is 0 then there is no previous element to compare with
         swap(arr[j],arr[j-1]);
