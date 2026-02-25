@@ -123,24 +123,108 @@ using namespace std;
 
 
 //UPPER BOUND
-    int main(){
-    int arr[]={1,2,3,5,10,15,20};
-    int target=3;
-    int n = sizeof(arr)/sizeof(arr[0]);
-    int lo=0;
-    int hi=n-1;
-    bool flag = false;
-    while(lo<=hi){
-        int mid = /*(hi+lo)/2 or*/ lo+(hi-lo)/2;
-        if(arr[mid]==target) {
-            cout<<arr[mid+1];
-            flag = true;
-            break;
-        }
-        else if(arr[mid]>target) hi=mid-1;
-        else lo=mid+1;
-    }
-    if(flag==false){
-        cout<<arr[lo];//only chnage here
-    }
-}
+//     int main(){
+//     int arr[]={1,2,3,5,10,15,20};
+//     int target=3;
+//     int n = sizeof(arr)/sizeof(arr[0]);
+//     int lo=0;
+//     int hi=n-1;
+//     bool flag = false;
+//     while(lo<=hi){
+//         int mid = /*(hi+lo)/2 or*/ lo+(hi-lo)/2;
+//         if(arr[mid]==target) {
+//             cout<<arr[mid+1];
+//             flag = true;
+//             break;
+//         }
+//         else if(arr[mid]>target) hi=mid-1;
+//         else lo=mid+1;
+//     }
+//     if(flag==false){
+//         cout<<arr[lo];//only chnage here
+//     }
+// }
+
+
+
+//First Occurrence of an element in a sorted array
+
+// int main(){
+//     int arr[]={1,2,2,3,3,3,3,3,4,4,5,8,9};
+//     int n = sizeof(arr)/sizeof(arr[0]);
+//     int x =3;
+//     int lo=0;
+//     int hi=n-1;
+//     bool flag=false;
+//     while(lo<=hi){
+//         int mid=(lo+hi)/2;
+//         if(arr[mid]==x){
+//             if(arr[mid-1]==x){
+//                 hi=mid-1;
+//             }
+//             else{
+//                 cout<<mid;
+//                 flag=true;
+//                 break;
+//             }
+//         }
+//         else if(arr[mid]>x) hi=mid-1;
+//         else lo=mid+1;
+//     }
+//     if(flag==false) cout<<"Not Found";
+// }//3
+
+
+
+
+//Given a sorted array of non-negative integers distinct elements,find the smallest missing non-negative element in it.
+//1.Linear Search => time complexity => O(n)
+// int main(){
+//     int arr[]={1,2,3,5,6,7,8,9,10};
+//     int n = sizeof(arr)/sizeof(arr[0]);
+//     bool flag=false;
+//     for (int i=0;i<n;i++){
+//         if(arr[i]!=i){
+//             cout<<i;
+//             flag=true;
+//             break;
+//         }
+//     }
+//     if(!flag) cout<<"Not Found";
+// }
+
+//2.Binar Search
+//time complexity => O(log n)
+// int main(){
+//     int arr[]={0,1,2,3,5,6,7,8,9};
+//     int n = sizeof(arr)/sizeof(arr[0]);
+//     int lo=0;
+//     int hi=n-1;
+//     int ans=-1;
+//     while(lo<=hi){
+//         int mid=(lo+hi)/2;
+//         if(arr[mid]==mid) lo=mid+1;
+//         else{
+//             ans=mid;
+//             hi=mid-1;
+//         }
+//     }
+//     cout<<ans;
+//     if(ans==-1) cout<<"Not Found";//4
+// }
+
+
+//Que=> sqrt(x)
+//1.LinearSearch
+
+// class Solution {
+// public:
+//     int mySqrt(int x) {
+//         if(x<2) return x;
+//         int ans=-1;
+//         for(long long i=1;i*i<=x;i++){
+//                 ans=i;
+//         }
+//         return ans;
+//     }
+// };
