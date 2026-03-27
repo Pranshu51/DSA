@@ -6,6 +6,7 @@ using namespace std;
 // Input 1: arr[] = {1,2,3,3,4,4,4,5} , x = 4
 // Output 1: 6
 
+
 // int main(){
 //     int arr[]={1,2,3,3,4,4,4,5};
 //     int n=sizeof(arr)/sizeof(arr[0]);
@@ -257,21 +258,21 @@ using namespace std;
 // }
 
 //Binary Search
-int main() {
-    long long n = 5;
-    long long lo = 0, hi = n, ans = 0;
+// int main() {
+//     long long n = 5;
+//     long long lo = 0, hi = n, ans = 0;
 
-    while (lo <= hi) {
-        long long mid = lo + (hi - lo) / 2;
-        long long coins = mid * (mid + 1) / 2;
+//     while (lo <= hi) {
+//         long long mid = lo + (hi - lo) / 2;
+//         long long coins = mid * (mid + 1) / 2;
 
-        if (coins <= n) {       // mid is a valid number of complete rows
-            ans = mid;
-            lo = mid + 1;       // try to see if we can build more rows
-        } else {
-            hi = mid - 1;       // too many coins, reduce rows
-        }
-    }
+//         if (coins <= n) {       // mid is a valid number of complete rows
+//             ans = mid;
+//             lo = mid + 1;       // try to see if we can build more rows
+//         } else {
+//             hi = mid - 1;       // too many coins, reduce rows
+//         }
+//     }
 
-    cout << ans;                // for n = 5, prints 2
-}
+//     cout << ans;                // for n = 5, prints 2
+// }
