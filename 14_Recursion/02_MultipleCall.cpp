@@ -1,4 +1,4 @@
-// Fibonnaci sequence using recursion with multiple calls
+// Fibonnaci sequence using recursion with multiple calls =>T.c=> O(2^n) and S.C. O(n) due to recursive stack space(almost n calls 2^0+2^1+2^2+...+2^(n-1)=2^n-1==>g.p formula lagaenge toapprox O(2^n))
 #include<iostream>
 using namespace std;
 // int fib(int n){
@@ -61,7 +61,7 @@ using namespace std;
 
 
 
-//STAIR PATH PROBLEM
+//STAIR PATH PROBLEM=> T.C. O(2^n) and S.C. O(n) due to recursive stack space(almost n calls 2^0+2^1+2^2+...+2^(n-1)=2^n-1==>g.p formula lagaenge toapprox O(2^n))
 // 1.one can climb either 1, 2  steps at a time. Given n steps, find the number of ways to reach the top.
 
 // int climbStairs(int n){
