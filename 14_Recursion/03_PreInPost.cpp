@@ -2,7 +2,7 @@
 #include<iostream>
 using namespace std;
 
-// kaam ->Pre =>Jo kaam callse pehle ho wo Pre hoga 
+// kaam ->Pre =>Jo kaam call se pehle ho wo Pre hoga 
 // call1
 // kaam -> In
 // call2

@@ -1,5 +1,7 @@
 // Recursive Function 
-// structure of recursive function
+
+// structure of recursive function:
+
 // Base case
 // kaam
 // call
@@ -26,6 +28,7 @@ using namespace std;
 //recursive call
 //     return n*factorial(n-1);
 // }
+
 
 //  int main(){
 //     int n ;

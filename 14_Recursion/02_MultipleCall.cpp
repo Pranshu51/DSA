@@ -24,6 +24,7 @@ using namespace std;
 // int main(){
 //     int n;
 //     cout<<"Enter the number of terms : ";
+
 //     cin>>n;
 //     int a = 0, b = 1, c;
 //     cout<<"Fibonacci sequence is : "<<a<<" "<<b<<" ";
@@ -41,6 +42,7 @@ using namespace std;
 
 // int power(int x, int n){
 //     if(n == 0) return 1;
+  
 //     if(n == 1) return x;
 
 //     int half = power(x, n / 2);
