@@ -377,3 +377,4 @@
 //             ans[i]=len;
 //         }
 //         return ans;//T.C=>O(n(m+logn)) ~=O(n*m)
+
