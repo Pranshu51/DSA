@@ -360,6 +360,8 @@
 // };
 
 
+
+
 // m-2
 //   int m=queries.size();
 //         sort(nums.begin(),nums.end());//t.c=O(nlogn) ,s.c=>O(logn)
@@ -377,5 +379,8 @@
 //             ans[i]=len;
 //         }
 //         return ans;//T.C=>O(n(m+logn)) ~=O(n*m)
+
+
+
 
 
