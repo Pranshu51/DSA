@@ -102,6 +102,7 @@
     //     }
     //     return prefix;
 
+
 // m-2
 //   int n=nums.size();
 //         vector<int> prefix(n);
@@ -124,6 +125,8 @@
 //             ans[i]=prefix[i] *suffix[i];
 //         }
 //         return ans;
+
+
         //m-1
         // int product=1;
         // int p2=1;
@@ -211,8 +214,8 @@
 
 
 
-
-//class Solution {
+//m-2
+// class Solution {
 // public:
 //     int bestClosingTime(string customers) {
 //         int n=customers.size();
@@ -220,27 +223,26 @@
 //         vector<int> suf(n+1);
 //         pre[0]=0;
 //         for(int i=0;i<n;i++){
-//             pre[i+1]=pre[i] + ((customers[i]=='N') ? 1 : 0);
+//             pre[i+1]=pre[i] + (customers[i]=='N' ? 1 : 0);
 //         }
 //         suf[n]=0;
-//         for(int i=n-1;i>=n;i++){
-//             suf[i]=suf[i+1] + ((customers[i]=='Y') ? 1 : 0);
+//         for(int i=n-1;i>=0;i--){
+//             suf[i]=suf[i+1] + (customers[i]=='Y' ? 1 : 0);
 //         }
 //         int minPenalty=n;//kuch bhi maan lia max panelty maan lia
 //         //2 kaam honge pehla-pre aur suf add 2. min penalty
+
+//         int bestHour=0;
 //         for(int i=0;i<=n;i++){
-//             pre[i]+=suf[i];
-//             int pen = pre[i];
-//             minPenalty = min(minPenalty,pen);
+//             int currentPenalty=pre[i]+suf[i];
+//             if(currentPenalty<minPenalty){
+//                 minPenalty=currentPenalty;
+//                 bestHour =i;
+//             }
 //         }
-//         for(int i=0;i<=n;i++){
-//             if(pre[i]==minPenalty) return i;//hour return karna k elie
-//         }
-//         return n;
+//         return bestHour;
 //     }
 // };
-
-
 
 
 
@@ -294,16 +296,6 @@
 //     return maxSum;
 //     }
 // };
-
-
-
-
-
-
-
-
-
-
 
 
 
