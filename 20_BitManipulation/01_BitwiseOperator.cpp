@@ -265,6 +265,28 @@ using namespace std;
 
 
 
+// 136. Single Number
+
+// Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+// You must implement a solution with a linear runtime complexity and use only constant extra space.
+// Example 1:
+// Input: nums = [2,2,1]
+// Output: 1
+
+
+// class Solution {
+// public:
+//     int singleNumber(vector<int>& nums) {
+//         int n=nums.size();
+//         int single=0;
+//         for(int i=0;i<n;i++){
+//             single^=nums[i];
+//         }
+//         return single;
+//     }
+// };
+
+
 
 //Que=> Given an integer array nums, in which exactly two element exactly appers only once and all the other elements exactly appears twice. Find the two elements that exactly appear only once.
 
@@ -320,26 +342,26 @@ using namespace std;
 
 
 
-#include <climits>
+// #include <climits>
 
-int main() {
-    int arr[] = {12, 3, 1, 6, 1, 6, 18, 18, 6, 6, 6, 4, 3, 8, 13, 13, 13, 8};
-    int n = 18; // Updated to 18 based on the actual count of elements in the array
-    int ans = 0;
-    int max_el = INT_MIN;
-    int count = 0;
+// int main() {
+//     int arr[] = {12, 3, 1, 6, 1, 6, 18, 18, 6, 6, 6, 4, 3, 8, 13, 13, 13, 8};
+//     int n = 18; // Updated to 18 based on the actual count of elements in the array
+//     int ans = 0;
+//     int max_el = INT_MIN;
+//     int count = 0;
 
-    for (int i = 0; i < n; i++) {
-        if (arr[i] > max_el) {
-            max_el = arr[i];
-            count = 1;
-        } else if (arr[i] == max_el) {   
-            count++;
-        }
-        ans = max(ans, count);
-    }
+//     for (int i = 0; i < n; i++) {
+//         if (arr[i] > max_el) {
+//             max_el = arr[i];
+//             count = 1;
+//         } else if (arr[i] == max_el) {   
+//             count++;
+//         }
+//         ans = max(ans, count);
+//     }
 
-    cout << ans << "\n";
+//     cout << ans << "\n";
 
-    return 0;
-}
+//     return 0;
+// }
