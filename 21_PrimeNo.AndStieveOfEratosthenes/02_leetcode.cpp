@@ -248,3 +248,106 @@
 //         return count;
 //     }
 // };
+
+
+
+
+
+
+
+// 650. 2 Keys Keyboard
+
+// There is only one character 'A' on the screen of a notepad. You can perform one of two operations on this notepad for each step:
+// Copy All: You can copy all the characters present on the screen (a partial copy is not allowed).
+// Paste: You can paste the characters which are copied last time.
+// Given an integer n, return the minimum number of operations to get the character 'A' exactly n times on the screen.
+
+// Example 1:
+// Input: n = 3
+// Output: 3
+// Explanation: Initially, we have one character 'A'.
+// In step 1, we use Copy All operation.
+// In step 2, we use Paste operation to get 'AA'.
+// In step 3, we use Paste operation to get 'AAA'.
+
+//m-1
+
+// class Solution {
+// public:
+//     int gd(int n){
+//         for(int i=n/2;i>1;i--){
+//             if(n%i==0) return i;
+//         }
+//         return 1;
+//     }
+//     int minSteps(int n) {
+//         int count=0;
+//         while(n>1){
+//             int hf=gd(n);
+//             count+=(n/hf);
+//             n=hf;
+//         }
+//         return count;
+//     }
+// };       
+
+
+
+//m-2 OPTIMIZED
+
+
+// class Solution {
+// public:
+//     bool isPrime(int n){
+//         if(n==1) return false;
+//         for(int i=2;i<=sqrt(n);i++){
+//             if(n%i==0) return false;
+//         }
+//         return true;
+//     }
+//     int gd(int n){
+//         for(int i=2;i<=sqrt(n);i++){
+//             if(n%i==0) return n/i;
+//         }
+//         return 1;
+//     }
+//     int minSteps(int n) {
+//         int count=0;
+//         while(n>1){
+//             if(isPrime(n)){
+//                 count+=n;
+//                 break;
+//             }
+//             int hf=gd(n);
+//             count+=(n/hf);
+//             n=hf;
+//         }
+//         return count;
+//     }
+// };       
+
+
+
+
+
+// 263. Ugly Number
+
+// An ugly number is a positive integer which does not have a prime factor other than 2, 3, and 5.
+// Given an integer n, return true if n is an ugly number.
+
+// Example 1:\
+// Input: n = 6
+// Output: true
+// Explanation: 6 = 2 × 3
+
+
+// class Solution {
+// public:
+//     bool isUgly(int n) {
+//         if(n==0) return false;
+//         while(n%2==0) n/=2;
+//         while(n%3==0) n/=3;
+//         while(n%5==0) n/=5;
+//         return(n==1);//means if(n==1) return true; else return false;
+//     }
+// };
