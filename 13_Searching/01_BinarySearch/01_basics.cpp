@@ -23,10 +23,7 @@ using namespace std;
 
 
 // 704. Binary Search
-// Easy
-// Topics
-// premium lock icon
-// Companies
+
 // Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
 
 // You must write an algorithm with O(log n) runtime complexity.
@@ -55,7 +52,7 @@ using namespace std;
 // };
 
 //Que=> Lower Bound
-//Given a sorted array and an inteer 'x' find the lower bound of the x.
+//Given a sorted array and an integer 'x' find the lower bound of the x.
 
 //1.linear search 
 

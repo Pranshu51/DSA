@@ -9,10 +9,7 @@ using namespace std;
 //QUE-1=>
 /*
 169. Majority Element
-Easy
-Topics
-premium lock icon
-Companies
+
 Given an array nums of size n, return the majority element.
 The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
 
@@ -210,7 +207,10 @@ int main(){
         else cout<< -1;
     }
     else{
-        cout<<"There are infinite values of k in the range "<<kmin<<" to "<<kmax;
+        if(kmin-(int)kmin==0){
+            kmin=(int)kmin+1;
+        }
+        cout<<"There are infinite values of k in the range "<<kmin<<" to "<<(int)kmax;
     }
      return 0;
 
