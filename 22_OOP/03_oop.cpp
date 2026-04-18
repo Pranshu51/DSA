@@ -388,29 +388,715 @@ using namespace std;
 // }
 
 
-class A{
-    private:
-    int a_ka_private;//can't be accessed and can't be inherited
-    protected:
-    int a_ka_protected;//can't be accessed but can be inherited
-    public:
-    int a_ka_public;//can be accessed and can be inherited
-};
-//jb hum b class me public banenge to a_ka_public public rahega, a_ka_protected protected rahega, a_ka_private inherit nhi hoga,protected pehle se hi high security me h to neeche pubnic nhi bnega
-class B: public A{//public inheritance=>a_ka_public is public in B, a_ka_protected is protected in B, a_ka_private is not accessible/inherites in B
-    void display(){
-        cout<<a_ka_public<<endl;//accessible
-        cout<<a_ka_protected<<endl;//accessible
-        // cout<<a_ka_private<<endl;//not accessible
-    }
-};
+// class A{
+//     private:
+//     int a_ka_private;//can't be accessed and can't be inherited
+//     protected:
+//     int a_ka_protected;//can't be accessed but can be inherited
+//     public:
+//     int a_ka_public;//can be accessed and can be inherited
+// };
+// //jb hum b class me public banenge to a_ka_public public rahega, a_ka_protected protected rahega, a_ka_private inherit nhi hoga,protected pehle se hi high security me h to neeche pubnic nhi bnega
+// class B: public A{//public inheritance=>a_ka_public is public in B, a_ka_protected is protected in B, a_ka_private is not accessible/inherites in B
+//     void display(){
+//         cout<<a_ka_public<<endl;//accessible
+//         cout<<a_ka_protected<<endl;//accessible
+//         // cout<<a_ka_private<<endl;//not accessible
+//     }
+// };
 
 
-int main(){
-    B b;
-    b.a_ka_public = 10;//accessible
-    // b.a_ka_protected = 20;//not accessible
-    // b.a_ka_private = 30;//not accessible
-}
+// int main(){
+//     B b;
+//     b.a_ka_public = 10;//accessible
+//     // b.a_ka_protected = 20;//not accessible
+//     // b.a_ka_private = 30;//not accessible
+// }
 
-//LOW SECURITY SE HIGH SECURITY ME JAA SKTE H
+// //LOW SECURITY SE HIGH SECURITY ME JAA SKTE H
+
+
+
+
+
+//MULTI-LEVEL INHERITANCE
+//
+
+
+// Level 1: Base Class (Grandparent)
+// class A {
+// public:
+//     int a_ka_public;
+//     A() {
+//         cout << "A (Grandparent) ka constructor call hua!" << endl;
+//     }
+// };
+
+// // Level 2: Derived Class (Parent)
+// // B inherits from A
+// class B : public A {
+// public:
+//     int b_ka_public;
+//     B() {
+//         cout << "B (Parent) ka constructor call hua!" << endl;
+//     }
+// };
+
+// // Level 3: Derived Class (Child)
+// // C inherits from B (and automatically gets everything from A too)
+// class C : public B {
+// public:
+//     int c_ka_public;
+//     C() {
+//         cout << "C (Child) ka constructor call hua!" << endl;
+//     }
+
+//     void showAll() {
+//         cout << "A's value: " << a_ka_public << endl;
+//         cout << "B's value: " << b_ka_public << endl;
+//         cout << "C's value: " << c_ka_public << endl;
+//     }
+// };
+
+// int main() {
+//     // Creating object of C will trigger the entire chain of constructors
+//     // Order: A -> B -> C
+//     C obj; 
+
+//     obj.a_ka_public = 100; // Inherited from A
+//     obj.b_ka_public = 200; // Inherited from B
+//     obj.c_ka_public = 300; // Own property
+
+//     cout << "--- Accessing All Levels ---" << endl;
+//     obj.showAll();
+
+//     return 0;
+// }//humesha pehle base class ka constructor call hota hai, fir derived class ka constructor call hota hai, aur fir uske derived class ka constructor call hota hai, isliye pehle A ka constructor call hoga, fir B ka constructor call hoga, aur fir C ka constructor call hoga, kyuki C class me B class ko inherit kiya gaya hai, aur B class me A class ko inherit kiya gaya hai, isliye pehle A ka constructor call hoga, fir B ka constructor call hoga, aur fir C ka constructor call hoga, kyuki C class me B class ko inherit kiya gaya hai, aur B class me A class ko inherit kiya gaya hai
+
+
+//MULTIPLE INHERITANCE
+//multiple base class ,single derived class
+
+// class A {
+// public:
+//     int a_ka_public;
+//     A() {
+//         cout << "A (Parent 1) ka constructor call hua!" << endl;
+//     }
+// };
+
+// class B {
+// public:
+//     int b_ka_public;
+//     B() {
+//         cout << "B (Parent 2) ka constructor call hua!" << endl;
+//     }
+// };
+
+// // MULTIPLE INHERITANCE: C is inheriting from A AND B
+// class C : public A, public B {
+// public:
+//     int c_ka_public;
+//     C() {
+//         cout << "C (Child) ka constructor call hua!" << endl;
+//     }
+
+//     void show() {
+//         cout << "Accessing A: " << a_ka_public << endl;
+//         cout << "Accessing B: " << b_ka_public << endl;
+//         cout << "Accessing C: " << c_ka_public << endl;
+//     }
+// };
+
+// int main() {
+//     // Note: A's constructor runs first, then B's, then C's
+//     C obj; 
+
+//     obj.a_ka_public = 10;
+//     obj.b_ka_public = 20;
+//     obj.c_ka_public = 30;
+
+//     obj.show();
+
+//     return 0;
+// }
+
+
+
+
+//HIERARCHICAL INHERITANCE
+//single base class multiple derived class
+
+
+// // The Common Parent
+// class A {
+// public:
+//     int a_ka_public;
+//     A() {
+//         cout << "A (Common Parent) ka constructor call hua!" << endl;
+//     }
+// };
+
+// // Child 1 inherits from A
+// class B : public A {
+// public:
+//     int b_ka_public;
+//     B() {
+//         cout << "B (Child 1) ka constructor call hua!" << endl;
+//     }
+// };
+
+// // Child 2 ALSO inherits from A
+// class C : public A {
+// public:
+//     int c_ka_public;
+//     C() {
+//         cout << "C (Child 2) ka constructor call hua!" << endl;
+//     }
+// };
+
+// int main() {
+//     cout << "--- Creating Object of B ---" << endl;
+//     B objB; // Calls A then B
+//     objB.a_ka_public = 10;
+    
+//     cout << "\n--- Creating Object of C ---" << endl;
+//     C objC; // Calls A then C
+//     objC.a_ka_public = 20;
+
+//     cout << "\nValues: B's A=" << objB.a_ka_public << ", C's A=" << objC.a_ka_public << endl;
+
+//     return 0;
+// }
+
+
+//HYBRID INHERITANCE
+//mix of multiple and multilevel inheritance, ek class multiple classes ko inherit kar sakta hai, aur ek class bhi inherit kar sakta hai, aur uske derived class bhi inherit kar sakta hai, isliye ise hybrid inheritance kehte hai
+
+
+
+// Base Class
+// class A {
+// public:
+//     A() { cout << "A (Grandparent) constructor" << endl; }
+// };
+
+// // Child 1 inherits from A
+// class B : public A {
+// public:
+//     B() { cout << "B (Parent 1) constructor" << endl; }
+// };
+
+// // Child 2 inherits from A
+// class C : public A {
+// public:
+//     C() { cout << "C (Parent 2) constructor" << endl; }
+// };
+
+// // Hybrid: D inherits from B and C
+// class D : public B, public C {
+// public:
+//     D() { cout << "D (Child) constructor" << endl; }
+// };
+
+// int main() {
+//     D obj; 
+//     return 0;
+// }
+
+
+
+
+
+
+// Diamond Problem
+
+// When 2 instances of Base Classes are present in the derived class.
+
+// B derives A, C derives A
+// and D derives B+C.
+
+// Now D has 2 instance of A.
+
+
+
+
+/**
+ * THE DIAMOND PROBLEM
+ * * Definition: 
+ * Occurs when two instances of a Base Class are present in a derived class.
+ * This happens in Multiple Inheritance.
+ * * Hierarchy:
+ * A (Base Class)
+ * / \
+ * B   C (Both B and C derive from A)
+ * \ /
+ * D (D derives from both B and C)
+ * * The Issue:
+ * Because D inherits from B and C, and both B and C have their own copy 
+ * of Class A, Class D ends up with TWO instances of Class A.
+ * * Consequences:
+ * 1. Ambiguity: If Class A has a method 'display()', calling d.display() 
+ * makes the compiler confused about which path to follow (D -> B -> A or D -> C -> A).
+ * 2. Memory Wastage: Duplicate data from Class A is stored in memory.
+ * * Solution:
+ * Use 'virtual' inheritance (e.g., class B : virtual public A) to ensure 
+ * only one instance of the base class is shared.
+ */
+
+
+
+
+// class A {
+// public:
+//     int a_ka_public;
+//     A() {
+//         cout << "A (Base Class) ka constructor call hua!" << endl;
+//     }
+// };
+
+// // Use 'virtual' to ensure A is only inherited once
+// //jaise hi class ke aage virtual lagega us class ka sirf ek hi instance banega
+// class B : virtual public A { 
+// public:
+//     int b_ka_public;
+//     B() {
+//         cout << "B (Derived Class) ka constructor call hua!" << endl;
+//     }
+// };
+
+// // Changed from B to C
+// class C : virtual public A { 
+// public:
+//     int c_ka_public;
+    
+//     C() {
+//         cout << "C (Derived Class) ka constructor call hua!" << endl;
+//     }
+// };
+
+// class D : public B, public C {
+// public:
+//     int d_ka_public;
+//     void show(){
+//         cout<<a_ka_public<<endl;//ab D ke pass A ka sirf ek hi instance h, to D ko pata h ki A ka public ko access karna hai B ke through ya C ke through, isliye ise diamond problem kehte hai, aur is problem ko solve karne ke liye hum virtual inheritance ka use karte hai, jisme hum B aur C dono ko virtual public A banate hai, taki D ke pass A ka sirf ek hi instance ho, aur D ko pata ho ki A ka public ko access karna hai B ke through ya C ke through, isliye ise diamond problem kehte hai, aur is problem ko solve karne ke liye hum virtual inheritance ka use karte hai, jisme hum B aur C dono ko virtual public A banate hai, taki D ke pass A ka sirf ek hi instance ho, aur D ko pata ho ki A ka public ko access karna hai B ke through ya C ke through, isliye ise diamond problem kehte hai, aur is problem ko solve karne ke liye hum virtual inheritance ka use karte hai, jisme hum B aur C dono ko virtual public A banate hai, taki D ke pass A ka sirf ek hi instance ho, aur D ko pata ho ki A ka public ko access karna hai B ke through ya C ke through, isliye ise diamond problem kehte hai, aur is problem ko solve karne ke liye hum virtual inheritance ka use karte hai, jisme hum B aur C dono ko virtual public A banate hai, taki D ke pass A ka sirf ek hi instance ho, aur D ko pata ho ki A ka public ko access karna hai B ke through ya C ke through, isliye ise diamond problem kehte hai, aur is problem ko solve karne ke liye hum virtual inheritance ka use karte hai, jisme hum B aur C dono ko virtual public A banate hai, taki D ke pass A ka sirf ek hi instance ho, aur D ko pata ho ki A ka public ko access karna hai B ke through ya C ke through
+//         // cout<<B::a_ka_public<<endl;//Acess specifier use krke hum is problem ko solve kr skte h
+//     }
+//     D() {
+//         cout << "D (Derived Class) ka constructor call hua!" << endl;
+//     }
+// };
+// //solve knre ke trike
+//  //1.use access specifier
+//  //ab D ke pass A ka public bhi h ,B ka bhi h ,C ka bhi h ,aur D ka bhi h ,to D confuse ho jaega ki A ka public ko access karna hai B ke through ya C ke through, isliye ise diamond problem kehte hai, aur is problem ko solve karne ke liye hum virtual inheritance ka use karte hai, jisme hum B aur C dono ko virtual public A banate hai, taki D ke pass A ka sirf ek hi instance ho, aur D ko pata ho ki A ka public ko access karna hai B ke through ya C ke through, isliye ise diamond problem kehte hai, aur is problem ko solve karne ke liye hum virtual inheritance ka use karte hai, jisme hum B aur C dono ko virtual public A banate hai, taki D ke pass A ka sirf ek hi instance ho, aur D ko pata ho ki A ka public ko access karna hai B ke through ya C ke through, isliye ise diamond problem kehte hai, aur is problem ko solve karne ke liye hum virtual inheritance ka use karte hai, jisme hum B aur C dono ko virtual public A
+
+// //  why this works?
+//  // When you use virtual public A, C++ creates a Virtual Base Pointer (vbptr). Instead of B and C both carrying a full physical copy of A, they share a single instance.
+// // Before virtual: D had two copies of a_ka_public.
+// // After virtual: D has only one copy of a_ka_public, and the constructor of A is called only once.
+
+// int main() {
+//     D obj;
+    
+//     // Without 'virtual', this line would cause a compile error (Ambiguity)
+//     obj.a_ka_public = 10;
+//     obj.show(); 
+    
+//     // cout << "Value of a_ka_public: " << obj.a_ka_public << endl;
+
+//     return 0;
+// }
+
+
+
+
+//FUNCTION OVERRIDING(Run time Polymorphism)
+
+// when a funciton of base class is redefined in its derived class,called function overriding,
+// Accessing through scope Resoution operator.
+// Accessing through pointer
+
+// class A{
+//     public:
+//     int a_ka_public;
+//     virtual void Show(){
+//         cout<<"mai a ka show hu"<<endl;
+//     }
+// };
+
+// class B: public A{
+//     public:
+//     int b_ka_public;
+//     void Show(){
+//         cout<<"mai b ka show hu"<<endl;
+//     }
+// };
+// //kitne bhi child bana lo agr function sbke parent me virtual h to runtime pe pata chalega ki kaunse function ko call karna hai, aur agar hum base class ke function ko virtual banate hai to runtime pe pata chalega ki kaunse function ko call karna hai, aur agar hum base class ke function
+
+
+// int main(){
+//   A *a;  
+//   B b;
+// //COMPILE POV->A type ka h to a ka function call hona chahiye
+// //RUNTIME POV->b ka  address store h to a ka function call hona chahiye
+// //to address b ka h to b ka function call hona chahiye, aur agar address a ka h to a ka function call hona chahiye, isliye runtime pe pata chalega ki kaunse function ko call karna hai, aur agar hum base class ke function ko virtual banate hai to runtime pe pata chalega ki kaunse function ko call karna hai, aur agar hum base class ke function ko virtual banate hai to runtime pe pata chalega ki kaunse function ko call karna hai, aur agar hum base class ke function
+// //isko solve karne ke lie aate h VIRTUAL FUNCTION, jisme hum base class ke function ko virtual banate hai, taki runtime pe pata chale ki kaunse function ko call karna hai, aur agar hum base class ke function
+    
+// //COMPILE TIME BINDING ->comppile time pe hi static memory me store ho jate h function to jb b ka adress bhi dala h tab bhi A ka hi function call hota h
+// //RUNTIME BINDING->runtime pe pata chalega ki kaunse function ko call karna hai, aur agar hum base class ke function ko virtual banate hai to runtime pe pata chalega ki kaunse function ko call karna hai
+//     // a=&b;//pointer ke ander uske child ka bhi address store ho skta h 
+//     a= new A;
+//     a->Show();
+//     a=new B;//mai a ka show hu
+// // mai b ka show hu
+//     a->Show();
+//     // a->Show();//not allowed b ke address se bhi hum sirf a ko hi access kar skte h
+    
+//     // b.bShow();
+//     //   b.A::Show();//b ke pass abhi bhi a ka function h
+
+// }
+
+//VIRTUAL FUNCTION:
+//make sure  the correct function is called for an object, regardless of the type of reference (pointer or object) used for function call.
+
+//jb hum bina virtual ke function call karte h to maan lo 2 int type varibale A me h 1int type varibale B class me h to 
+//A ka size hoga 8 and B ka 12 ut jaise hi virtual lagaenge function ke aage to A ka size 16ho jaega and B ka 24 
+//bcz jaise hi RUNTIME BINDING LAGATE H to background me ise enable karne ke lie kuc hota h 2 cheeze banke aati h 'vptr' and 'vtable'
+//virtual ptr -> jaisi hi virtual lagaenge funcitn ke aage function pe vptr bange jo point krega virtual table ko virtua table me function store hota h
+//so ptr ka 8 size hota h to wo badh jaega aur B ke case me ptr ka size 8 adhke 20 hona chahiye tha par 24 hoga kyuki generally compiler 2 ke multiple me deal karta h to kuch byte empty chord dega 
+//har class ki sirf ek vtable hogi aur har class me ek vptr hoga jo vtable ko point krega,vtable me only virtual funciton store honge normal  funciton store nhi honge
+//to humare case me agr binding bina virtual function ke hogi to COMPILE TIME HOGI  to wo A ko hi call kr dega jbki address b ka h 
+//pr agr hum virtual funciton bana de to runtime pe hi poiner banega Vtable(function) ke paass  jaega usme jo bhi function pada hoga wo run ar dega
+
+
+
+
+
+
+//ABSTRACT CLASS
+//PURE VIRTUAL FUNCTION
+//virtual function ke equals to me 0 rakh do iss type ka hota h
+//means Base me declaration and Child me definition
+
+
+
+
+
+
+
+// // Abstract Base Class
+// class Vehicle { 
+// public:
+//     int tyreSize;
+//     int engineSize;
+
+//     // Pure Virtual Functions (no body here, enforced in child classes)
+//     virtual void calculateMileage() = 0;
+//     virtual void refuel() = 0;
+
+//     // A virtual destructor is good practice when using inheritance
+//     virtual ~Vehicle() {}
+// };
+
+// // Derived Class
+// class Bike : public Vehicle { 
+// public:
+//     int handleSize;
+
+//     // Implementing the abstract functions from the Parent
+//     void calculateMileage() override {
+//         cout << "Bike mileage calculated based on engine size: " << engineSize << "cc" << endl;
+//     }
+
+//     void refuel() override {
+//         cout << "Bike fuel tank topped up." << endl;
+//     }
+// };
+
+// int main() {
+//     // Note: You cannot do 'Vehicle v;' because it is abstract.
+    
+//     Bike myBike;
+//     myBike.engineSize = 150;
+//     myBike.tyreSize = 17;
+//     myBike.handleSize = 24;
+
+//     // Calling the implemented functions
+//     myBike.calculateMileage();
+//     myBike.refuel();
+
+//     return 0;
+// }
+
+
+//PURE ABSTRACT CLASS
+// jiske  ander saare pure virtual funciton ho
+
+
+
+//OPERATOR OVERLOADING(COMPILE TIME POLYMORPHISM)
+//<return type> operator<symbol>(parameters){ //symbol means operator like +, -, *, /, etc.
+//     //function body
+// }
+ 
+
+
+
+// class ComplexNumber {
+// public:
+//     int imaginary;
+//     int real;
+
+//     // Overloading the + operator
+//     ComplexNumber operator + (ComplexNumber &c1) {
+//         ComplexNumber c3;
+//         c3.imaginary = c1.imaginary + this->imaginary;
+//         c3.real = c1.real + this->real;
+//         return c3;
+//     }
+//      ComplexNumber operator-(ComplexNumber &c1) {
+//     ComplexNumber c3;
+//     c3.imaginary = this->imaginary - c1.imaginary;
+//     c3.real = this->real - c1.real;
+//     return c3;
+// }
+// };
+
+// int main() {
+//     ComplexNumber a1, a2;
+
+//     // Setting values for the first complex number: 10 + 5i
+//     a1.real = 10;
+//     a1.imaginary = 5;
+
+//     // Setting values for the second complex number: 2 + 3i
+//     a2.real = 2;
+//     a2.imaginary = 3;
+
+//     // Using the overloaded operator
+//     // This calls a1.operator+(a2)
+//     ComplexNumber a3 = a1 + a2;
+//     ComplexNumber a4 = a1 - a2;
+
+//     // Printing the result
+//     cout << "Result: " << a3.real << " + " << a3.imaginary << "i" << endl;
+//     cout << "Result: " << a4.real << " + " << a4.imaginary << "i" << endl;
+
+//     return 0;
+// }
+
+// //SOME OPERATORS ARE THERE WHICH CAN'T BE OVERLOADED LIKE ::, ., .*, ?:, sizeof, etc.
+
+
+
+
+//FRIEND FUNCTION
+//hum isko ander declare karke chord denge taki wo class ke private members ko access kar sake, aur isko bahar define karenge taki wo class ke private members ko access kar sake
+
+
+
+
+
+// class A {
+//     int a_private = 10; // Private by default
+
+// public:
+//     // Declaration of friend function
+//     friend void show(A &a);
+
+//     void show2() {
+//         cout << "Inside member function show2: " << a_private << endl;
+//     }
+// };
+
+// // Definition of the Friend Function
+// // Note: It does NOT use the A:: scope because it is not a member function
+// void show(A &a) {
+//     // Accessing private member 'a_private' directly
+//     cout << "Inside friend function show: " << a.a_private << endl;
+// }
+
+// int main() {
+//     A a;
+
+//     // 1. Calling a regular member function
+//     a.show2();
+
+//     // 2. Calling the friend function
+//     // Notice we call it like a normal global function, passing the object
+//     show(a);
+
+//     return 0;
+// }
+
+
+
+
+
+
+// aboove code is good for freind function instread of operator overloading
+
+
+// class ComplexNumber {
+// public:
+//     int imaginary;
+//     int real;
+
+//     // 1. Declaration of friend operator (as seen in your img line 11)
+//     friend ComplexNumber operator + (ComplexNumber &c1, ComplexNumber &c2);
+
+//     // 2. Member operator for subtraction (as seen in your img line 13)
+//     ComplexNumber operator - (ComplexNumber &c1) {
+//         ComplexNumber c3;
+//         // Subtracting passed object from 'this' object
+//         c3.imaginary = this->imaginary - c1.imaginary;
+//         c3.real = this->real - c1.real;
+//         return c3;
+//     }
+// };
+
+// // 3. Definition of friend operator (outside the class)
+// ComplexNumber operator + (ComplexNumber &c1, ComplexNumber &c2) {
+//     ComplexNumber c3;
+//     // Friend functions don't have 'this', so we use both parameters
+//     c3.imaginary = c1.imaginary + c2.imaginary;
+//     c3.real = c1.real + c2.real;
+//     return c3;
+// }
+
+// int main() {
+//     ComplexNumber a1, a2;
+
+//     a1.real = 10; a1.imaginary = 5;
+//     a2.real = 2;  a2.imaginary = 3;
+
+//     // This calls the friend function: operator+(a1, a2)
+//     ComplexNumber a3 = a1 + a2;
+
+//     // This calls the member function: a1.operator-(a2)
+//     ComplexNumber a4 = a1 - a2;
+
+//     cout << "Sum: " << a3.real << " + " << a3.imaginary << "i" << endl;
+//     cout << "Difference: " << a4.real << " + " << a4.imaginary << "i" << endl;
+
+//     return 0;
+// }
+
+
+
+//CONST KEYWORD
+//if we do constant to anything its value can't be changed, and if we do constant to a variable then we can't change its value, and if we do constant to a function then we can't change the value of the object inside the function, and if we do constant to a pointer then we can't change the value of the pointer, and if we do constant to a reference then we can't change the value of the reference, and if we do constant to a class then we can't change the value of the class, and if we do constant to an object then we can't change the value of the object, and if we do constant to a member function then we can't change the value of the member function, and if we do constant to a member variable then we can't change the value of the member variable, and if we do constant to a member function then we can't change the value of the member function, and if we do constant to a member variable then we can't change the value of the member variable, and if we do constant to a member function then we can't change the value of the member function, and if we do constant to a member variable then we can't change the value of the member variable, and if we do constant to a member function then we can't change the value of the member function, and if we do constant to a member variable then we can't change the value of the member variable, and if we do constant to a member function then we can't change the value of the member function, and if we do constant to a member variable then we can't change the value of the member variable, and if we do constant to a member function then we can't change the value of the member function, and if we do constant to a member variable then we can't change the value of the member variable, and if we do constant to a member function then we can't change the value of the member function, and if we do constant to a member variable then we can't change the value of the member variable, and if we do constant to a member function then we can't change the value of the member function, and if we do constant to a member variable then we can't change the value of the member variable, and if we do constant to a member function then we can't change the value of the member function, and if we do constant to a member variable then we can't change the value of the member variable, and if we do constant to a member function then we can't change the value of the member function, and if we do constant to a
+
+//1. constant variable
+// int main(){
+//     const int a = 10; //ye value declare karte time hi deni pdegi neeche nhi de skte a is a constant integer, its value cannot be changed
+//     // a = 20; //error: assignment of read-only variable 'a'
+// }
+
+//2. constant function
+//doesn't change data members of the class
+
+
+//PREDICT OUTPUT
+
+// class Student {
+// public:
+//     // const member: Must be initialized via Initialization List
+//     const int rollNumber;
+//     int age;
+
+//     // Parameterized Constructor with Initialization List
+//     // Syntax: : variableName(value), variableName2(value2)
+//     Student(int r, int a) : rollNumber(r), age(a) {
+//         // rollNumber = r; // This would cause an ERROR if written here!
+//     }
+// };
+
+// int main() {
+//     // Creating object s1 with rollNumber = 100 and age = 23
+//     Student s1(100, 23);
+
+//     // Printing values
+//     cout << s1.rollNumber << " " << s1.age << endl;
+
+//     return 0;
+// }
+//output is 100 23
+
+
+
+
+
+//2.
+
+// class Student {
+// public:
+//     int rollNumber;
+//     int age;
+// };
+
+// int main() {
+//     Student s1;       // Object s1 is created, but its members contain garbage values
+//     Student s2 = s1;  // s1's garbage values are copied into s2
+
+//     s1.rollNumber = 101; // Now s1 is updated, but s2 remains unchanged
+//     s1.age = 20;
+
+//     // This prints s2's values, which are the original garbage values from s1
+//     cout << s2.rollNumber << " " << s2.age << endl;
+
+//     return 0;
+// }
+
+//Example Output: 0 1836452 or 4201088 0
+
+
+
+//3.
+
+// class Student {
+// public:
+//     int rollNumber;
+
+//     // This causes a COMPILATION ERROR
+//     static int getRollNumber() {
+//         // Error: Static functions cannot access non-static members
+//         // return rollNumber; 
+//     }
+// };
+
+// int main() {
+//     Student s;
+//     s.rollNumber = 101;
+    
+//     // This line would also fail to call the function correctly
+//     // cout << s.getRollNumber() << endl;
+
+//     return 0;
+// }
+//op: fail to compile.
+//bcz static function can't access non-static member variable, and getRollNumber is a static function, to wo rollNumber ko access nhi kar skta h, aur jab hum s.getRollNumber() call karte h to wo bhi error dega kyuki getRollNumber static function hai, to usko class name ke through call karna chahiye tha, jaise Student::getRollNumber(), lekin fir bhi error dega kyuki getRollNumber static function hai, to wo rollNumber ko access nhi kar skta h, aur jab hum s.getRollNumber() call karte h to wo bhi error dega kyuki getRollNumber static function hai, to usko class name ke through call karna chahiye tha, jaise Student::getRollNumber(), lekin fir bhi error dega kyuki getRollNumber static function hai, to wo rollNumber ko access nhi kar skta h, aur jab hum s.getRollNumber() call karte h to wo bhi error dega kyuki getRollNumber static function hai, to usko class name ke through call karna chahiye tha, jaise Student::getRollNumber(), lekin fir bhi error dega kyuki getRollNumber static function hai, to wo rollNumber ko access nhi kar skta h
+
+// correct way above for above method
+
+
+// class Student {
+// public:
+//     int rollNumber;
+
+//     // Removed 'static' to allow access to rollNumber
+//     int getRollNumber() {
+//         return rollNumber;
+//     }
+// };
+
+// int main() {
+//     Student s;
+//     s.rollNumber = 101;
+
+//     // Outputting the result
+//     cout << s.getRollNumber() << endl;
+
+//     return 0;
+// }
