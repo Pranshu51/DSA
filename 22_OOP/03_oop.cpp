@@ -1100,3 +1100,51 @@ using namespace std;
 
 //     return 0;
 // }
+
+
+//OBJECT TO POINTER
+
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Cricketer {
+public:
+    string name;
+    int runs;
+    float avg;
+
+    Cricketer(string name, int runs, float avg) {
+        this->name = name;
+        this->runs = runs;
+        this->avg = avg;
+    }
+};
+
+// In your screen, this was being set up to show how pass-by-value works
+void change(Cricketer c) {
+    c.avg = 99.9; // This only changes a COPY, not the original c1
+}
+
+int main() {
+    Cricketer c1("Virat Kohli", 25000, 55.2);
+
+    // 1. Create the pointer and point it to c1
+    Cricketer* p1 = &c1;
+
+    // 2. Accessing runs via dereferencing the pointer
+    cout << (*p1).runs << endl; 
+
+    // 3. Printing current average
+    cout << c1.avg << endl;
+
+    // 4. Changing average using the pointer
+    (*p1).avg = 77.5; 
+
+    // 5. Printing the updated average to confirm it changed
+    cout << c1.avg << endl;
+
+    return 0;
+}

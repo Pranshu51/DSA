@@ -8,6 +8,7 @@
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
+            "console": "integratedTerminal",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
