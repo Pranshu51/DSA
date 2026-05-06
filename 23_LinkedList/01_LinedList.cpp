@@ -93,74 +93,148 @@ using namespace std;
 //good way to create a linked list using dynamic memory allocation
 
 
+// class Node {
+// public:
+//     int val;
+//     Node* next;
+//     Node(int val){
+//         this->val = val;
+//         this->next = NULL;//bina value ke bhi constructor me intitialize kar skte h
+//     }
+// };
+// // void display(Node* head) {
+// //     Node* temp = head; // Start from the head of the list
+// //     while (temp != NULL) { // Traverse until we reach the end of the list
+// //         cout << temp->val << " "; // Print the value of the current node
+// //         temp = temp->next; // Move to the next node
+// //     }
+// //     cout << endl; // Print a newline after displaying all values
+// // }
+// void display(Node* head) {//T.C=O(n) S.C=O(1)
+//     while (head != NULL) { 
+//         cout << head->val << " "; 
+//         head = head->next; 
+//     }
+//     cout << endl; 
+// }
+
+
+// // int size(Node* head){
+// //     int count = 0;
+// //     Node* temp = head; // Start from the head of the list
+// //     while (temp != NULL) { // Traverse until we reach the end of the list
+// //         count++; // Increment the count for each node
+// //         temp = temp->next; // Move to the next node
+// //     }
+// //     return count; // Return the total count of nodes in the list
+// // }
+
+// // void displayRecursive(Node* head) {//t.c=O(n) s.c=O(n)
+// //     if (head == NULL) return; // Base case: if the current node is NULL, return 
+    
+// //     cout << head->val << " "; // Print the value of the current node
+// //     displayRecursive(head->next); // Recursive call to display the next node
+// // }
+
+// void displayInReverse(Node* head) {//t.c=O(n) s.c=O(n)
+//     if (head == NULL) return; // Base case: if the current node is NULL, return 
+    
+//     displayInReverse(head->next); // Recursive call to display the next node
+//     cout << head->val << " "; // Print the value of the current node after the recursive call
+// }
+
+// int main(){
+//     Node* a = new Node(10);
+//     Node* b = new Node(20);
+//     Node* c = new Node(30);
+//     Node* d = new Node(40);
+
+//     //creating a linked list
+//     a->next = b; // a's next points to b
+//     b->next = c; // b's next points to c
+//     c->next = d; // c's next points to d
+//     // d->next = NULL; // NO NEED ->d's next points to NULL, indicating the end of the
+//     cout<<a->next->val<<endl;// Accessing b's value through a's next pointer
+
+//     // Traversing the linked list and printing values
+//     display(a);
+// //    cout<<size(a);
+// //    displayRecursive(a);
+//     //make a function of display above and call it here
+// //      Node* temp = a; // Start from the head of the list
+// //     while(temp != NULL){
+// //         cout << temp->val << " "; // Print the current node's value
+// //         temp = temp->next; // Move to the next node
+// //     }
+// //     cout << endl;
+
+// displayInReverse(a);
+   
+
+//     return 0;
+// }
+
+//ITERATIVE SOLUTION IS THE BEST COMPARE TO RECURSIVE SOLUTION
+
+
+
+//IMPLEMENTATION LINKED LIST USING CLASS
+
+//InsertAtEnd method
+// implement a method to insert a new node at the end of the linked list.
+
+// CASE 1: size>0
+// CASE 2: size=0
+
+
 class Node {
 public:
     int val;
     Node* next;
     Node(int val){
         this->val = val;
-        this->next = NULL;//bina value ke bhi constructor me intitialize kar skte h
+        this->next =NULL;
     }
 };
-// void display(Node* head) {
-//     Node* temp = head; // Start from the head of the list
-//     while (temp != NULL) { // Traverse until we reach the end of the list
-//         cout << temp->val << " "; // Print the value of the current node
-//         temp = temp->next; // Move to the next node
-//     }
-//     cout << endl; // Print a newline after displaying all values
-// }
-void display(Node* head) {
-    while (head != NULL) { 
-        cout << head->val << " "; 
-        head = head->next; 
+
+class LinkedList {
+public:
+    Node* head;
+    Node* tail;
+    int size;
+    LinkedList(){
+        head = NULL;
+        tail =NULL;
+        size=0;
     }
-    cout << endl; 
-}
+    void inserAtEnd(int val){
+        Node* temp = new Node(val);
+        if(size==0) head = tail = temp;
+        else{
+            tail->next = temp;
+            tail =temp;
+        }
+        size++;
+    }
 
-
-// int size(Node* head){
-//     int count = 0;
-//     Node* temp = head; // Start from the head of the list
-//     while (temp != NULL) { // Traverse until we reach the end of the list
-//         count++; // Increment the count for each node
-//         temp = temp->next; // Move to the next node
-//     }
-//     return count; // Return the total count of nodes in the list
-// }
-
-void displayRecursive(Node* head) {
-    if (head == NULL) return; // Base case: if the current node is NULL, return 
-    
-    cout << head->val << " "; // Print the value of the current node
-    displayRecursive(head->next); // Recursive call to display the next node
-}
+    void display(){
+        Node* temp = head;
+        while(temp != NULL){
+            cout<<temp->val<<" ";
+            temp = temp->next;
+        }
+            cout<<endl;
+    }
+};
 
 int main(){
-    Node* a = new Node(10);
-    Node* b = new Node(20);
-    Node* c = new Node(30);
-    Node* d = new Node(40);
-
-    //creating a linked list
-    a->next = b; // a's next points to b
-    b->next = c; // b's next points to c
-    c->next = d; // c's next points to d
-    // d->next = NULL; // NO NEED ->d's next points to NULL, indicating the end of the
-    cout<<a->next->val<<endl;// Accessing b's value through a's next pointer
-
-    // Traversing the linked list and printing values
-    display(a);
-//    cout<<size(a);
-   displayRecursive(a);
-    //make a function of display above and call it here
-//      Node* temp = a; // Start from the head of the list
-//     while(temp != NULL){
-//         cout << temp->val << " "; // Print the current node's value
-//         temp = temp->next; // Move to the next node
-//     }
-//     cout << endl;
-   
-
-    return 0;
+    LinkedList ll;
+    ll.inserAtEnd(10);
+    ll.inserAtEnd(20);
+    ll.inserAtEnd(30);
+    ll.display();
+    cout<<ll.size;
 }
+
+
+
