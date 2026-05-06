@@ -1,14 +1,15 @@
-int maxElement(int arr[], int index, int n, int max){
-//     if(index==n) return max;
-//     if(max<arr[index]) max = arr[index];
-//     return maxElement(arr, index+1, n, max);
-// }
+void printSubset(string s,int index,string ans){
+    if(index==s.size()) { //orif(index>=s.size())
+        cout<<ans<< " ";
+        return;
+     }
+     
+     printSubset(s,index+1,ans+s[index]);
+     printSubset(s,index+1,ans);
+}
 
-
-
-
-// int main(){
-//     int arr[] = {5, 4,90, 3, 2, 1,10,78};
-//     int n = sizeof(arr)/sizeof(arr[0]);
-//     cout <<maxElement(arr, 0,n,INT_MIN);
-// }
+int main(){
+    string s="abc";
+    string ans="";
+    printSubset(s,0,ans);
+}

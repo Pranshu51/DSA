@@ -20,7 +20,7 @@
 // public:
 //     bool check(int mid,vector<int>& weights, int days ){
 //        int n = weights.size();
-//        int m =mid; //for partial capacity and is is for full capacity
+//        int m =mid; //for partial capacity and is  for full capacity
 //        int count =1;
 //        for(int i=0;i<n;i++){
 //         if(m>=weights[i]){

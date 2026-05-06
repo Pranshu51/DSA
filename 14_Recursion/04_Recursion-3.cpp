@@ -165,10 +165,10 @@ using namespace std;
 //     string s="abc";
 //     string ans="";
 //     printSubset(s,0,ans);
-// }
+// }//abc ab ac a bc b c  
 
 
-//OR
+// //OR
 // void printSubset(string original,string ans){
 //     if(original=="") {
 //         cout<<ans<< " ";
@@ -297,7 +297,6 @@ using namespace std;
 //         if(flag==true) DuplicateSubset(original.substr(1),ans+ch,v,true);
 //      DuplicateSubset(original.substr(1),ans,v,true);
 //      }
-     
 // }
 
 // int main(){
@@ -347,20 +346,20 @@ using namespace std;
 //NEXT PERMUTATION
 
 
-void permutation(string ans,string original){
-    if(original==""){
-        cout<<ans<<" ";
-        return;
-    }
-    for(int i=0;i<original.length();i++){
-        char ch=original[i];
-        string left=original.substr(0,i);
-        string right=original.substr(i+1);
-        permutation(ans+ch,left+right);
-    }
-}
+// void permutation(string ans,string original){
+//     if(original==""){
+//         cout<<ans<<" ";
+//         return;
+//     }
+//     for(int i=0;i<original.length();i++){
+//         char ch=original[i];
+//         string left=original.substr(0,i);
+//         string right=original.substr(i+1);
+//         permutation(ans+ch,left+right);
+//     }
+// }
 
-int main(){
-    string str="abc";
-    permutation("",str);
-}
+// int main(){
+//     string str="abc";
+//     permutation("",str);
+// }
