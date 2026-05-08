@@ -1,1 +1,1 @@
-   cout<<size(a);
+displayInReverse(a);
