@@ -119,22 +119,22 @@ using namespace std;
 // }
 
 
-// // int size(Node* head){
-// //     int count = 0;
-// //     Node* temp = head; // Start from the head of the list
-// //     while (temp != NULL) { // Traverse until we reach the end of the list
-// //         count++; // Increment the count for each node
-// //         temp = temp->next; // Move to the next node
-// //     }
-// //     return count; // Return the total count of nodes in the list
-// // }
+// int size(Node* head){
+//     int count = 0;
+//     Node* temp = head; // Start from the head of the list
+//     while (temp != NULL) { // Traverse until we reach the end of the list
+//         count++; // Increment the count for each node
+//         temp = temp->next; // Move to the next node
+//     }
+//     return count; // Return the total count of nodes in the list
+// }
 
-// // void displayRecursive(Node* head) {//t.c=O(n) s.c=O(n)
-// //     if (head == NULL) return; // Base case: if the current node is NULL, return 
+// void displayRecursive(Node* head) {//t.c=O(n) s.c=O(n)
+//     if (head == NULL) return; // Base case: if the current node is NULL, return 
     
-// //     cout << head->val << " "; // Print the value of the current node
-// //     displayRecursive(head->next); // Recursive call to display the next node
-// // }
+//     cout << head->val << " "; // Print the value of the current node
+//     displayRecursive(head->next); // Recursive call to display the next node
+// }
 
 // void displayInReverse(Node* head) {//t.c=O(n) s.c=O(n)
 //     if (head == NULL) return; // Base case: if the current node is NULL, return 
@@ -142,6 +142,11 @@ using namespace std;
 //     displayInReverse(head->next); // Recursive call to display the next node
 //     cout << head->val << " "; // Print the value of the current node after the recursive call
 // }
+//     void insertAtEndWithoutClass(Node* head, int val){
+//         Node* t = new Node(val);
+//         while(head->next != NULL) head =head-> next;
+//         head->next =t;
+//     }
 
 // int main(){
 //     Node* a = new Node(10);
@@ -157,6 +162,8 @@ using namespace std;
 //     cout<<a->next->val<<endl;// Accessing b's value through a's next pointer
 
 //     // Traversing the linked list and printing values
+//     insertAtEndWithoutClass(a, 80);
+
 //     display(a);
 // //    cout<<size(a);
 // //    displayRecursive(a);
@@ -168,7 +175,7 @@ using namespace std;
 // //     }
 // //     cout << endl;
 
-// displayInReverse(a);
+// // displayInReverse(a);
    
 
 //     return 0;
@@ -207,7 +214,7 @@ public:
         tail =NULL;
         size=0;
     }
-    void inserAtEnd(int val){
+    void inserAtTail(int val){//T.C=O(1)
         Node* temp = new Node(val);
         if(size==0) head = tail = temp;
         else{
@@ -216,6 +223,16 @@ public:
         }
         size++;
     }
+     void inserAtHeaad(int val){//T.C=O(1)
+        Node* temp = new Node(val);
+        if(size==0) head = tail = temp;
+        else{
+            temp->next = head;
+            head = temp;
+        }
+        size++;
+    }
+    
 
     void display(){
         Node* temp = head;
@@ -229,12 +246,15 @@ public:
 
 int main(){
     LinkedList ll;
-    ll.inserAtEnd(10);
-    ll.inserAtEnd(20);
-    ll.inserAtEnd(30);
+    ll.inserAtTail(10);
+    ll.inserAtTail(20);
+    ll.inserAtTail(30);
+    ll.display();
+    ll.inserAtHeaad(5);
     ll.display();
     cout<<ll.size;
 }
 
 
 
+// //DISPLAYING A LINKED LIST
