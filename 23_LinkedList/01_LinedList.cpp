@@ -232,8 +232,69 @@ public:
         }
         size++;
     }
-    
-
+    void insertAtIdx(int idx, int val){
+        if(idx<0 || idx>size) cout<<"Invalid Index"<< endl;
+        else if(idx==0) inserAtHeaad(val);
+        else if(idx==size) inserAtTail(val);
+        else{
+            Node* t = new Node(val);
+            Node* temp = head;
+            for(int i=1;i<idx-1;i++) temp = temp->next;
+            t->next = temp->next;
+            temp->next = t;
+             size++;
+        }
+    }
+    int getAtIdx(int idx){
+        if(idx<0 ||  idx>=size){
+            cout<<"Invalid Index"<<endl;
+            return -1;
+        }
+        else if(idx==0) return head->val;
+        else if(idx==size-1) return tail->val;
+        else{
+            Node* temp =head;
+            for(int i=1;i<idx;i++) temp=temp->next;
+            return temp->val;
+        }
+    }
+    void deleteAtHead(){
+        if (size==0){
+            cout<<"List is empty"<<endl;
+        }
+        else {
+            head=head->next;
+             size--;
+        }
+    }
+    void deleteAtTail(){
+        if(size==0){
+            cout<<"List is empty"<<endl;
+        }
+        else if(size==1){
+            head=tail=NULL;
+            size--;
+        }
+        else{
+            Node* temp = head;
+            while(temp->next != tail) temp = temp->next;
+            temp->next = NULL;
+            tail = temp;
+             size--;
+        }
+    }
+    void deleteAtIdx(int idx){
+        if(size==0) cout<<"List is empty"<<endl; 
+        else if(idx<0 || idx>=size) cout<<"Invalid Index"<<endl;
+        else if(idx==0) deleteAtHead();
+        else if(idx==size-1) deleteAtTail();
+        else{
+            Node* temp = head;
+            for(int i=1;i<idx;i++) temp = temp->next;
+            temp->next = temp->next->next;
+             size--;
+        }
+    }
     void display(){
         Node* temp = head;
         while(temp != NULL){
@@ -249,12 +310,22 @@ int main(){
     ll.inserAtTail(10);
     ll.inserAtTail(20);
     ll.inserAtTail(30);
-    ll.display();
+    ll.inserAtTail(40);
     ll.inserAtHeaad(5);
+    ll.insertAtIdx(2, 15);
+    // cout<<ll.getAtIdx(20)<<endl;//2 index pe jo vaue h use return karna h
+     ll.display();
+    // ll.deleteAtHead();
+    ll.deleteAtTail();
+    ll.deleteAtIdx(2);
     ll.display();
-    cout<<ll.size;
+
+    // cout<<ll.size;
 }
 
 
+//EVIDENT LIMITATION OF LINKED LIST 
+// AGR HEAD ELEMENT CHAHIYE YA TAIL TO T.C=O(1) HAI BUT INDEX PE ELEMENT CHAHIYE TO T.C=O(N) HAI
+//array me get karne ki t.c=O(1) HAI BUT INSERTION AND DELETION ME T.C=O(N) HAI
 
-// //DISPLAYING A LINKED LIST
+
