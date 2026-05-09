@@ -194,138 +194,208 @@ using namespace std;
 // CASE 2: size=0
 
 
+// class Node {
+// public:
+//     int val;
+//     Node* next;
+//     Node(int val){
+//         this->val = val;
+//         this->next =NULL;
+//     }
+// };
+
+// class LinkedList {
+// public:
+//     Node* head;
+//     Node* tail;
+//     int size;
+//     LinkedList(){
+//         head = NULL;
+//         tail =NULL;
+//         size=0;
+//     }
+//     void inserAtTail(int val){//T.C=O(1)
+//         Node* temp = new Node(val);
+//         if(size==0) head = tail = temp;
+//         else{
+//             tail->next = temp;
+//             tail =temp;
+//         }
+//         size++;
+//     }
+//      void inserAtHeaad(int val){//T.C=O(1)
+//         Node* temp = new Node(val);
+//         if(size==0) head = tail = temp;
+//         else{
+//             temp->next = head;
+//             head = temp;
+//         }
+//         size++;
+//     }
+//     void insertAtIdx(int idx, int val){
+//         if(idx<0 || idx>size) cout<<"Invalid Index"<< endl;
+//         else if(idx==0) inserAtHeaad(val);
+//         else if(idx==size) inserAtTail(val);
+//         else{
+//             Node* t = new Node(val);
+//             Node* temp = head;
+//             for(int i=1;i<idx-1;i++) temp = temp->next;
+//             t->next = temp->next;
+//             temp->next = t;
+//              size++;
+//         }
+//     }
+//     int getAtIdx(int idx){
+//         if(idx<0 ||  idx>=size){
+//             cout<<"Invalid Index"<<endl;
+//             return -1;
+//         }
+//         else if(idx==0) return head->val;
+//         else if(idx==size-1) return tail->val;
+//         else{
+//             Node* temp =head;
+//             for(int i=1;i<idx;i++) temp=temp->next;
+//             return temp->val;
+//         }
+//     }
+//     void deleteAtHead(){
+//         if (size==0){
+//             cout<<"List is empty"<<endl;
+//         }
+//         else {
+//             head=head->next;
+//              size--;
+//         }
+//     }
+//     void deleteAtTail(){
+//         if(size==0){
+//             cout<<"List is empty"<<endl;
+//         }
+//         else if(size==1){
+//             head=tail=NULL;
+//             size--;
+//         }
+//         else{
+//             Node* temp = head;
+//             while(temp->next != tail) temp = temp->next;
+//             temp->next = NULL;
+//             tail = temp;
+//              size--;
+//         }
+//     }
+//     void deleteAtIdx(int idx){
+//         if(size==0) cout<<"List is empty"<<endl; 
+//         else if(idx<0 || idx>=size) cout<<"Invalid Index"<<endl;
+//         else if(idx==0) deleteAtHead();
+//         else if(idx==size-1) deleteAtTail();
+//         else{
+//             Node* temp = head;
+//             for(int i=1;i<idx;i++) temp = temp->next;
+//             temp->next = temp->next->next;
+//              size--;
+//         }
+//     }
+//     void display(){
+//         Node* temp = head;
+//         while(temp != NULL){
+//             cout<<temp->val<<" ";
+//             temp = temp->next;
+//         }
+//             cout<<endl;
+//     }
+// };
+
+// int main(){
+//     LinkedList ll;
+//     ll.inserAtTail(10);
+//     ll.inserAtTail(20);
+//     ll.inserAtTail(30);
+//     ll.inserAtTail(40);
+//     ll.inserAtHeaad(5);
+//     ll.insertAtIdx(2, 15);
+//     // cout<<ll.getAtIdx(20)<<endl;//2 index pe jo vaue h use return karna h
+//      ll.display();
+//     // ll.deleteAtHead();
+//     ll.deleteAtTail();
+//     ll.deleteAtIdx(2);
+//     ll.display();
+
+//     // cout<<ll.size;
+// }
+
+
+// //EVIDENT LIMITATION OF LINKED LIST 
+// // AGR HEAD ELEMENT CHAHIYE YA TAIL TO T.C=O(1) HAI BUT INDEX PE ELEMENT CHAHIYE TO T.C=O(N) HAI
+// //array me get karne ki t.c=O(1) HAI BUT INSERTION AND DELETION ME T.C=O(N) HAI
+
+
+
+//DELETE A NODE WITHOUT TAIL
+#include <iostream>
+using namespace std;
+
 class Node {
 public:
     int val;
     Node* next;
-    Node(int val){
-        this->val = val;
-        this->next =NULL;
+    Node(int data) {
+        val = data;
+        next = NULL;
     }
 };
 
-class LinkedList {
-public:
-    Node* head;
-    Node* tail;
-    int size;
-    LinkedList(){
-        head = NULL;
-        tail =NULL;
-        size=0;
+// Function to print the list (Lines 13-18 in your image)
+void display(Node* head) {
+    while (head != NULL) {
+        cout << head->val << " ";
+        head = head->next;
     }
-    void inserAtTail(int val){//T.C=O(1)
-        Node* temp = new Node(val);
-        if(size==0) head = tail = temp;
-        else{
-            tail->next = temp;
-            tail =temp;
-        }
-        size++;
-    }
-     void inserAtHeaad(int val){//T.C=O(1)
-        Node* temp = new Node(val);
-        if(size==0) head = tail = temp;
-        else{
-            temp->next = head;
-            head = temp;
-        }
-        size++;
-    }
-    void insertAtIdx(int idx, int val){
-        if(idx<0 || idx>size) cout<<"Invalid Index"<< endl;
-        else if(idx==0) inserAtHeaad(val);
-        else if(idx==size) inserAtTail(val);
-        else{
-            Node* t = new Node(val);
-            Node* temp = head;
-            for(int i=1;i<idx-1;i++) temp = temp->next;
-            t->next = temp->next;
-            temp->next = t;
-             size++;
-        }
-    }
-    int getAtIdx(int idx){
-        if(idx<0 ||  idx>=size){
-            cout<<"Invalid Index"<<endl;
-            return -1;
-        }
-        else if(idx==0) return head->val;
-        else if(idx==size-1) return tail->val;
-        else{
-            Node* temp =head;
-            for(int i=1;i<idx;i++) temp=temp->next;
-            return temp->val;
-        }
-    }
-    void deleteAtHead(){
-        if (size==0){
-            cout<<"List is empty"<<endl;
-        }
-        else {
-            head=head->next;
-             size--;
-        }
-    }
-    void deleteAtTail(){
-        if(size==0){
-            cout<<"List is empty"<<endl;
-        }
-        else if(size==1){
-            head=tail=NULL;
-            size--;
-        }
-        else{
-            Node* temp = head;
-            while(temp->next != tail) temp = temp->next;
-            temp->next = NULL;
-            tail = temp;
-             size--;
-        }
-    }
-    void deleteAtIdx(int idx){
-        if(size==0) cout<<"List is empty"<<endl; 
-        else if(idx<0 || idx>=size) cout<<"Invalid Index"<<endl;
-        else if(idx==0) deleteAtHead();
-        else if(idx==size-1) deleteAtTail();
-        else{
-            Node* temp = head;
-            for(int i=1;i<idx;i++) temp = temp->next;
-            temp->next = temp->next->next;
-             size--;
-        }
-    }
-    void display(){
-        Node* temp = head;
-        while(temp != NULL){
-            cout<<temp->val<<" ";
-            temp = temp->next;
-        }
-            cout<<endl;
-    }
-};
-
-int main(){
-    LinkedList ll;
-    ll.inserAtTail(10);
-    ll.inserAtTail(20);
-    ll.inserAtTail(30);
-    ll.inserAtTail(40);
-    ll.inserAtHeaad(5);
-    ll.insertAtIdx(2, 15);
-    // cout<<ll.getAtIdx(20)<<endl;//2 index pe jo vaue h use return karna h
-     ll.display();
-    // ll.deleteAtHead();
-    ll.deleteAtTail();
-    ll.deleteAtIdx(2);
-    ll.display();
-
-    // cout<<ll.size;
+    cout << endl;
 }
 
+// Updated Deletion Logic (Lines 19-29 in your image)
+Node* deletenode(Node* head, Node* target) {
+    // Case 1: If the node to be deleted is the head
+    if (head == target) {
+        head = head->next;
+        return head;
+    }
 
-//EVIDENT LIMITATION OF LINKED LIST 
-// AGR HEAD ELEMENT CHAHIYE YA TAIL TO T.C=O(1) HAI BUT INDEX PE ELEMENT CHAHIYE TO T.C=O(N) HAI
-//array me get karne ki t.c=O(1) HAI BUT INSERTION AND DELETION ME T.C=O(N) HAI
+    // Case 2: If the node is somewhere else in the list
+    Node* temp = head;
+    while (temp->next != target) {
+        temp = temp->next;
+    }
+    
+    // Re-linking to skip the target node
+    temp->next = temp->next->next;
+    return head;
+}
 
+int main() {
+    // Manual Node Creation (Lines 32-36)
+    Node* a = new Node(10);
+    Node* b = new Node(20);
+    Node* c = new Node(30);
+    Node* d = new Node(40);
+    Node* e = new Node(50);
 
+    // Linking (Lines 37+)
+    a->next = b;
+    b->next = c;
+    c->next = d;
+    d->next = e;
+
+    Node* head = a;
+
+    cout << "Before deletion: ";
+    display(head);
+
+    // Example: Delete node 'd' (40) or 'a' (10)
+    head = deletenode(head, d);
+
+    cout << "After deletion:  ";
+    display(head);
+
+    return 0;
+}
