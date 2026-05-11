@@ -331,8 +331,8 @@ using namespace std;
 
 
 //DELETE A NODE WITHOUT TAIL
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
 class Node {
 public:
