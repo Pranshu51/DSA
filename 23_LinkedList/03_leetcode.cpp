@@ -231,7 +231,7 @@
 
 
 
-// 23. Merge k Sorted Lists
+// 23. Merge k Sorted Lists(HARD)
 
 // You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
 // Merge all the linked-lists into one sorted linked-list and return it.
@@ -280,5 +280,165 @@
 //             arr.push_back(c);
 //         }
 //         return arr[0];
+//     }
+// };//t.c=O(kn)
+
+
+//better method
+
+// class Solution {
+// public:
+//     ListNode* merge(ListNode* a,ListNode*b){
+//         ListNode* c = new ListNode(100);
+//         ListNode* temp = c;
+//         while(a!=NULL && b!=NULL){
+//             if(a->val<=b->val){
+//                 temp->next = a;
+//                 a=a->next;
+//                 temp=temp->next;
+//             }else{
+//                 temp->next=b;
+//                 b=b->next;
+//                 temp=temp->next;
+//             }
+//         }
+//         if(a==NULL) temp->next=b;
+//         else temp->next=a;
+//         return c->next;
+//     }
+//     ListNode* mergeKLists(vector<ListNode*>& arr) {//t.c nlogn before =O(Kn)
+//         if(arr.size()==0) return NULL;
+//         while(arr.size()>1){
+//             ListNode* a= arr[0];//take two in one time before taking one by one
+//             arr.erase(arr.begin()); //to pop from front
+//             ListNode* b= arr[0];
+//             arr.erase(arr.begin());
+//             ListNode* c= merge(a,b);
+//             arr.push_back(c);
+//         }
+//         return arr[0];
+//     }
+// };
+
+
+
+
+
+// 148. Sort List
+
+// Given the head of a linked list, return the list after sorting it in ascending order.
+
+// Example 1:
+// Input: head = [4,2,1,3]
+// Output: [1,2,3,4]
+
+
+// class Solution {
+// public:
+//     ListNode* merge(ListNode* a, ListNode* b){
+//         ListNode* c =new ListNode(100);
+//         ListNode* temp =c;
+//         while(a!= NULL && b!=NULL){
+//             if(a->val<=b->val){
+//                 temp->next =a;
+//                 a=a->next;
+//                 temp=temp->next;
+//             }else{
+//                 temp->next =b;
+//                 b=b->next;
+//                 temp=temp->next;
+//             }
+//             if(a==NULL) temp->next=b;
+//             else temp->next =a;
+//         }
+//         return c->next;
+//     }
+//     ListNode* sortList(ListNode* head) {
+        //recursion base case
+//         if(head==NULL || head->next==NULL) return head;
+//         ListNode* slow=head;
+//         ListNode* fast=head;
+//         while(fast->next!=NULL && fast->next->next !=NULL){//TO GET LEFT MIDDLE
+//             slow=slow->next;
+//             fast=fast->next->next;
+//         }
+//         ListNode* a=head;
+//         ListNode* b=slow->next;
+//         slow->next=NULL;
+//         a=sortList(a);
+//         b=sortList(b);
+//         ListNode* c = merge(a,b);
+//         return c;
+//     }
+// };
+
+
+
+
+
+
+// 86. Partition List
+
+// Given the head of a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
+// You should preserve the original relative order of the nodes in each of the two partitions.
+
+// Example 1:
+// Input: head = [1,4,3,2,5,2], x = 3
+// Output: [1,2,2,4,3,5]
+
+
+// //not good little confusy
+// class Solution {
+// public:
+//     ListNode* partition(ListNode* head, int x) {
+//         ListNode* lo = new ListNode(100);
+//         ListNode* hi = new ListNode(100);
+//         ListNode* tl = lo;
+//         ListNode* th = hi;
+//         ListNode* temp = head;
+//         while(temp !=NULL){
+//             if(temp->val<x){
+//                 tl->next =temp;
+//                 temp=temp->next;
+//                 tl=tl->next;
+//             }else{
+//                 th->next=temp;
+//                 temp=temp->next;
+//                 th=th->next;
+//             }
+//         }
+//         hi=hi->next;
+//         tl->next=hi;
+//         th->next=NULL;
+//         lo=lo->next;
+//         return lo;
+//     }
+// };
+
+
+
+// //good method
+// class Solution {
+// public:
+//     ListNode* partition(ListNode* head, int x) {
+//         ListNode* lo = new ListNode(100);
+//         ListNode* hi = new ListNode(100);
+//         ListNode* tl = lo;
+//         ListNode* th = hi;
+//         ListNode* temp = head;
+//         while(temp !=NULL){
+//             if(temp->val<x){
+//                 tl->next =temp;
+//                 temp=temp->next;
+//                 tl=tl->next;
+//             }else{
+//                 th->next=temp;
+//                 temp=temp->next;
+//                 th=th->next;
+//             }
+//         }
+//         tl->next=hi->next;
+//         th->next=NULL;
+//         return lo->next;
 //     }
 // };
