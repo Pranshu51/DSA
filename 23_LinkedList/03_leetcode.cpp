@@ -679,3 +679,118 @@
 
 
 
+// 92. Reverse Linked List II
+
+// Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.
+
+// Example 1:
+
+// Input: head = [1,2,3,4,5], left = 2, right = 4
+// Output: [1,4,3,2,5]
+
+
+
+// class Solution {
+// public:
+//  ListNode* reverseList(ListNode* head) {
+//         if(head==NULL || head->next==NULL) return head;
+//         ListNode* newHead = reverseList(head->next);
+//         head->next->next=head;
+//         head->next=NULL;
+//         return newHead;
+//     }
+//     ListNode* reverseBetween(ListNode* head, int left, int right) {
+//         if(left==right) return head;
+//         ListNode* a= NULL;
+//         ListNode* b= NULL;
+//         ListNode* c= NULL;
+//         ListNode* d= NULL;
+//         ListNode* temp= head;
+//         int n=1;
+//         while(temp){
+//             if(n==left-1) a=temp;
+//             if(n==left) b=temp;
+//             if(n==right) c=temp;
+//             if(n==right+1) d=temp;
+//             temp=temp->next;
+//             n++;
+//         }
+//         if(a) a->next=NULL;
+//         c->next=NULL;
+//         c=reverseList(b);
+//         if(a){
+//         a->next=c;
+//         b->next=d;
+//         return head;
+//         }else{
+//             b->next= d;
+//             return c;
+//         }
+//     }
+// };
+
+
+
+
+
+
+
+
+// 143. Reorder List
+
+// You are given the head of a singly linked-list. The list can be represented as:
+
+// L0 → L1 → … → Ln - 1 → Ln
+// Reorder the list to be on the following form:
+
+// L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
+// You may not modify the values in the list's nodes. Only nodes themselves may be changed.
+
+// Example 1:
+// Input: head = [1,2,3,4]
+// Output: [1,4,2,3]
+
+
+
+
+// class Solution {
+// public:
+//     ListNode* reverseList(ListNode* head) {
+//         ListNode* prev = NULL, *Next=head, *curr=head;
+        
+//         while(curr){
+//             Next=curr->next;
+//             curr->next=prev;
+//             prev =curr;
+//             curr=Next;
+//         }
+//         return prev;
+//     }   
+//     void reorderList(ListNode* head) {
+//         ListNode* slow= head;
+//         ListNode* fast= head;
+//         //findind left middle/middle
+//       while(fast->next!=NULL && fast->next->next !=NULL){
+//         slow=slow->next;
+//         fast=fast->next->next;
+//       }
+//       ListNode* b = reverseList(slow->next);
+//       ListNode* a =head;
+//       slow->next=NULL;
+//       ListNode* c = new ListNode(0);
+//       ListNode* tempC = c;
+//       ListNode* tempA = a;
+//       ListNode* tempB = b;
+//         while(tempA && tempB){
+//             tempC->next=tempA;
+//             tempC=tempC->next;    
+//             tempA=tempA->next; 
+
+//             tempC->next=tempB;
+//             tempC=tempC->next;    
+//             tempB=tempB->next;    
+//         }
+//         tempC->next=tempA;
+//         head = c->next;
+//     }
+// };
