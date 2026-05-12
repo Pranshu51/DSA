@@ -442,3 +442,240 @@
 //         return lo->next;
 //     }
 // };
+
+
+
+// 328. Odd Even Linked List
+
+// Given the head of a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices, and return the reordered list.
+// The first node is considered odd, and the second node is even, and so on.
+// Note that the relative order inside both the even and odd groups should remain as it was in the input.
+// You must solve the problem in O(1) extra space complexity and O(n) time complexity
+// EXAMPLE 1:
+// Input: head = [1,2,3,4,5]
+// Output: [1,3,5,2,4]
+
+// class Solution {
+// public:
+//     ListNode* oddEvenList(ListNode* head) {
+//         ListNode* odd= new ListNode(100);    
+//         ListNode* even= new ListNode(100);
+//         ListNode* to = odd;//temp of odd
+//         ListNode* te = even;
+//         ListNode* temp = head;
+//         int count =1;
+//         while(temp!=NULL){
+//             if(count%2 !=0){//for odd case
+//                 to->next=temp;
+//                 temp=temp->next;
+//                 to=to->next;
+//             }else{
+//                 te->next=temp;
+//                 temp=temp->next;
+//                 te=te->next;
+//             }
+//             count++;
+//         } 
+//         to->next=even->next;
+//         te->next =NULL;
+//         return odd->next;   
+//     }
+// };
+
+
+// //BETTER METHOD
+// class Solution {
+// public:
+//     ListNode* oddEvenList(ListNode* head) {
+//         if(head==NULL || head->next==NULL ) return head;
+//        ListNode* odd =head;
+//        ListNode* even =odd->next;
+//        ListNode* evenHead= even;
+//        // Use the even pointers to drive the loop 
+//         // because 'even' is always ahead of 'odd'
+//        while(even!=NULL && even->next!=NULL){
+//         // Connect odd nodes
+//         odd->next =even->next;
+//         odd=odd->next;
+//         // Connect even nodes
+//         even->next=odd->next;
+//         even=even->next;
+//        } 
+//        odd->next=evenHead;
+//        return head;  
+//     }
+// };
+
+
+
+
+// 206. Reverse Linked List
+
+// Given the head of a singly linked list, reverse the list, and return the reversed list. 
+
+// Example 1:
+
+// Input: head = [1,2,3,4,5]
+// Output: [5,4,3,2,1]
+
+// //very bad method NEVER USE THIS T.C= O(n^2) S.C=O(1)
+
+// class Solution {
+// public:
+// ListNode* getNodeAt(ListNode* head,int idx){
+//     ListNode* temp =head;
+//     for(int i=1;i<=idx;i++){
+//         temp=temp->next;
+//     }
+//     return temp;
+// }
+//     ListNode* reverseList(ListNode* head) {
+//         int n=0;
+//         ListNode* temp =head;
+//         while(temp){//temp!=NULL
+//             temp=temp->next;
+//             n++;
+//         }
+//         int i=0;
+//         int j=n-1;
+//         while(i<j){
+//             ListNode* left = getNodeAt(head,i);
+//             ListNode* right = getNodeAt(head,j);
+//             int t = left->val;
+//             left->val=right->val;
+//             right->val=t;
+//             i++;
+//             j--;
+//         }
+//         return head;
+//     }
+// };
+
+
+// //ITERATIVE METHOD T.C=O(n) S.C=O(1)
+
+// class Solution {
+// public:
+//     ListNode* reverseList(ListNode* head) {
+//         ListNode* prev = NULL;
+//         ListNode* Next = NULL;
+//         ListNode* curr = head;
+//         //or  ListNode* prev = NULL, *Next=head, *curr=head;
+//         while(curr){
+//             Next=curr->next;
+//             curr->next=prev;
+//             prev =curr;
+//             curr=Next;
+//         }
+//         return prev;
+//     }
+// };
+
+
+// //RECURSIVE METHOD T.C=O(n) S.C=O(n)
+
+
+// class Solution {
+// public:
+//     ListNode* reverseList(ListNode* head) {
+//         if(head==NULL || head->next==NULL) return head;
+//         ListNode* newHead = reverseList(head->next);
+//         head->next->next=head;
+//         head->next=NULL;
+//         return newHead;
+//     }
+// };
+
+
+
+
+
+// 234. Palindrome Linked List
+
+// Given the head of a singly linked list, return true if it is a palindrome or false otherwise.
+
+
+// Example 1:
+// Input: head = [1,2,2,1]
+// Output: true
+
+
+// //very bad method T.C=O(n) S.C=O(n)
+
+// class Solution {
+// public:
+//     ListNode* reverseList(ListNode* head) {
+//         ListNode* prev = NULL, *Next=head, *curr=head;
+        
+//         while(curr){
+//             Next=curr->next;
+//             curr->next=prev;
+//             prev =curr;
+//             curr=Next;
+//         }
+//         return prev;
+//     }     
+//     bool isPalindrome(ListNode* head) {
+//         ListNode* c= new ListNode(10);
+//         ListNode* temp =head;
+//         ListNode* tc= c;
+//         //DEEP COPY
+//         while(temp!=NULL){
+//             ListNode* node = new ListNode(temp->val);
+//             tc->next = node;
+//             temp=temp->next;
+//             tc=tc->next;
+//         }
+//         c=c->next;
+//         c=reverseList(c);
+//         ListNode* a =head;
+//         ListNode* b =c;
+//         while(a!=NULL){
+//             if(a->val!=b->val) return false;
+//             a= a->next;
+//             b=b->next;
+//         }
+//         return true;
+//     }
+// };
+
+
+
+
+// //BEST METHOD T.C=O(n) S.C=O(1)
+
+// class Solution {
+// public:
+//     ListNode* reverseList(ListNode* head) {
+//         ListNode* prev = NULL, *Next=head, *curr=head;
+        
+//         while(curr){
+//             Next=curr->next;
+//             curr->next=prev;
+//             prev =curr;
+//             curr=Next;
+//         }
+//         return prev;
+//     }     
+//     bool isPalindrome(ListNode* head) {
+//         ListNode* slow= head;
+//         ListNode* fast= head;
+//         //findind left middle/middle
+//       while(fast->next!=NULL && fast->next->next !=NULL){
+//         slow=slow->next;
+//         fast=fast->next->next;
+//       }
+//       ListNode* newHead = reverseList(slow->next);
+//       ListNode* a =head;
+//       ListNode* b =newHead;
+//       while(b){
+//         if(a->val!=b->val) return false;
+//         a=a->next;
+//         b=b->next;
+//       }
+//       return true;
+//     }
+// };
+
+
+
