@@ -15,62 +15,399 @@
 #include <iostream>
 using namespace std;
 //DOUBLY LINKED LIST
-class Node{
-public:
-    int val;
-    Node *next;
-    Node *prev;
+// class Node{
+// public:
+//     int val;
+//     Node *next;
+//     Node *prev;
 
-    Node(int val)
-    {
-        this->val = val;
-        this->next = NULL;
-        this->prev = NULL;
-    }
-};
+//     Node(int val)
+//     {
+//         this->val = val;
+//         this->next = NULL;
+//         this->prev = NULL;
+//     }
+// };
 
-void display(Node *head)
-{
-    Node *temp = head;
-    while(temp != NULL)
-    {
-        cout << temp->val << " ";
-        temp = temp->next;
-    }
-    cout << endl;
-}
-void displayRec(Node* head){
-    if(head==NULL) return ;
-    cout << head->val << " ";
-    displayRec(head->next);
-}
-void displayRev(Node* tail){
-    if(tail==NULL) return ;
-    cout << tail->val << " ";
-    displayRev(tail->prev);
-}
+// void display(Node *head)
+// {
+//     Node *temp = head;
+//     while(temp != NULL)
+//     {
+//         cout << temp->val << " ";
+//         temp = temp->next;
+//     }
+//     cout << endl;
+// }
+// void displayRec(Node* head){
+//     if(head==NULL) return ;
+//     cout << head->val << " ";
+//     displayRec(head->next);
+// } 
+
+// void displayReverse(Node* head){
+//     if(head==NULL) return ;
+//     displayReverse(head->next);
+//     cout << head->val << " ";
+// }
+// void displayRev(Node* tail){
+//     if(tail==NULL) return ;
+//     cout << tail->val << " ";
+//     displayRev(tail->prev);
+// }
 
 
 
-int  main(){
-    Node *a = new Node(10);
-    Node *b = new Node(20);
-    Node *c = new Node(30);
+// int  main(){
+//     Node *a = new Node(10);
+//     Node *b = new Node(20);
+//     Node *c = new Node(30);
 
-    // connection
-    a->next = b;
-    // a->prev = NULL; // no need already null
-    b->prev = a;
-    b->next = c;
-    c->prev = b;
-    // c->next = NULL;// no need already null
+//     // connection
+//     a->next = b;
+//     // a->prev = NULL; // no need already null
+//     b->prev = a;
+//     b->next = c;
+//     c->prev = b;
+//     // c->next = NULL;// no need already null
 
-    // print
+//     // print
    
-    // display(a);
-    displayRec(a);
-    cout << endl;
-    displayRev(c);
+//     // display(a);
+//     displayRec(a);
+//     cout << endl;
+//     displayRev(c);
     
-     return 0;
-}
+//      return 0;
+// }
+
+
+
+
+
+
+//dll operations
+
+#include <iostream>
+using namespace std;
+
+// // Node class for Doubly Linked List
+// class Node {
+// public:
+//     int val;
+//     Node* next;
+//     Node* prev;
+
+//     Node(int val){
+//         this->val = val;
+//         this->next = NULL;
+//         this->prev = NULL;
+//     }
+// };
+
+// class DoublyLinkedList {
+// public:
+//     Node* head;
+//     Node* tail;
+//     int size;
+
+//     DoublyLinkedList(){
+//         head = NULL;
+//         tail = NULL;
+//         size = 0;
+//     }
+
+//     // Insert at Tail (O(1))
+//     void insertAtTail(int val){
+//         Node* temp = new Node(val);
+
+//         if(size == 0){
+//             head = tail = temp;
+//         }
+//         else{
+//             tail->next = temp;
+//             temp->prev = tail;
+//             tail = temp;
+//         }
+//         size++;
+//     }
+
+//     // Insert at Head (O(1))
+//     void insertAtHead(int val){
+//         Node* temp = new Node(val);
+
+//         if(size == 0){
+//             head = tail = temp;
+//         }
+//         else{
+//             temp->next = head;
+//             head->prev = temp;
+//             head = temp;
+//         }
+//         size++;
+//     }
+
+//     // Insert at Index
+//     void insertAtIdx(int idx, int val){
+//         if(idx < 0 || idx > size){
+//             cout << "Invalid Index" << endl;
+//         }
+//         else if(idx == 0){
+//             insertAtHead(val);
+//         }
+//         else if(idx == size){
+//             insertAtTail(val);
+//         }
+//         else{
+//             Node* t = new Node(val);
+//             Node* temp = head;
+
+//             for(int i = 0; i < idx-1; i++){
+//                 temp = temp->next;
+//             }
+
+//             t->next = temp->next;
+//             t->prev = temp; 
+//             temp->next->prev = t;
+//             temp->next = t;
+
+//             size++;
+//         }
+//     }
+
+//     // Get value at index
+//     int getAtIdx(int idx){
+//         if(idx < 0 || idx >= size){
+//             cout << "Invalid Index" << endl;
+//             return -1;
+//         }
+
+//         Node* temp = head;
+//         for(int i = 0; i < idx; i++){
+//             temp = temp->next;
+//         }
+//         return temp->val;
+//     }
+
+//     // Delete at Head
+//     void deleteAtHead(){
+//         if(size == 0){
+//             cout << "List is empty" << endl;
+//             return;
+//         }
+//         head=head->next;
+//         if(head) head->prev = NULL;
+//         else tail = NULL; // List became empty after deletion
+//         size--;
+//         // else if(size == 1){
+//         //     head = tail = NULL;
+//         //     size--;
+//         // }
+//         // else{
+//         //     head = head->next;
+//         //     head->prev = NULL;
+//         //     size--;
+//         // }
+//     }
+
+//     // Delete at Tail
+//     void deleteAtTail(){
+//         if(size == 0){
+//             cout << "List is empty" << endl;
+//         }
+//         else if(size == 1){
+//             deleteAtHead();
+//         }
+//         Node* temp = tail->prev;
+//         temp->next = NULL;
+//         tail = temp;
+//         size--;
+//         // else if(size == 1){
+//         //     head = tail = NULL;
+//         //     size--;
+//         // }
+//         // else{
+//         //     tail = tail->prev;
+//         //     tail->next = NULL;
+//         //     size--;
+//         // }
+//     }
+
+//     // Delete at Index
+//     void deleteAtIdx(int idx){
+//         if(size == 0){
+//             cout << "List is empty" << endl;
+//         }
+//         else if(idx < 0 || idx >= size){
+//             cout << "Invalid Index" << endl;
+//         }
+//         else if(idx == 0){
+//             deleteAtHead();
+//         }
+//         else if(idx == size-1){
+//             deleteAtTail();
+//         }
+//         else{
+//             Node* temp = head;
+
+//             for(int i = 0; i < idx; i++){
+//                 temp = temp->next;
+//             }
+
+//             temp->prev->next = temp->next;
+//             temp->next->prev = temp->prev;
+
+//             size--;
+//         }
+//     }
+
+//     // Display forward
+//     void display(){
+//         Node* temp = head;
+//         while(temp != NULL){
+//             cout << temp->val << " ";
+//             temp = temp->next;
+//         }
+//         cout << endl;
+//     }
+
+//     // Display reverse
+//     void displayReverse(){
+//         Node* temp = tail;
+//         while(temp != NULL){
+//             cout << temp->val << " ";
+//             temp = temp->prev;
+//         }
+//         cout << endl;
+//     }
+// };
+
+// int main(){
+//     DoublyLinkedList dll;
+
+//     dll.insertAtTail(10);
+//     dll.insertAtTail(20);
+//     dll.insertAtTail(30);
+//     dll.insertAtTail(40);
+
+//     dll.insertAtHead(5);
+//     dll.insertAtIdx(2, 15);
+
+//     cout << "Forward: ";
+//     dll.display();
+
+//     cout << "Reverse: ";
+//     dll.displayReverse();
+
+//     dll.deleteAtHead();
+//     dll.deleteAtTail();
+//     dll.deleteAtIdx(2);
+
+//     cout << "After deletion: ";
+//     dll.display();
+
+//     return 0;
+//     //AGR PEECHE SE SIZE CHOTA H TOH PEECHE SE TRAVERSE KRO
+// }
+
+
+
+//  1. Circular Singly Linked List — insertAtTail
+// class Node {
+// public:
+//     int val;
+//     Node* next;
+
+//     Node(int val){
+//         this->val = val;
+//         this->next = NULL;
+//     }
+// };
+
+// class CircularSLL {
+// public:
+//     Node* head;
+//     Node* tail;
+//     int size;
+
+//     CircularSLL(){
+//         head = NULL;
+//         tail = NULL;
+//         size = 0;
+//     }
+
+//     // Insert at Tail
+//     void insertAtTail(int val){
+//         Node* temp = new Node(val);
+
+//         // Case 1: Empty list
+//         if(size == 0){
+//             head = tail = temp;
+//             tail->next = head;   // circular link
+//         }
+//         // Case 2: Non-empty list
+//         else{
+//             tail->next = temp;
+//             tail = temp;
+//             tail->next = head;   // maintain circular
+//         }
+//         size++;
+//     }
+// };
+
+
+
+
+
+
+
+//  2. Circular Doubly Linked List — insertAtTail
+
+// class Node {
+// public:
+//     int val;
+//     Node* next;
+//     Node* prev;
+
+//     Node(int val){
+//         this->val = val;
+//         this->next = NULL;
+//         this->prev = NULL;
+//     }
+// };
+
+// class CircularDLL {
+// public:
+//     Node* head;
+//     Node* tail;
+//     int size;
+
+//     CircularDLL(){
+//         head = NULL;
+//         tail = NULL;
+//         size = 0;
+//     }
+
+//     // Insert at Tail
+//     void insertAtTail(int val){
+//         Node* temp = new Node(val);
+
+//         // Case 1: Empty list
+//         if(size == 0){
+//             head = tail = temp;
+//             head->next = head;
+//             head->prev = head;
+//         }
+//         // Case 2: Non-empty list
+//         else{
+//             tail->next = temp;
+//             temp->prev = tail;
+
+//             temp->next = head;
+//             head->prev = temp;
+
+//             tail = temp;
+//         }
+//         size++;
+//     }
+// };
