@@ -240,6 +240,12 @@ void print(stack<int> st){
 //     int size(){
 //         return idx+1;
 //     }
+//  void display(){
+//         for(int i=0;i<=idx;i++){
+//             cout<<arr[i]<<" ";
+//         }
+//         cout<<endl;
+//     }
 // };
 
 
@@ -257,28 +263,114 @@ void print(stack<int> st){
 
 //VECTOR IMPLEMENTATION OF STACK
 #include <vector>//NO OVERFLOW CONDITION IN VECTOR IMPLEMENTATION OF STACK
+// class Stack{
+// public:
+//     vector<int> v;
+//     void push(int val){
+//         v.push_back(val);
+//     }  
+//     void pop(){
+//         if(v.size()==0){
+//             cout<<"Stack underflow"<<endl;
+//             return;
+//         }
+//         v.pop_back();
+//     } 
+//     int top(){
+//         if(v.size()==0){
+//             cout<<"Stack is empty"<<endl;
+//             return -1; //returning -1 to indicate stack is empty
+//         }
+//         return v[v.size()-1];
+//     } 
+//     int size(){
+//         return v.size();
+//     }
+//     void display(){
+//         for(int i=0;i<=v.size()-1;i++){
+//             cout<<v[i]<<" ";
+//         }
+//         cout<<endl;
+//     }
+// };
+
+// int main(){
+//     Stack st;
+//     st.push(10);
+//     st.push(20);
+//     st.push(30);
+//     cout<<st.top()<<endl;
+//     st.pop();
+//     cout<<st.top()<<endl;
+//     cout<<st.size()<<endl;
+//     st.display();
+// }
+
+
+//LINKED LIST IMPLEMENTATION OF STACK
+//UNLIMITED SIZE
+//if stack size is limited use  ARRAY 
+
+struct Node {
+    int val;
+    Node* next;
+    
+    // Constructor to easily create new nodes
+    Node(int data) {
+        val = data;
+        next = NULL; // or nullptr
+    }
+};
+
+
 class Stack{
 public:
-    vector<int> v;
+    Node* head;
+    int size;
+    Stack(){
+        head =NULL;
+        size=0;
+    }
     void push(int val){
-        v.push_back(val);
-    }  
+        Node* temp =new Node(val);
+        temp->next=head;
+        head=temp;
+        size++;
+    }
     void pop(){
-        if(v.size()==0){
+        if(head == NULL){
             cout<<"Stack underflow"<<endl;
             return;
         }
-        v.pop_back();
+        head = head->next;
+        size--;
     } 
     int top(){
-        if(v.size()==0){
+        if(head == NULL){
             cout<<"Stack is empty"<<endl;
             return -1; //returning -1 to indicate stack is empty
         }
-        return v[v.size()-1];
+        return head->val;
     } 
-    int size(){
-        return v.size();
+    
+ void display(){
+        Node* current = head;
+        while(current != NULL){
+            cout<<current->val<<" ";
+            current = current->next;
+        }
+        cout<<endl;
+    }
+    void print(Node* temp){
+        if(temp == NULL) return;
+        print(temp->next);
+        cout<<temp->val<<" ";
+
+    }
+    void displayUsingRecursion(){
+        Node* temp= head;
+        print(temp);
+        cout<<endl;
     }
 };
 
@@ -287,9 +379,13 @@ int main(){
     st.push(10);
     st.push(20);
     st.push(30);
+    st.push(40);
+    st.push(50);
+    st.push(60);
     cout<<st.top()<<endl;
     st.pop();
     cout<<st.top()<<endl;
-    cout<<st.size()<<endl;
+    cout<<st.size<<endl;
+    // st.display();
+    st.displayUsingRecursion();
 }
-
