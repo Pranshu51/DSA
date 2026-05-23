@@ -99,37 +99,37 @@
 
 
 
-class Solution {
-public:
-    vector<int> maxSlidingWindow(vector<int>& arr, int k) {
-        if(k==1) return arr;
-        int n = arr.size();
-        int ngi[n];
-        stack<int> st;
-        ngi[n-1] =n;
-        st.push(n-1);
-        for(int i=n-2;i>=0;i--){
-            while(st.size()>0 && arr[st.top()]<=arr[i]) st.pop();
-            if(st.size()==0) ngi[i] =n;
-            else ngi[i]=st.top();
-            st.push(i);
-        }
-        vector<int> ans;
-        int j=0;
-        for(int i=0;i<n-k+1;i++){
-            if(j<i) j=i;
-            int mx=arr[j];
-            int j=i;
-            while(j<i+k){
-                mx=arr[j];
-                if(ngi[i]>=i+k) break;
-                j=ngi[j];
-            }
-            ans.push_back(mx);
-        }
-        return ans;
-    }
-};
+// class Solution {
+// public:
+//     vector<int> maxSlidingWindow(vector<int>& arr, int k) {
+//         if(k==1) return arr;
+//         int n = arr.size();
+//         int ngi[n];
+//         stack<int> st;
+//         ngi[n-1] =n;
+//         st.push(n-1);
+//         for(int i=n-2;i>=0;i--){
+//             while(st.size()>0 && arr[st.top()]<=arr[i]) st.pop();
+//             if(st.size()==0) ngi[i] =n;
+//             else ngi[i]=st.top();
+//             st.push(i);
+//         }
+//         vector<int> ans;
+//         int j=0;
+//         for(int i=0;i<n-k+1;i++){
+//             if(j<i) j=i;
+//             int mx=arr[j];
+//             int j=i;
+//             while(j<i+k){
+//                 mx=arr[j];
+//                 if(ngi[i]>=i+k) break;
+//                 j=ngi[j];
+//             }
+//             ans.push_back(mx);
+//         }
+//         return ans;
+//     }
+// };
 
 
 
@@ -140,75 +140,75 @@ public:
 
 
 
-155. Min Stack
-Medium
-Topics
-premium lock icon
-Companies
-Hint
-Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+// 155. Min Stack
+// Medium
+// Topics
+// premium lock icon
+// Companies
+// Hint
+// Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
 
-Implement the MinStack class:
+// Implement the MinStack class:
 
-MinStack() initializes the stack object.
-void push(int val) pushes the element val onto the stack.
-void pop() removes the element on the top of the stack.
-int top() gets the top element of the stack.
-int getMin() retrieves the minimum element in the stack.
-You must implement a solution with O(1) time complexity for each function.
+// MinStack() initializes the stack object.
+// void push(int val) pushes the element val onto the stack.
+// void pop() removes the element on the top of the stack.
+// int top() gets the top element of the stack.
+// int getMin() retrieves the minimum element in the stack.
+// You must implement a solution with O(1) time complexity for each function.
 
  
 
-Example 1:
+// Example 1:
 
-Input
-["MinStack","push","push","push","getMin","pop","top","getMin"]
-[[],[-2],[0],[-3],[],[],[],[]]
+// Input
+// ["MinStack","push","push","push","getMin","pop","top","getMin"]
+// [[],[-2],[0],[-3],[],[],[],[]]
 
-Output
-[null,null,null,null,-3,null,0,-2]
+// Output
+// [null,null,null,null,-3,null,0,-2]
 
-Explanation
-MinStack minStack = new MinStack();
-minStack.push(-2);
-minStack.push(0);
-minStack.push(-3);
-minStack.getMin(); // return -3
-minStack.pop();
-minStack.top();    // return 0
-minStack.getMin(); // return -2
-
-
+// Explanation
+// MinStack minStack = new MinStack();
+// minStack.push(-2);
+// minStack.push(0);
+// minStack.push(-3);
+// minStack.getMin(); // return -3
+// minStack.pop();
+// minStack.top();    // return 0
+// minStack.getMin(); // return -2
 
 
 
-class MinStack {
-public:
-stack<int> st;
-stack<int> helper;
-    MinStack() {
+
+
+// class MinStack {
+// public:
+// stack<int> st;
+// stack<int> helper;
+//     MinStack() {
         
-    }
+//     }
     
-    void push(int val) {
-        st.push(val);
-        if(helper.size()==0 || val<helper.top()) helper.push(val);
-        else helper.push(helper.top());
-    }
+//     void push(int val) {
+//         st.push(val);
+//         if(helper.size()==0 || val<helper.top()) helper.push(val);
+//         else helper.push(helper.top());
+//     }
     
-    void pop() {
-        st.pop();
-        helper.pop();
-    }
+//     void pop() {
+//         st.pop();
+//         helper.pop();
+//     }
     
-    int top() {
-        return st.top();
-    }
+//     int top() {
+//         return st.top();
+//     }
     
-    int getMin() {
-        return helper.top();
-    }
-};
+//     int getMin() {
+//         return helper.top();
+//     }
+// };
 
 /**
  * Your MinStack object will be instantiated and called as such:
@@ -222,31 +222,77 @@ stack<int> helper;
 
 
 
- //alternate bad app
- class MinStack {
-public:
-vector<int> v;
-    MinStack() {
+//  //alternate bad app
+//  class MinStack {
+// public:
+// vector<int> v;
+//     MinStack() {
         
-    }
+//     }
     
-    void push(int val) {
-       v.push_back(val);
-    }
+//     void push(int val) {
+//        v.push_back(val);
+//     }
     
-    void pop() {
-        v.pop_back();
-    }
+//     void pop() {
+//         v.pop_back();
+//     }
     
-    int top() {
-        return v[v.size()-1];
-    }
+//     int top() {
+//         return v[v.size()-1];
+//     }
     
-    int getMin() {
-        int mn=v[0];
-        for(int i=1;i<v.size();i++){
-            mn=min(mn,v[i]);
-        }
-        return mn;
-    }
-};
+//     int getMin() {
+//         int mn=v[0];
+//         for(int i=1;i<v.size();i++){
+//             mn=min(mn,v[i]);
+//         }
+//         return mn;
+//     }
+// };
+
+
+
+//alternate
+
+// class MinStack {
+// public:
+// stack<long long> st;
+// long long min;
+//     MinStack() {
+//         // min=LLONG_MAX;
+//     }
+    
+//     void push(int val) {
+//         if(st.size()==0){
+//             st.push(val);
+//             min=st.top();
+//         }
+//         else if(val>=min) st.push(val);
+//         else{//val<min
+//             st.push(2LL*val-min);
+//             min = val;
+//         }
+//     }
+    
+//     void pop() {
+//         if(st.top()<min){
+//             int oldMin=2*min-st.top();
+//             min=oldMin;
+//         }
+//         st.pop();
+//     }
+    
+//     int top() {
+//         if(st.empty()) return -1;
+//         if(st.top()<min) return min;
+//         else return st.top();
+//     }
+    
+//     int getMin() {
+//         return min;
+//     }
+// };
+
+
+
