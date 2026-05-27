@@ -344,7 +344,7 @@ public:
     }
 };
 
-// Function to print the list (Lines 13-18 in your image)
+// Function to print the list 
 void display(Node* head) {
     while (head != NULL) {
         cout << head->val << " ";
@@ -353,7 +353,7 @@ void display(Node* head) {
     cout << endl;
 }
 
-// Updated Deletion Logic (Lines 19-29 in your image)
+// Updated Deletion Logic 
 Node* deletenode(Node* head, Node* target) {
     // Case 1: If the node to be deleted is the head
     if (head == target) {

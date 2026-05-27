@@ -68,7 +68,7 @@
 // };
 
 //INTERVIEW APPROACH FOR THE QUESITON IN 1 PASS
-//YOU CAN NOT WRITE fast->next!=NULL first because when it will be on end(NULL) its next isnothing
+//YOU CAN NOT WRITE fast->next!=NULL first because when it will be on end(NULL) its next is nothing
 //FIRST AWAYS WRITE THE SAME NODE THEN ITS NEXT
 
 // class Solution {
@@ -133,7 +133,7 @@
 
 //ONE PASS METHOD
 
-// class Solution {
+// class Solution {//t.c=O9n) s.c=O(1)
 // public:
 //     ListNode* removeNthFromEnd(ListNode* head, int n) {
 //         ListNode* slow =head;
@@ -145,8 +145,8 @@
 //         while(fast!=NULL){
 //             slow=slow->next;
 //             fast=fast->next;
-//         }
-//         slow->next=slow->next->next;
+//         }      
+//  slow->next=slow->next->next;
 //         return head;
 //     }
 // };
@@ -208,7 +208,24 @@
 //     }
 // };
 
-//anpther method sligh t diff
+//good  method
+// class Solution {//t.c=O(n) s.c=O(1)
+// public:
+//     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+//         ListNode* ptrA=headA;
+//         ListNode* ptrB=headB;
+//         while(ptrA!=ptrB){
+//             if(ptrA==NULL) ptrA=headB;
+//             else ptrA=ptrA->next;
+
+//             if(ptrB==NULL) ptrB=headA;
+//             else ptrB=ptrB->next;
+//         }
+//         return ptrA;
+//     }
+// };
+
+//another method slight diff
 
 // class Solution {
 // public:
@@ -258,7 +275,7 @@
 
 
 
-
+// Floyd’s Cycle Detection Algorithm (slow & fast pointers).
 // 141. Linked List Cycle
 
 // Given head, the head of a linked list, determine if the linked list has a cycle in it.
@@ -291,6 +308,7 @@
 
 
 // 142. Linked List Cycle II
+//NOTE: IT CAN WORK FOR IF FAST WILL MOVE FROM 3 POINTER ALSO INSTEAD OF 2 POINTERS etc..
 
 // Given the head of a linked list, return the node where the cycle begins. If there is no cycle, return null.
 
