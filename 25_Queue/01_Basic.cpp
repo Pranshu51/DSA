@@ -240,3 +240,181 @@ using namespace std;
 // we are wasting the arrray as when we are doing pop() we just move the front pointer forward and we are not reusing the space of the popped element. So after some time we will run out of space even if there are few elements in the queue. 
 // To solve this problem we can use circular array //circular queue or we can use linked list implementation of queue.
 
+//IMPLEMENTATION OF QUEUE USING LINKED LIST
+
+
+
+
+// #include <iostream>
+// using namespace std;
+
+// // Node class
+// class Node {
+// public:
+//     int val;
+//     Node* next;
+
+//     Node(int val) {
+//         this->val = val;
+//         next = NULL;
+//     }
+// };
+
+// // Queue class using Linked List
+// class Queue {
+// public:
+//     Node* head;
+//     Node* tail;
+//     int size;
+
+//     // Constructor
+//     Queue() {
+//         head = tail = NULL;
+//         size = 0;
+//     }
+
+//     // PUSH FUNCTION
+//     void push(int val) {
+
+//         Node* temp = new Node(val);
+
+//         // If queue is empty
+//         if (size == 0) {
+//             head = tail = temp;
+//         }
+//         else {
+//             tail->next = temp;
+//             tail = temp;
+//         }
+
+//         size++;
+//     }
+
+//     // POP FUNCTION
+//     void pop() {
+
+//         if (size == 0) {
+//             cout << "Queue is EMPTY!" << endl;
+//             return;
+//         }
+
+//         Node* temp = head;
+//         head = head->next;
+
+//         delete temp;
+
+//         size--;
+
+//         // If queue becomes empty
+//         if (size == 0) {
+//             tail = NULL;
+//         }
+//     }
+
+//     // FRONT FUNCTION
+//     int front() {
+
+//         if (size == 0) {
+//             cout << "Queue is EMPTY!" << endl;
+//             return -1;
+//         }
+
+//         return head->val;
+//     }
+
+//     // BACK FUNCTION
+//     int back() {
+
+//         if (size == 0) {
+//             cout << "Queue is EMPTY!" << endl;
+//             return -1;
+//         }
+
+//         return tail->val;
+//     }
+
+//     // SIZE FUNCTION
+//     int getSize() {
+//         return size;
+//     }
+
+//     // EMPTY FUNCTION
+//     bool empty() {
+//         return size == 0;
+//     }
+
+//     // DISPLAY FUNCTION
+//     void display() {
+
+//         if (size == 0) {
+//             cout << "Queue is EMPTY!" << endl;
+//             return;
+//         }
+
+//         Node* temp = head;
+
+//         while (temp != NULL) {
+//             cout << temp->val << " ";
+//             temp = temp->next;
+//         }
+
+//         cout << endl;
+//     }
+// };
+
+// int main() {
+
+//     Queue q;
+
+//     // Push elements
+//     q.push(10);
+//     q.push(20);
+//     q.push(30);
+//     q.push(40);
+
+//     cout << "Queue elements: ";
+//     q.display();
+
+//     // Front and Back
+//     cout << "Front element: " << q.front() << endl;
+//     cout << "Back element: " << q.back() << endl;
+
+//     // Size
+//     cout << "Size of queue: " << q.getSize() << endl;
+
+//     // Pop
+//     q.pop();
+
+//     cout << "After pop: ";
+//     q.display();
+
+//     // Empty check
+//     if (q.empty()) {
+//         cout << "Queue is EMPTY" << endl;
+//     }
+//     else {
+//         cout << "Queue is NOT EMPTY" << endl;
+//     }
+
+//     return 0;
+// }
+
+
+
+
+//ADVANTAGE OF LINKEDLIST OVER ARRAY IMPLEMENTATION
+
+//UNLIMITED SIZE
+
+// 1. Dynamic Size: Linked list implementation allows for dynamic sizing, meaning the queue can grow or shrink as needed during runtime. In contrast, array implementation has a fixed size, leading to potential waste of space or overflow issues.
+// 2. Efficient Memory Usage: In linked list implementation, memory is allocated only when an element is added to the queue. This results in more efficient memory usage compared to array implementation where memory is allocated upfront regardless of the actual number of elements in the queue.
+// 3. No Wastage of Space: Unlike array implementation where space is wasted when elements are removed from the front, linked list implementation reuses the memory of removed nodes, preventing wastage of space.
+// 4. Simpler Implementation: The linked list implementation of a queue is generally simpler to implement and understand compared to the array implementation, which requires managing indices and handling wrap-around scenarios in case of a circular queue.
+
+
+//DISADVANTAGE OF LINKEDLIST OVER ARRAY IMPLEMENTATION
+
+// 1. Higher Memory Overhead: Each node in a linked list requires additional memory for storing the pointer to the next node, which can lead to higher memory overhead compared to array implementation where elements are stored contiguously.
+// 2. Slower Access Time: Accessing elements in a linked list is slower than accessing elements in an array due to the need to traverse the list from the head to the desired position, resulting in O(n) time complexity for access, while array implementation allows for O(1) time complexity for access.
+// 3. Cache Performance: Arrays have better cache performance due to their contiguous memory allocation, while linked lists may suffer from cache misses due to their non-contiguous memory allocation, leading to slower performance in certain scenarios. 
+
