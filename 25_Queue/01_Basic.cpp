@@ -418,3 +418,224 @@ using namespace std;
 // 2. Slower Access Time: Accessing elements in a linked list is slower than accessing elements in an array due to the need to traverse the list from the head to the desired position, resulting in O(n) time complexity for access, while array implementation allows for O(1) time complexity for access.
 // 3. Cache Performance: Arrays have better cache performance due to their contiguous memory allocation, while linked lists may suffer from cache misses due to their non-contiguous memory allocation, leading to slower performance in certain scenarios. 
 
+
+
+//DOUBLY ENDED QUEUE
+//we can push and pop from both the ends
+
+// #include <iostream>
+// using namespace std;
+
+// // Node class for doubly linked list
+// class Node {
+// public:
+//     int val;
+//     Node* next;
+//     Node* prev;  // extra pointer for doubly linked list
+
+//     Node(int val) {
+//         this->val = val;
+//         next = NULL;
+//         prev = NULL;  // initialize prev to NULL
+//     }
+// };
+
+// // Deque class using Doubly Linked List
+// class Deque {
+// public:
+//     Node* head;
+//     Node* tail;
+//     int size;
+
+//     // Constructor
+//     Deque() {
+//         head = tail = NULL;
+//         size = 0;
+//     }
+
+//     // ADD FRONT
+//     void addFront(int val) {
+//         Node* temp = new Node(val);
+        
+//         if (size == 0) {
+//             head = tail = temp;
+//         } else {
+//             temp->next = head;
+//             head->prev = temp;
+//             head = temp;
+//         }
+//         size++;
+//     }
+
+//     // ADD REAR (same as pushBack from hint)
+//     void addRear(int val) {
+//         Node* temp = new Node(val);
+        
+//         if (size == 0) {
+//             head = tail = temp;
+//         } else {
+//             tail->next = temp;
+//             temp->prev = tail;
+//             tail = temp;
+//         }
+//         size++;
+//     }
+
+//     // GET FRONT
+//     int getFront() {
+//         if (size == 0) {
+//             cout << "Deque is EMPTY!" << endl;
+//             return -1;
+//         }
+//         return head->val;
+//     }
+
+//     // GET REAR
+//     int getRear() {
+//         if (size == 0) {
+//             cout << "Deque is EMPTY!" << endl;
+//             return -1;
+//         }
+//         return tail->val;
+//     }
+
+//     // DELETE FRONT (same as pop from queue)
+//     void deleteFront() {
+//         if (size == 0) {
+//             cout << "Deque is EMPTY!" << endl;
+//             return;
+//         }
+        
+//         Node* temp = head;
+        
+//         if (size == 1) {
+//             head = tail = NULL;
+//         } else {
+//             head = head->next;
+//             head->prev = NULL;
+//         }
+        
+//         delete temp;
+//         size--;
+//     }
+
+//     // DELETE REAR
+//     void deleteRear() {
+//         if (size == 0) {
+//             cout << "Deque is EMPTY!" << endl;
+//             return;
+//         }
+        
+//         Node* temp = tail;
+        
+//         if (size == 1) {
+//             head = tail = NULL;
+//         } else {
+//             tail = tail->prev;
+//             tail->next = NULL;
+//         }
+        
+//         delete temp;
+//         size--;
+//     }
+
+//     // SIZE FUNCTION
+//     int getSize() {
+//         return size;
+//     }
+
+//     // EMPTY FUNCTION
+//     bool empty() {
+//         return size == 0;
+//     }
+
+//     // DISPLAY FUNCTION (forward)
+//     void display() {
+//         if (size == 0) {
+//             cout << "Deque is EMPTY!" << endl;
+//             return;
+//         }
+        
+//         Node* temp = head;
+//         cout << "Forward: ";
+//         while (temp != NULL) {
+//             cout << temp->val << " ";
+//             temp = temp->next;
+//         }
+//         cout << endl;
+//     }
+
+//     // DISPLAY REVERSE (to demonstrate prev pointers work)
+//     void displayReverse() {
+//         if (size == 0) {
+//             cout << "Deque is EMPTY!" << endl;
+//             return;
+//         }
+        
+//         Node* temp = tail;
+//         cout << "Reverse: ";
+//         while (temp != NULL) {
+//             cout << temp->val << " ";
+//             temp = temp->prev;
+//         }
+//         cout << endl;
+//     }
+// };
+
+// int main() {
+//     Deque dq;
+
+//     // Test addRear
+//     cout << "Adding 10, 20, 30 to rear:" << endl;
+//     dq.addRear(10);
+//     dq.addRear(20);
+//     dq.addRear(30);
+//     dq.display();
+
+//     // Test addFront
+//     cout << "\nAdding 5, 1 to front:" << endl;
+//     dq.addFront(5);
+//     dq.addFront(1);
+//     dq.display();
+
+//     // Test getFront and getRear
+//     cout << "\nFront element: " << dq.getFront() << endl;
+//     cout << "Rear element: " << dq.getRear() << endl;
+//     cout << "Size: " << dq.getSize() << endl;
+
+//     // Test deleteFront
+//     cout << "\nAfter deleteFront: ";
+//     dq.deleteFront();
+//     dq.display();
+
+//     // Test deleteRear
+//     cout << "After deleteRear: ";
+//     dq.deleteRear();
+//     dq.display();
+
+//     // Test reverse display (proves doubly linked)
+//     cout << "\nReverse display: ";
+//     dq.displayReverse();
+
+//     // Continue deleting
+//     cout << "\nDeleting all elements:" << endl;
+//     dq.deleteFront();
+//     dq.deleteFront();
+//     dq.deleteFront();
+//     dq.display();
+
+//     // Test empty
+//     if (dq.empty()) {
+//         cout << "Deque is EMPTY" << endl;
+//     }
+
+//     return 0;
+// }
+
+
+//stl bhi h iske
+//like dq.push_back(10);,dq.push_front(5);,dq.pop_back();,dq.pop_front();,dq.front();,dq.back();,dq.size();,dq.empty();,dq.clear();,etc.
+
+
+
+//CIRCULAR QUEUE
