@@ -218,10 +218,12 @@ using namespace std;
 //         else if(size == 1){
 //             deleteAtHead();
 //         }
-//         Node* temp = tail->prev;
-//         temp->next = NULL;
-//         tail = temp;
-//         size--;
+// secondapproach
+        // Node* temp = tail->prev;
+        // temp->next = NULL;
+        // tail = temp;
+        // size--;
+        // 1 continue
 //         // else if(size == 1){
 //         //     head = tail = NULL;
 //         //     size--;
@@ -410,4 +412,4 @@ using namespace std;
 //         }
 //         size++;
 //     }
-// };
+// }; 
