@@ -1,0 +1,426 @@
+// 622. Design Circular Queue
+
+// Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle, and the last position is connected back to the first position to make a circle. It is also called "Ring Buffer".
+// One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.
+// Implement the MyCircularQueue class:
+
+// MyCircularQueue(k) Initializes the object with the size of the queue to be k.
+// int Front() Gets the front item from the queue. If the queue is empty, return -1.
+// int Rear() Gets the last item from the queue. If the queue is empty, return -1.
+// boolean enQueue(int value) Inserts an element into the circular queue. Return true if the operation is successful.
+// boolean deQueue() Deletes an element from the circular queue. Return true if the operation is successful.
+// boolean isEmpty() Checks whether the circular queue is empty or not.
+// boolean isFull() Checks whether the circular queue is full or not.
+// You must solve the problem without using the built-in queue data structure in your programming language. 
+
+ 
+
+// Example 1:
+
+// Input
+// ["MyCircularQueue", "enQueue", "enQueue", "enQueue", "enQueue", "Rear", "isFull", "deQueue", "enQueue", "Rear"]
+// [[3], [1], [2], [3], [4], [], [], [], [4], []]
+// Output
+// [null, true, true, true, false, 3, true, true, true, 4]
+
+// Explanation
+// MyCircularQueue myCircularQueue = new MyCircularQueue(3);
+// myCircularQueue.enQueue(1); // return True
+// myCircularQueue.enQueue(2); // return True
+// myCircularQueue.enQueue(3); // return True
+// myCircularQueue.enQueue(4); // return False
+// myCircularQueue.Rear();     // return 3
+// myCircularQueue.isFull();   // return True
+// myCircularQueue.deQueue();  // return True
+// myCircularQueue.enQueue(4); // return True
+// myCircularQueue.Rear();     // return 4
+
+
+// class MyCircularQueue {
+// public:
+//     int f;//front
+//     int b;//rear
+//     int s;//size
+//     int c;//capacity
+//     vector<int> arr;
+//     MyCircularQueue(int k) {
+//     f=0;
+//     b=0;
+//     s=0;
+//     c=k;
+//     vector<int> v(k);
+//     arr=v;
+//     }
+    
+//     bool enQueue(int val) {//push_back
+//         if(s==c) return false;
+//         arr[b]=val;
+//         b++;
+//         if(b==c) b=0;
+//         s++;
+//         return true;
+//     }
+    
+//     bool deQueue() {
+//         if(s==0) return false;
+//         f++;
+//         if(f==c) f=0;
+//         s--; 
+//         return true;
+//     }
+    
+//     int Front() {
+//         if(s==0) return -1;
+//         return arr[f];
+//     }
+    
+//     int Rear() {
+//         if(s==0) return -1;
+//         if(b==0) return arr[c-1];
+//         return arr[b-1];
+//     }
+    
+//     bool isEmpty() {
+//         if(s==0) return true;
+//         else return false;
+//     }
+    
+//     bool isFull() {
+//         if(s==c) return true;
+//         else return false;
+//     }
+// };
+
+
+
+
+//INTERVIEW QUESITON
+
+#include<iostream>
+#include<queue>
+#include<stack>
+using namespace std;
+// //1.Reverse first k elements of the queue
+
+
+
+// int main(){
+//     queue<int> q;
+//     stack<int> st;
+//     q.push(10);
+//     q.push(20);
+//     q.push(30);
+//     q.push(40);
+//     int k =4;
+//     int n =q.size();
+//     for(int i=0;i<k;i++){
+//         st.push(q.front());
+//         q.pop();
+//     }
+//     while(st.size()>0){
+//         q.push(st.top());
+//         st.pop();
+//     }
+//     for(int i=0;i<n-k;i++){
+//         int x = q.front();
+//         q.pop();
+//         q.push(x);
+//     }
+
+//     for(int i=0;i<n;i++){
+//         int x=q.front();
+//         cout<<x<<" ";
+//         q.pop();
+//         q.push(x);
+//     }
+// }
+
+
+
+// 1700. Number of Students Unable to Eat Lunch
+// ol cafeteria offers circular and square sandwiches at lunch break, referred to by numbers 0 and 1 respectively. All students stand in a queue. Each student either prefers square or circular sandwiches.
+// The number of sandwiches in the cafeteria is equal to the number of students. The sandwiches are placed in a stack. At each step:
+// If the student at the front of the queue prefers the sandwich on the top of the stack, they will take it and leave the queue.
+// Otherwise, they will leave it and go to the queue's end.
+// This continues until none of the queue students want to take the top sandwich and are thus unable to eat.
+
+// You are given two integer arrays students and sandwiches where sandwiches[i] is the type of the i​​​​​​th sandwich in the stack (i = 0 is the top of the stack) and students[j] is the preference of the j​​​​​​th student in the initial queue (j = 0 is the front of the queue). Return the number of students that are unable to eat.
+
+ 
+
+// Example 1:
+
+// Input: students = [1,1,0,0], sandwiches = [0,1,0,1]
+// Output: 0 
+// Explanation:
+// - Front student leaves the top sandwich and returns to the end of the line making students = [1,0,0,1].
+// - Front student leaves the top sandwich and returns to the end of the line making students = [0,0,1,1].
+// - Front student takes the top sandwich and leaves the line making students = [0,1,1] and sandwiches = [1,0,1].
+// - Front student leaves the top sandwich and returns to the end of the line making students = [1,1,0].
+// - Front student takes the top sandwich and leaves the line making students = [1,0] and sandwiches = [0,1].
+// - Front student leaves the top sandwich and returns to the end of the line making students = [0,1].
+// - Front student takes the top sandwich and leaves the line making students = [1] and sandwiches = [1].
+// - Front student takes the top sandwich and leaves the line making students = [] and sandwiches = [].
+// Hence all students are able to eat.
+
+// class Solution {
+// public:
+//     int countStudents(vector<int>& students, vector<int>& sandwiches) {
+//         int n=students.size();
+//         queue<int> q;
+//         for(int i=0;i<n;i++){
+//             q.push(students[i]);
+//         }
+//         int count=0;
+//         int i =0;
+//         while(q.size()>0 && count!=q.size()){
+//             if(q.front()==sandwiches[i]){
+//                 count=0;
+//                 q.pop();
+//                 i++;
+//             }else{
+//                 q.push(q.front());
+//                 q.pop();
+//                 count++;
+//             }
+//         }
+//         return q.size();
+//     }
+// };
+
+
+
+
+
+
+
+
+
+
+
+// 232. Implement Queue using Stacks
+
+// Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (push, peek, pop, and empty).
+// Implement the MyQueue class:
+// void push(int x) Pushes element x to the back of the queue.
+// int pop() Removes the element from the front of the queue and returns it.
+// int peek() Returns the element at the front of the queue.
+// boolean empty() Returns true if the queue is empty, false otherwise.
+// Notes:
+
+// You must use only standard operations of a stack, which means only push to top, peek/pop from top, size, and is empty operations are valid.
+// Depending on your language, the stack may not be supported natively. You may simulate a stack using a list or deque (double-ended queue) as long as you use only a stack's standard operations.
+ 
+
+// Example 1:
+
+// Input
+// ["MyQueue", "push", "push", "peek", "pop", "empty"]
+// [[], [1], [2], [], [], []]
+// Output
+// [null, null, null, 1, 1, false]
+
+// Explanation
+// MyQueue myQueue = new MyQueue();
+// myQueue.push(1); // queue is: [1]
+// myQueue.push(2); // queue is: [1, 2] (leftmost is front of the queue)
+// myQueue.peek(); // return 1
+// myQueue.pop(); // return 1, queue is [2]
+// myQueue.empty(); // return false
+
+
+
+// class MyQueue {
+// public:
+//     int size;
+//     stack<int> st;
+//     stack<int> gt;
+//     MyQueue() {
+//         size=0;
+//     }
+    
+//     void push(int x) {
+//         st.push(x);
+//         size++;
+//     }
+    
+//     int pop() {
+//         if(size==0) return -1;
+//         while(st.size()>1){
+//             gt.push(st.top());
+//             st.pop();
+//         }
+//         int x=st.top();
+//         st.pop();
+//         while(gt.size()>0){
+//             st.push(gt.top());
+//             gt.pop();
+//         }
+//         size--;
+//         return x;
+//     }
+    
+//     int peek() {
+//         while(st.size()>1){
+//             gt.push(st.top());
+//             st.pop();
+//         }
+//         int x = st.top();
+//         while(gt.size()>0){
+//             st.push(gt.top());
+//             gt.pop();
+//         }
+//         return x;
+//     }
+    
+//     bool empty() {
+//         if(st.size()==0) return true;
+//         else return false;
+//     }
+// };
+
+
+// //little change
+
+
+//PUSH OPTIMIZED //t.c=push=O(1); but pop t.c=O(n)
+
+// class MyQueue {
+// public:
+//     stack<int> st;
+//     stack<int> gt;
+//     MyQueue() {
+//     }
+    
+//     void push(int x) {
+//         st.push(x);
+//     }
+    
+//     int pop() {
+//         while(st.size()>0){
+//             gt.push(st.top());
+//             st.pop();
+//         }
+//         int x=gt.top();
+//         gt.pop();
+//         while(gt.size()>0){
+//             st.push(gt.top());
+//             gt.pop();
+//         }
+//         return x;
+//     }
+    
+//     int peek() {
+//         while(st.size()>0){
+//             gt.push(st.top());
+//             st.pop();
+//         }
+//         int x = gt.top();
+//         while(gt.size()>0){
+//             st.push(gt.top());
+//             gt.pop();
+//         }
+//         return x;
+//     }
+    
+//     bool empty() {
+//         if(st.size()==0) return true;
+//         else return false;
+//     }
+// };
+
+
+
+//POP OPTIMIZED //t.c=pop=O(1); but push t.c=O(n)
+
+// class MyQueue {
+// public:
+//     stack<int> st;
+//     stack<int> gt;
+//     MyQueue() {
+//     }
+    
+//     void push(int x) {
+//         if(st.size()==0) {
+//             st.push(x);
+//             return;
+//         }
+//        else{
+//          while(st.size()>0){
+//             gt.push(st.top());
+//             st.pop();
+//         }
+//         st.push(x);
+//         while(gt.size()>0){
+//             st.push(gt.top());
+//             gt.pop();
+//         }  
+//        }   
+//   }
+    
+//     int pop() {
+//         int x =st.top();
+//         st.pop();
+//         return x;
+//     }
+    
+//     int peek() {
+//         return st.top();
+//     }
+    
+//     bool empty() {
+//         if(st.size()==0) return true;
+//         else return false;
+//     }
+// };
+
+
+
+//FIRST NEGATIVE IN EACH WINDOW SIZE K
+
+
+
+int main(){
+
+    int arr[] = {3,-4,-7,30,7,-9,2,1,6,-1};
+    int k = 3;
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    // -4 -4 -7 -9 -9 -9 0 -1 should be ans
+
+    vector<int> ans;
+    queue<int> q;
+
+    for(int i=0;i<n;i++){
+        if(arr[i] < 0) q.push(i);
+    }
+
+    int i = 0;
+
+    while(i <= n-k){
+
+        while(q.size() > 0 && q.front() < i){
+            q.pop();
+        }
+
+        if(q.size() == 0 || q.front() >= i+k){
+            ans.push_back(0);
+        }
+        else{
+            ans.push_back(arr[q.front()]);
+        }
+
+        i++;
+    }
+
+    for(int i=0;i<n;i++){
+        cout << arr[i] << " ";
+    }
+
+    cout << endl;
+
+    for(int i=0;i<ans.size();i++){
+        cout << ans[i] << " ";
+    }
+
+}
