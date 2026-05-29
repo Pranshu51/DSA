@@ -380,47 +380,107 @@ using namespace std;
 
 
 
-int main(){
+// int main(){
 
-    int arr[] = {3,-4,-7,30,7,-9,2,1,6,-1};
-    int k = 3;
-    int n = sizeof(arr)/sizeof(arr[0]);
+//     int arr[] = {3,-4,-7,30,7,-9,2,1,6,-1};
+//     int k = 3;
+//     int n = sizeof(arr)/sizeof(arr[0]);
 
-    // -4 -4 -7 -9 -9 -9 0 -1 should be ans
+//     // -4 -4 -7 -9 -9 -9 0 -1 should be ans
 
-    vector<int> ans;
-    queue<int> q;
+//     vector<int> ans;
+//     queue<int> q;
 
-    for(int i=0;i<n;i++){
-        if(arr[i] < 0) q.push(i);
-    }
+//     for(int i=0;i<n;i++){
+//         if(arr[i] < 0) q.push(i);
+//     }
 
-    int i = 0;
+//     int i = 0;
 
-    while(i <= n-k){
+//     while(i <= n-k){
 
-        while(q.size() > 0 && q.front() < i){
-            q.pop();
-        }
+//         while(q.size() > 0 && q.front() < i){
+//             q.pop();
+//         }
 
-        if(q.size() == 0 || q.front() >= i+k){
-            ans.push_back(0);
-        }
-        else{
-            ans.push_back(arr[q.front()]);
-        }
+//         if(q.size() == 0 || q.front() >= i+k){
+//             ans.push_back(0);
+//         }
+//         else{
+//             ans.push_back(arr[q.front()]);
+//         }
 
-        i++;
-    }
+//         i++;
+//     }
 
-    for(int i=0;i<n;i++){
-        cout << arr[i] << " ";
-    }
+//     for(int i=0;i<n;i++){
+//         cout << arr[i] << " ";
+//     }
 
-    cout << endl;
+//     cout << endl;
 
-    for(int i=0;i<ans.size();i++){
-        cout << ans[i] << " ";
-    }
+//     for(int i=0;i<ans.size();i++){
+//         cout << ans[i] << " ";
+//     }
 
-}
+// }
+
+
+
+
+
+
+
+
+
+// 239. Sliding Window Maximum
+
+// Hint
+// You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+
+// Return the max sliding window.
+
+ 
+
+// Example 1:
+
+// Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+// Output: [3,3,5,5,6,7]
+// Explanation: 
+// Window position                Max
+// ---------------               -----
+// [1  3  -1] -3  5  3  6  7       3
+//  1 [3  -1  -3] 5  3  6  7       3
+//  1  3 [-1  -3  5] 3  6  7       5
+//  1  3  -1 [-3  5  3] 6  7       5
+//  1  3  -1  -3 [5  3  6] 7       6
+//  1  3  -1  -3  5 [3  6  7]      7
+// Example 2:
+
+// Input: nums = [1], k = 1
+// Output: [1]
+ 
+
+// class Solution {
+// public:
+//     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+//         if(k==1) return nums;
+//         int n= nums.size();
+//         deque<int> dq;
+//         vector<int> ans;
+//         for(int i =0;i<n;i++){
+//             while(dq.size()>0 && nums[i]>nums[dq.back()]){
+//                 dq.pop_back();
+//             }
+//             dq.push_back(i);
+//             int j =i-k+1;
+//             while(dq.front()<j) dq.pop_front();
+//             if(i>=k-1) ans.push_back(nums[dq.front()]);
+//         }
+//         return ans;
+//     }
+// };
+
+
+
+
