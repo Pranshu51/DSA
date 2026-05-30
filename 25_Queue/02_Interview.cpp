@@ -484,3 +484,186 @@ using namespace std;
 
 
 
+
+// 649. Dota2 Senate
+
+// In the world of Dota2, there are two parties: the Radiant and the Dire.
+// The Dota2 senate consists of senators coming from two parties. Now the Senate wants to decide on a change in the Dota2 game. The voting for this change is a round-based procedure. In each round, each senator can exercise one of the two rights:
+// Ban one senator's right: A senator can make another senator lose all his rights in this and all the following rounds.
+// Announce the victory: If this senator found the senators who still have rights to vote are all from the same party, he can announce the victory and decide on the change in the game.
+// Given a string senate representing each senator's party belonging. The character 'R' and 'D' represent the Radiant party and the Dire party. Then if there are n senators, the size of the given string will be n.
+// The round-based procedure starts from the first senator to the last senator in the given order. This procedure will last until the end of voting. All the senators who have lost their rights will be skipped during the procedure.
+
+// Suppose every senator is smart enough and will play the best strategy for his own party. Predict which party will finally announce the victory and change the Dota2 game. The output should be "Radiant" or "Dire".
+
+// Example 1:
+
+// Input: senate = "RD"
+// Output: "Radiant"
+// Explanation: 
+// The first senator comes from Radiant and he can just ban the next senator's right in round 1. 
+// And the second senator can't exercise any rights anymore since his right has been banned. 
+// And in round 2, the first senator can just announce the victory since he is the only guy in the senate who can vote.
+
+
+
+
+// class Solution {
+// public:
+//     string predictPartyVictory(string s) {
+//         queue<int> q;
+//         queue<int> r;
+//         queue<int> d;
+
+//         for(int i=0;i<s.length();i++){
+//             q.push(i);
+//             if(s[i]=='R') r.push(i);
+//             else d.push(i);
+//         }
+//         while(q.size()>1){
+//             if(s[q.front()]=='X') q.pop();
+//             else if(s[q.front()]=='R'){
+//                 if(d.size()==0) return "Radiant";
+//                 else{
+//                     s[d.front()] = 'X';
+//                     d.pop();
+//                     q.push(q.front());
+//                     q.pop();
+//                     r.push(r.front());
+//                     r.pop();
+//                 }
+//             }
+//             else{//q.front()=='D'
+//                 if(r.size()==0) return "Dire";
+//                 else{
+//                     s[r.front()]  = 'X';
+//                     r.pop();
+//                     q.push(q.front());
+//                     q.pop();
+//                     d.push(d.front());
+//                     d.pop();
+//                 }
+//             }
+//         }
+//         if(r.size()==0) return "Dire";
+//         else return "Radiant";
+//     }
+// };
+
+
+// //littl tweak
+// class Solution {
+// public:
+//     string predictPartyVictory(string s) {
+//         queue<int> q;
+//         queue<int> r;
+//         queue<int> d;
+
+//         for(int i=0;i<s.length();i++){
+//             q.push(i);
+//             if(s[i]=='R') r.push(i);
+//             else d.push(i);
+//         }
+//         while(q.size()>1){
+//             if(s[q.front()]=='X') q.pop();
+//             else if(s[q.front()]=='R'){
+//                 if(d.size()==0) return "Radiant";
+//                 else{
+//                     s[d.front()] = 'X';
+//                     d.pop();
+//                     q.push(q.front());
+//                     q.pop();
+//                     r.push(r.front());
+//                     r.pop();
+//                 }
+//             }
+//             else{//q.front()=='D'
+//                 if(r.size()==0) return "Dire";
+//                 else{
+//                     s[r.front()]  = 'X';
+//                     r.pop();
+//                     q.push(q.front());
+//                     q.pop();
+//                     d.push(d.front());
+//                     d.pop();
+//                 }
+//             }
+//         }
+//         if(s[q.front()]=='D') return "Dire";
+//         else return "Radiant";
+//     }
+// };
+
+
+
+
+
+//RECORD QUEUE(INTERLEAVE 1ST HALF WIHT 2ND HALF)
+/**
+ * Problem: Interleave the First Half of the Queue with the Second Half
+ * * Task: 
+ * Given a queue of integers of even size, rearrange the elements 
+ * by interleaving the first half of the queue with the second half.
+ * * Example:
+ * Input:  1 2 3 4
+ * Output: 1 3 2 4
+ * Example 2:
+
+Input: 11 12 13 14 15 16 17 18 19 20
+
+Output: 11 16 12 17 13 18 14 19 15 20
+ */
+
+//  (do this using satck only) if coding round then do it with array
+#include<algorithm>
+void display(queue<int> &q){
+       int n=q.size();
+    for(int i=0;i<n;i++){
+        cout<<q.front();
+        q.push(q.front());
+        q.pop();
+    }
+}
+void reorder(queue<int> &q){
+        stack<int> st;
+        int n=q.size();
+    while(q.size()>n/2){
+        st.push(q.front());
+        q.pop();
+    }
+    while(st.size()>0){
+        q.push(st.top());
+        st.pop();
+    }
+    while(q.size()>n/2){
+        st.push(q.front());
+        q.pop();
+    }
+    while(st.size()>0){
+        q.push(st.top());
+        st.pop();
+        q.push(q.front());
+        q.pop();
+    }
+    while(q.size()>0){
+        st.push(q.front());
+        q.pop();
+    }
+    while(st.size()>0){
+        q.push(st.top());
+        st.pop();
+    }
+}
+int main(){
+    queue<int> q;
+    q.push(1);
+    q.push(2);
+    q.push(3);
+    q.push(4);
+
+    display(q);
+    cout<<endl;
+    reorder(q);
+    display(q);
+
+}
