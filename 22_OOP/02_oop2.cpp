@@ -65,7 +65,7 @@ public:
     }
 
     public:
-    // --- INTEGRATED FROM SCREENSHOT ---
+    // 
     void setHelmet(int level){
         Helmet *helmet = new Helmet; // Dynamic allocation
         helmet->setLevel(level);
@@ -176,4 +176,4 @@ int main(){//creating objects of the class Player so it is also a type of data t
 //STATIC ALLOCATION(stack memory)=>1. Ye compile time memory allocation h.Ye program start hone se pele RAM me store ho jati h iska mtlb hota hai ki hum class ke objects ko stack memory me allocate krte hai, aur jab hum function se bahar nikalte hai to wo automatically destroy ho jate hai.
 //DYNAMIC ALLOCATION(heap memory->Real time)=>Ye runtime memory allocaiton h . Ye program chlne ke dauran allocate hoti h  iska mtlb hota hai ki hum class ke objects ko heap memory me allocate krte hai, aur humein manually unhe deallocate karna padta hai.
 //DM=> eg->int *ptr = new int; //dynamic memory allocation for an integer
-//delete ptr; //deallocating the memory correct this code with including my comments
+//delete ptr; //deallocating the memory correct 
