@@ -1,0 +1,267 @@
+
+
+
+// 543. Diameter of Binary Tree
+
+// Given the root of a binary tree, return the length of the diameter of the tree.
+// The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+// The length of a path between two nodes is represented by the number of edges between them.
+//  Example 1:
+// Input: root = [1,2,3,4,5]
+// Output: 3
+// Explanation: 3 is the length of the path [4,2,1,3] or [5,2,1,3].
+
+// //bad approach as we have made global varible
+
+
+// class Solution {
+// public:
+//     int maxDia=0;
+//     int level(TreeNode* root){
+//         if(root==NULL) return 0;
+//         return 1+ max(level(root->left),level(root->right));
+//     }
+//     int diameterOfBinaryTree(TreeNode* root) {
+//         if(root==NULL) return 0;
+//         int dia = level(root->left) +level(root->right);
+//         maxDia=max(maxDia,dia);
+//         diameterOfBinaryTree(root->left);
+//         diameterOfBinaryTree(root->right);
+//         return maxDia;
+
+//     }
+// };
+
+// //very bad same as above
+
+// class Solution {
+// public:
+//     int maxDia=0;
+//     int helper(TreeNode* root){
+//          if(root==NULL) return 0;
+//         int dia = level(root->left) +level(root->right);
+//         maxDia=max(maxDia,dia);
+//         helper(root->left);
+//         helper(root->right);
+//         return maxDia;
+//     }
+//     int level(TreeNode* root){
+//         if(root==NULL) return 0;
+//         return 1+ max(level(root->left),level(root->right));
+//     }
+//     int diameterOfBinaryTree(TreeNode* root) {
+//        maxDia=0;//reinitialized
+//        return helper(root);
+
+//     }
+// };
+
+
+// //GOOD METHOD ELIMINATION OF GLOBAL VARIABLE
+
+// class Solution {
+// public:
+//     void helper(TreeNode* root,int &maxDia){
+//          if(root==NULL) return;
+//         int dia = level(root->left) +level(root->right);
+//         maxDia=max(maxDia,dia);
+//         helper(root->left,maxDia);
+//         helper(root->right,maxDia);
+//     }
+//     int level(TreeNode* root){
+//         if(root==NULL) return 0;
+//         return 1+ max(level(root->left),level(root->right));
+//     }
+//     int diameterOfBinaryTree(TreeNode* root) {
+//        int maxDia=0;
+//      helper(root,maxDia);
+//         return maxDia;
+
+//     }
+// };
+
+
+
+
+
+
+
+
+
+//100. Same Tree
+
+// Given the roots of two binary trees p and q, write a function to check if they are the same or not.
+// Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
+
+// Example 1:
+// Input: p = [1,2,3], q = [1,2,3]
+// Output: true
+
+// class Solution {
+// public:
+//     bool isSameTree(TreeNode* p, TreeNode* q) {
+//         if(p==NULL && q==NULL) return true;
+//         if(p==NULL && q!=NULL) return false;
+//         if(p!=NULL && q==NULL) return false;
+
+//         if(p->val!=q->val) return false;
+        
+//         bool leftAns = isSameTree(p->left,q->left);
+//         if(leftAns==false) return false;
+
+//         bool rightAns = isSameTree(p->right,q->right);
+//         if(rightAns==false) return false;
+
+//         return true;
+//     }
+// };
+
+
+// //little tweak
+
+// class Solution {
+// public:
+//     bool isSameTree(TreeNode* p, TreeNode* q) {
+//         if(p==NULL && q==NULL) return true;
+//         if(p==NULL || q==NULL) return false;
+
+//         if(p->val!=q->val) return false;
+
+//         bool leftAns = isSameTree(p->left,q->left);
+//         if(leftAns==false) return false;
+
+//         bool rightAns = isSameTree(p->right,q->right);
+//         if(rightAns==false) return false;
+
+//         return true;
+//     }
+// };
+
+
+
+
+
+
+// 226. Invert Binary Tree
+
+// Given the root of a binary tree, invert the tree, and return its root.
+
+// Example 1:
+
+// Input: root = [4,2,7,1,3,6,9]
+// Output: [4,7,2,9,6,3,1]
+
+
+
+// class Solution {
+// public:
+//     void helper(TreeNode* root){
+//         if(root==NULL) return;
+//         TreeNode* temp = root->left;
+//         root->left=root->right;
+//         root->right=temp;
+//         helper(root->left);//swapping hume har node ke lie karni h
+//         helper(root->right);
+//     }
+//     TreeNode* invertTree(TreeNode* root) {
+//         helper(root);
+//         return root;
+//     }
+// };
+
+// //in same function
+
+// class Solution {
+// public:
+//     TreeNode* invertTree(TreeNode* root) {
+//          if(root==NULL) return NULL;
+//         TreeNode* temp = root->left;
+//         root->left=root->right;
+//         root->right=temp;
+//         invertTree(root->left);//swapping hume har node ke lie karni h
+//         invertTree(root->right);
+//         return root;
+//     }
+// };
+
+
+
+// 257. Binary Tree Paths
+
+// Given the root of a binary tree, return all root-to-leaf paths in any order.
+
+// A leaf is a node with no children.
+
+//  Input: root = [1,2,3,null,5]
+// Output: ["1->2->5","1->3"]
+
+// Example 1:
+
+// class Solution {
+// public:
+//     void helper(TreeNode* root,string s,vector<string> &ans){
+//         if(root==NULL) return;
+//         string a = to_string(root->val);
+//         if(root->left==NULL && root->right==NULL){
+//             s+=a;
+//             ans.push_back(s);
+//             return;
+//         }
+//         helper(root->left,s+a+"->",ans);
+//         helper(root->right,s+a+"->",ans);
+//     }
+//     vector<string> binaryTreePaths(TreeNode* root) {
+//         vector<string> ans;
+//         helper(root,"",ans);
+//         return ans;
+//     }
+// };
+
+
+
+
+
+// 236. Lowest Common Ancestor of a Binary Tree
+
+// Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+// According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+
+// Example 1:
+// Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+// Output: 3
+// Explanation: The LCA of nodes 5 and 1 is 3.
+
+
+
+
+// class Solution {
+// public:
+//     bool exists(TreeNode* root,TreeNode* target){
+//         if(root==NULL) return false;
+//         if(root==target) return true;
+//         return exists(root->left,target) || exists(root->right,target);
+//     }
+//     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+//         if(root==p || root==q) return root;
+//         else if(exists(root->left,p) && exists(root->right,q)) return root;
+//         else if(exists(root->left,q) && exists(root->right,p)) return root;
+//         else if(exists(root->left,p) && exists(root->left,q)) return lowestCommonAncestor(root->left,p,q);
+//         else return lowestCommonAncestor(root->right,p,q);
+//     }
+// };
+
+//OR little small
+
+// class Solution {
+// public:
+//     bool exists(TreeNode* root,TreeNode* target){
+//         if(root==NULL) return false;
+//         if(root==target) return true;
+//         return exists(root->left,target) || exists(root->right,target);
+//     }
+//     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+//         if(exists(root->left,p) && exists(root->left,q)) return lowestCommonAncestor(root->left,p,q);
+//         else if(exists(root->right,p) && exists(root->right,q)) return lowestCommonAncestor(root->right,p,q);
+//         return root;
+//     }
+// };
