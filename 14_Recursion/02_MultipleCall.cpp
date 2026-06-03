@@ -39,7 +39,7 @@ using namespace std;
 
 
 // Power Function (Logarithmic)
-
+//only for 2^n
 // int power(int x, int n){
 //     if(n == 0) return 1;
   
