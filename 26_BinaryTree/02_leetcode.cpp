@@ -265,3 +265,111 @@
 //         return root;
 //     }
 // };
+
+
+
+
+
+
+
+//LECTURE 2
+
+
+// 144. Binary Tree Preorder Traversal
+
+// Given the root of a binary tree, return the preorder traversal of its nodes' values.
+
+ 
+
+// Example 1:
+
+// Input: root = [1,null,2,3]
+
+// Output: [1,2,3]
+
+
+
+
+
+// class Solution {
+// public:
+//     void preOrder(TreeNode* root,vector<int> &ans){
+//         if(root==NULL) return;
+//         ans.push_back(root->val);
+//         preOrder(root->left,ans);
+//         preOrder(root->right,ans);
+//     }
+//     vector<int> preorderTraversal(TreeNode* root) {
+//         vector<int> ans;
+//         preOrder(root,ans);
+//         return ans;
+//     }
+// };
+
+
+
+
+
+// 94. Binary Tree Inorder Traversal
+
+// Given the root of a binary tree, return the inorder traversal of its nodes' values.
+
+ 
+
+// Example 1:
+
+// Input: root = [1,null,2,3]
+
+// Output: [1,3,2]
+
+// class Solution {
+// public:
+//     void inOrder(TreeNode* root,vector<int> &ans){
+//         if(root==NULL) return;
+//         inOrder(root->left,ans);
+//         ans.push_back(root->val);
+//         inOrder(root->right,ans);
+//     }
+//     vector<int> inorderTraversal(TreeNode* root) {
+//         vector<int> ans;
+//         inOrder(root,ans);
+//         return ans;
+//     }
+// };
+
+
+
+
+
+
+
+
+
+// 145. Binary Tree Postorder Traversal
+
+// Given the root of a binary tree, return the postorder traversal of its nodes' values.
+
+ 
+
+// Example 1:
+
+// Input: root = [1,null,2,3]
+
+// Output: [3,2,1]
+
+
+// class Solution {
+// public:
+//     void postOrder(TreeNode* root,vector<int> &ans){
+//         if(root==NULL) return;
+//         postOrder(root->left,ans);
+//         postOrder(root->right,ans);
+//         ans.push_back(root->val);
+//     }
+//     vector<int> postorderTraversal(TreeNode* root) {
+//         vector<int> ans;
+//         postOrder(root,ans);
+//         return ans;
+//     }
+// };
+
