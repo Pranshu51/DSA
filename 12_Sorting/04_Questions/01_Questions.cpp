@@ -190,7 +190,7 @@ int main(){
         if(arr[i]>=arr[i+1]){//arr[i]-arr[i+1]>=0
             kmin=max(kmin,(arr[i]+arr[i+1]/2.0));
         }
-        if(arr[i]<arr[i+1]){//arr[i]-arr[i+1]>=0
+        if(arr[i]<arr[i+1]){//arr[i]-arr[i+1]<0
             kmax=min(kmax,(arr[i]+arr[i+1]/2.0));
         }
         if(kmin>kmax){

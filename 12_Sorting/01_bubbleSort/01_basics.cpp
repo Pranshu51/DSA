@@ -39,7 +39,7 @@ using namespace std;
 //     //         }
 //     //     } 
 //     // }
-//   //  m-2 => her no. of operaitons are =n(n-1)/2 => O(n^2) time complexity but in best case when the array is already sorted then no. of operations are n-1 => O(n) time complexity
+//   //  m-2 => here no. of operaitons are =n(n-1)/2 => O(n^2) time complexity but in best case when the array is already sorted then no. of operations are n-1 => O(n) time complexity
 //   // time comlexity is same but code becomes more efficient as we are not comparing the already sorted elements in the last i passes
 //     // for(int i=0;i<n-1;i++){//n-1 passes always as if 5 elements are there then 4 pasees are required to sort the array
 //     //     //traverse the unsorted array and compare the adjacent elements and swap if they are in wrong order
@@ -85,7 +85,7 @@ using namespace std;
 //     str.push_back(s[i]);
 //   }
 // }
-// // sort(str.begin(),str.end());
+// // sort(str.begin(),str.end());//or
 // for(int i=0;i<str.length();i++){
 //     for(int j=0;j<str.length()-1-i;j++){
 //         if(str[j]<str[j+1]){
