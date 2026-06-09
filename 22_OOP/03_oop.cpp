@@ -439,7 +439,54 @@ using namespace std;
 //     Bike honda;//object creation //constructor ko call lag jaega apne app kyuki ye default hota h
 // }
 
+//alternate
 
+
+// class Laptop {
+// public:
+//     string brand;
+//     int ram;
+
+//     // 1. Default Constructor (No parameters)
+//     Laptop() {
+//         brand = "Unknown";
+//         ram = 8;
+//     }
+
+//     // 2. Overloaded Constructor (One parameter)
+//     Laptop(string b) {
+//         brand = b;
+//         ram = 8; // Default RAM if not specified
+//     }
+
+//     // 3. Overloaded Constructor (Two parameters)
+//     Laptop(string b, int r) {
+//         brand = b;
+//         ram = r;
+//     }
+
+//     void display() {
+//         cout << "Brand: " << brand << ", RAM: " << ram << "GB" << endl;
+//     }
+// };
+
+// int main() {
+//     // Calls the default constructor
+//     Laptop laptop1; 
+    
+//     // Calls the constructor with 1 parameter
+//     Laptop laptop2("Dell"); 
+    
+//     // Calls the constructor with 2 parameters
+//     Laptop laptop3("HP", 16); 
+
+//     // Displaying details
+//     laptop1.display();  // Output: Brand: Unknown, RAM: 8GB
+//     laptop2.display();  // Output: Brand: Dell, RAM: 8GB
+//     laptop3.display();  // Output: Brand: HP, RAM: 16GB
+
+//     return 0;
+// }
 
 
 //INHERITANCE
@@ -981,11 +1028,8 @@ using namespace std;
 //pr agr hum virtual funciton bana de to runtime pe hi poiner banega Vtable(function) ke paass  jaega usme jo bhi function pada hoga wo run ar dega
 
 
-// You have a very solid grasp of what’s happening under the hood! You’ve correctly identified that **Virtual Functions** aren't magic—they add a real physical layer to your objects called the **vptr** and the **vtable**.
+//  **Virtual Functions** aren't magic—they add a real physical layer to your objects called the **vptr** and the **vtable**.
 
-// Let’s break down your explanation into even simpler terms to make sure the "Size" and "Mechanism" parts are crystal clear.
-
-// ---
 
 // ### 1. The "V-Table" (The Menu)
 

@@ -2,6 +2,37 @@
 using namespace std;
 
 //PASSING CLASS OBJECTS TO FUNCTIONS
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    string name;
+    int score;
+};
+
+// Function that accepts a Student object by reference (&)
+void displayReport(const Student &s) { 
+    cout << "Student: " << s.name << " | Score: " << s.score << endl;
+}
+
+int main() {
+    Student s1;       // Creating the object
+    s1.name = "Alex";
+    s1.score = 92;
+
+    // Passing the object 's1' to the function
+    displayReport(s1); 
+
+    return 0;
+}
+/*
+In object-oriented programming (OOP), an object is a self-contained instance of a class that bundles both data (attributes) and behaviors (functions/methods) together.
+Think of a class as a blueprint, and an object as the actual entity built from that blueprint.
+Here is a quick breakdown of what makes up an object:
+State (Attributes/Data): What the object knows or contains (e.g., a Car object might have color: red and speed: 60).
+Behavior (Methods/Functions): What the object can do (e.g., the Car object can accelerate() or brake()).
+Identity: A unique address or presence in the computer's memory that distinguishes it from other objects of the same class.*/
 class Gun{
     public:
     int ammo;

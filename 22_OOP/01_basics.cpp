@@ -23,9 +23,11 @@
 //Player pranshu; //object of class Player
 
 //ACCESS MODIFIERS
+// An **access modifier** in C++ is a keyword (`public`, `private`, or `protected`) 
+// that defines the visibility and accessibility of class members (attributes and methods) from outside the class.
 //1. Public: Members declared as public are accessible from anywhere in the program. They can be accessed by any code that has visibility to the class, including outside the class and within derived classes.
 //Protected: Members declared as protected are accessible within the class itself and by derived classes. They cannot be accessed from outside the class, but they can be accessed by classes that inherit from the class in which they are declared.
-//2. Private: Members declared as private are only accessible within the class itself. They cannot
+//2. Private: Members declared as private are only accessible within the class itself. They cannot be accessed from outside the class or by derived classes. This is the most restrictive access level and is often used to encapsulate data and implementation details, ensuring that they cannot be modified or accessed directly from outside the class.
 
 #include<iostream>
 using namespace std;
