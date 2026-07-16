@@ -373,3 +373,47 @@
 //     }
 // };
 
+
+
+
+
+// 102. Binary Tree Level Order Traversal
+
+// Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
+
+// Example 1:
+
+// Input: root = [3,9,20,null,null,15,7]
+// Output: [[3],[9,20],[15,7]]
+
+
+// class Solution {
+// public:
+//     int level(TreeNode* root){
+//         if(root==NULL) return 0;
+//         return 1 + max(level(root->left),level(root->right));
+//     }
+//     void nthLevel(TreeNode* root,int current,int targetlevel,vector<int> &v){
+//         if(root==NULL) return;
+//         if(current==targetlevel){
+//             v.push_back(root->val);
+//             return;
+//         }
+//         nthLevel(root->left,current+1,targetlevel,v);
+//         nthLevel(root->right,current+1,targetlevel,v);
+//     }
+//     void lOrder(TreeNode* root,vector<vector<int>> &ans){
+//         int n =level(root);
+//         for(int i=1;i<=n;i++){
+//             vector<int> v;
+//             nthLevel(root,1,i,v);
+//             ans.push_back(v);
+//             cout<<endl;
+//         }
+//     }
+//     vector<vector<int>> levelOrder(TreeNode* root) {
+//         vector<vector<int>> ans;
+//         lOrder(root,ans);
+//         return ans;
+//     }
+// };
