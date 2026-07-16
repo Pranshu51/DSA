@@ -48,6 +48,16 @@ void nthLevel(Node* root,int curr,int level){
     nthLevel(root->right,curr+1,level);//right
 }
 
+void nthLevelRev(Node* root,int curr,int level){
+    if(root==NULL) return;//base case
+    if(curr==level){
+        cout<<root->val<<" ";//root
+        return;
+    }
+    nthLevelRev(root->right,curr+1,level);//right
+    nthLevelRev(root->left,curr+1,level);//left
+}
+
 int level(Node* root){
     if(root==NULL) return 0;//base case
     return 1 + max(level(root->left),level(root->right));

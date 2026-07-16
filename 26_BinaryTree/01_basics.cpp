@@ -387,7 +387,7 @@ using namespace std;
 
 //TYPES OF BINARY TREES
 //1.FULL BINARY TREE(0 or 2 child nodes)
-//2.PERFECT BINARY TREE(all internal nodes have 2 children and all leaves are at the same level except leaf nodes )
+//2.PERFECT BINARY TREE(all internal nodes have 2 children and all leaves are at the same level )
 //3.COMPLETE BINARY TREE(all levels are completely filled except possibly the last, which is filled from left to right)
 //4.BALANCED BINARY TREE(a tree where height(levels) difference between left and right subtrees is atmost 1)
 //5.DEGENERATE TREE(a tree where every parent has only 1 child or 0 children, resembling a linked list)
