@@ -239,7 +239,7 @@ using namespace std;
 //         else{
 //             Node* t = new Node(val);
 //             Node* temp = head;
-//             for(int i=1;i<idx-1;i++) temp = temp->next;
+//             for(int i=0;i<idx-1;i++) temp = temp->next;
 //             t->next = temp->next;
 //             temp->next = t;
 //              size++;
@@ -254,7 +254,7 @@ using namespace std;
 //         else if(idx==size-1) return tail->val;
 //         else{
 //             Node* temp =head;
-//             for(int i=1;i<idx;i++) temp=temp->next;
+//             for(int i=0;i<idx;i++) temp=temp->next;
 //             return temp->val;
 //         }
 //     }
