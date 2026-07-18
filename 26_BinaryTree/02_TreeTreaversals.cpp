@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
 
 
@@ -72,6 +73,33 @@ void levelOrder(Node* root){
 }
 
 
+//BREADTH FIRST SEARCH
+void levelOrderQueue(Node* root){//BFS
+    queue<Node*> q;
+    q.push(root);
+    while(q.size()>0){
+        Node* temp=q.front();
+        q.pop();
+        cout<<temp->val<<" ";
+        if(temp->left !=NULL) q.push(temp->left);
+        if(temp->right !=NULL) q.push(temp->right);
+    }
+    cout<<endl;
+}
+
+void levelOrderQueueRev(Node* root){
+    queue<Node*> q;
+    q.push(root);
+    while(q.size()>0){
+        Node* temp=q.front();
+        q.pop();
+        cout<<temp->val<<" ";
+        if(temp->right !=NULL) q.push(temp->right);
+        if(temp->left !=NULL) q.push(temp->left);
+    }
+    cout<<endl;
+}
+
 int main(){
     Node* a =new Node(1);
     Node* b =new Node(2);
@@ -94,7 +122,9 @@ int main(){
     // cout<<endl;
     // nthLevel(a,0,2);//also start it with 1
     cout<<endl;
-    levelOrder(a);
+    // levelOrder(a);
+    levelOrderQueue(a);
+    levelOrderQueueRev(a);
 }
 
 
