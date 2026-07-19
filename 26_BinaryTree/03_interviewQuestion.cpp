@@ -204,7 +204,33 @@ void levelOrder(Node* root){
     }
 }
 
+void leftBoundary(Node* root){
+    if(root==NULL) return;
+    if(root->left==NULL && root->right==NULL) return;
+    cout<<root->val<<" ";
+    leftBoundary(root->left);
+    if(root->left==NULL) leftBoundary(root->right);
+}
+void bottomBoundary(Node* root){
+    if(root==NULL) return;
+    if(root->left==NULL && root->right==NULL) cout<<root->val<<" ";
+    bottomBoundary(root->left);
+    bottomBoundary(root->right);
+}
 
+void rightBoundary(Node* root){
+    if(root==NULL) return;
+    if(root->left==NULL && root->right==NULL) return;
+    rightBoundary(root->right);
+    if(root->right==NULL) rightBoundary(root->left);
+    cout<<root->val<<" ";//call ke baad wala kaam for reversing it
+}
+
+void boundary(Node* root){
+     leftBoundary(root);
+    bottomBoundary(root);
+    rightBoundary(root->right);
+}
 
 int main(){
     int arr[]={1, 
@@ -218,8 +244,8 @@ int main(){
 };
     int n = sizeof(arr)/sizeof(arr[0]);
     Node* root  = construct(arr,n);
-    // boundary(root);
-    levelOrder(root);
+   boundary(root);
+    // levelOrder(root);
    
 }
 
