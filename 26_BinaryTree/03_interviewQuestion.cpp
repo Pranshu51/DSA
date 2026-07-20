@@ -437,3 +437,37 @@ using namespace std;
 //         return build(pre,0,n-1,in,0,n-1);
 //     }
 // };
+
+
+
+
+// 106. Construct Binary Tree from Inorder and Postorder Traversal
+
+// Given two integer arrays inorder and postorder where inorder is the inorder traversal of a binary tree and postorder is the postorder traversal of the same tree, construct and return the binary tree.
+
+// Example 1:
+// Input: inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]
+// Output: [3,9,20,null,null,15,7]
+
+// class Solution {
+// public:
+//         TreeNode* build(vector<int>& po,int polo,int pohi, vector<int>& in,int inlo,int inhi){
+//         if(polo>pohi) return NULL;
+//         TreeNode* root = new TreeNode(po[pohi]);
+//         if(polo==pohi) return root;
+//         int i=inlo;
+//         while(i<=inhi){
+//             if(in[i]==po[pohi]) break;
+//             i++;
+//         }
+//         int leftCount=i-inlo;
+//         int rightCount=inhi-i;
+//         root->left=build(po,polo,pohi-rightCount-1,in,inlo,i-1);
+//         root->right=build(po,pohi-rightCount,pohi-1,in,i+1,inhi);
+//         return root;
+//     }
+//     TreeNode* buildTree(vector<int>& in, vector<int>& po) {
+//         int n= in.size();
+//         return build(po,0,n-1,in,0,n-1);
+//     }
+// };
