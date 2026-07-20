@@ -70,7 +70,7 @@
 //     }
 // };
 
-
+//or
 
 // // class Solution {
 // // public:
@@ -133,9 +133,9 @@
 // // };
 
 
-//VIEWS OF TREES
 
 //BOUNDARY TRAVERSAL
+
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -377,5 +377,30 @@ using namespace std;
 //          vector<int> v;
 //          helper(root,v,ans,targetSum);
 //          return ans;
+//     }
+// };
+
+
+// 437. Path Sum III
+
+// Given the root of a binary tree and an integer targetSum, return the number of paths where the sum of the values along the path equals targetSum.
+// The path does not need to start or end at the root or a leaf, but it must go downwards (i.e., traveling only from parent nodes to child nodes).
+
+// Example 1:
+
+// class Solution {
+// public:
+//     void helper(TreeNode* root, long long sum,int &count){
+//         if(root==NULL) return;
+//         if((long long)(root->val)==sum) count++;
+//         helper(root->left,sum-(long long)(root->val),count);
+//         helper(root->right,sum-(long long)(root->val),count);
+//     }
+//     int pathSum(TreeNode* root, int targetSum) {
+//         if(root==NULL) return 0;
+//         int count=0;
+//         helper(root,(long long)(targetSum),count);
+//         count+=(pathSum(root->left,targetSum)+pathSum(root->right,targetSum));
+//         return count;
 //     }
 // };
