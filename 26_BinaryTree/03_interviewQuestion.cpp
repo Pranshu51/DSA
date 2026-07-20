@@ -496,6 +496,12 @@ using namespace std;
 //             if (po[i] == pre[prelo + 1]) break;
 //             i++;
 //         }
+        //or while wala
+        // int i = 0;
+        // while (po[i] != pre[prelo + 1]) {
+        //     i++;
+        // }
+        //same 
 //         int count=i-polo+1;
 //         root->left=helper(pre,prelo+1,prelo+count,po,polo,i);
 //         root->right=helper(pre,prelo+count+1,prehi,po,i+1,pohi-1);
