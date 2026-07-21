@@ -96,5 +96,8 @@
 
 //BST TIME COMPLEXITY:
 //BEST CASE: O(log n) - This occurs when the tree is balanced, and the height of the tree is logarithmic with respect to the number of nodes. In this case, each comparison allows us to eliminate half of the remaining nodes, leading to a logarithmic time complexity.
-//AVERAGE CASE: O(log n) - On average, if the tree is reasonably balanced, the time complexity for search, insertion, and deletion operations is O(log n). This assumes that the tree is not skewed and that the nodes are distributed evenly across the levels of the tree.
+//AVERAGE CASE: O(log n)/O(h) - On average, if the tree is reasonably balanced, the time complexity for search, insertion, and deletion operations is O(log n). This assumes that the tree is not skewed and that the nodes are distributed evenly across the levels of the tree.
 //WORST CASE: O(n) - This occurs when the tree is highly unbalanced, resembling a linked list. In this case, the height of the tree can be equal to the number of nodes, and we may need to traverse all the nodes in the worst case, resulting in a linear time complexity.
+
+//SPACE COMPLEXITY:
+//same as T.C
