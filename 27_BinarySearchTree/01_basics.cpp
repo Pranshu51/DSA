@@ -101,3 +101,22 @@
 
 //SPACE COMPLEXITY:
 //same as T.C
+
+
+
+//TRAVERSAL
+//INORDER OF BST IS ALWAYS SORTED
+
+//M.C.Q
+// que -> Consider a bst having n nodes.what is the max possible height of the tree?
+// ans- O(n) - The maximum possible height of a binary search tree (BST) with n nodes occurs when the tree is completely unbalanced, resembling a linked list. In this case, each node has only one child, and the height of the tree is equal to the number of nodes, which is O(n).
+
+
+// ## MCQ-2
+
+// Consider a binary search tree with n nodes. What is the minimum number of comparisons required to search for a value in the worst-case scenario?
+
+// - **A.** O(1)
+// - **B.** O(log n)
+// - **C.** O(n log n)
+// - **D.** O(n)(True)
