@@ -514,41 +514,37 @@
 // Given the root of a binary tree, return the bottom-up level order traversal of its nodes' values. (i.e., from left to right, level by level from leaf to root).
 
 // Example 1:
-// Input: root = [3,9,20,null,null,15,7]
-// Output: [[15,7],[9,20],[3]]
 
 // class Solution {
 // public:
 //     int level(TreeNode* root){
-//         if(root==NULL) return 0;
-//         return 1 + max(level(root->left),level(root->right));
+//         if(root== NULL) return 0;
+//         return 1+max(level(root->left), level(root->right));
 //     }
-//     void nthLevel(TreeNode* root,int current,int targetlevel,vector<int> &v){
+//     void nthOrder(TreeNode* root,int curr,int target,vector<int> &v){
 //         if(root==NULL) return;
-//         if(current==targetlevel){
+//         if(curr==target){
 //             v.push_back(root->val);
 //             return;
 //         }
-//         nthLevel(root->left,current+1,targetlevel,v);
-//         nthLevel(root->right,current+1,targetlevel,v);
+//         nthOrder(root->left,curr+1,target,v);
+//         nthOrder(root->right,curr+1,target,v);
 //     }
-//     void lOrder(TreeNode* root,vector<vector<int>> &ans){
-//         int n =level(root);
-//         for(int i=1;i<=n;i++){
+//     void levelTraversal(TreeNode* root,vector<vector<int>> &ans){
+//         int n=level(root);
+//         for(int i=n;i>=1;i--){
 //             vector<int> v;
-//             nthLevel(root,1,i,v);
+//             nthOrder(root,1,i,v);
 //             ans.push_back(v);
 //             cout<<endl;
 //         }
 //     }
 //     vector<vector<int>> levelOrderBottom(TreeNode* root) {
 //         vector<vector<int>> ans;
-//         lOrder(root,ans);
-//         reverse(ans.begin(),ans.end());
+//         levelTraversal(root,ans);
 //         return ans;
 //     }
 // };
-
 
 // //alternate
 
