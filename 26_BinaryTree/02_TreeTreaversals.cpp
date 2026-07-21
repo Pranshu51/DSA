@@ -131,7 +131,7 @@ using namespace std;
 
 
 
-//LEVEL ORDER TRAVERSAL USING QUEUE(BFS)
+//LEVEL ORDER TRAVERSAL(CONSTRUCTION) USING QUEUE(BFS)
   #include <algorithm>
   #include <climits>
 class Node{//This is a tree node
