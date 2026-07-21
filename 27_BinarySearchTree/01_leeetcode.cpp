@@ -238,3 +238,29 @@
 //         return root;
 //     }
 // };
+
+
+// 108. Convert Sorted Array to Binary Search Tree
+
+// Given an integer array nums where the elements are sorted in ascending order, convert it to a height-balanced binary search tree.
+
+// Example 1:
+// Input: nums = [-10,-3,0,5,9]
+// Output: [0,-3,9,-10,null,5]
+// Explanation: [0,-10,5,null,-3,null,9] is also accepted:
+
+// class Solution {
+// public:
+//     TreeNode* helper(vector<int>& nums,int lo,int hi){
+//         if(lo>hi) return NULL;
+//         int mid = lo +(hi-lo)/2;
+//          TreeNode* root = new TreeNode(nums[mid]);
+//          root->left = helper(nums,lo,mid-1);
+//          root->right = helper(nums,mid+1,hi);
+//          return root;
+//     }
+//     TreeNode* sortedArrayToBST(vector<int>& nums) {
+//         int n =nums.size();
+//         return helper(nums,0,n-1);
+//     }
+// };
