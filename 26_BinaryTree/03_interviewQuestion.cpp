@@ -473,7 +473,29 @@ using namespace std;
 // };
 
 
-
+//or
+// class Solution {
+// public:
+//         TreeNode* build(vector<int>& po,int polo,int pohi, vector<int>& in,int inlo,int inhi){
+//         if(polo>pohi) return NULL;
+//         TreeNode* root = new TreeNode(po[pohi]);
+//         if(polo==pohi) return root;
+//         int i=inlo;
+//         while(i<=inhi){
+//             if(in[i]==po[pohi]) break;
+//             i++;
+//         }
+//         int leftCount=i-inlo;
+//         int rightCount=inhi-i;
+//         root->left=build(po,polo,polo+leftCount-1,in,inlo,i-1);
+//         root->right=build(po,polo+leftCount,pohi-1,in,i+1,inhi);
+//         return root;
+//     }
+//     TreeNode* buildTree(vector<int>& in, vector<int>& po) {
+//         int n= in.size();
+//         return build(po,0,n-1,in,0,n-1);
+//     }
+// };
 
 
 // 889. Construct Binary Tree from Preorder and Postorder Traversal
