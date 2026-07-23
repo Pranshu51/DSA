@@ -38,3 +38,92 @@
 //         return s.size();
 //     }
 // };
+
+
+//or
+
+// class Solution {
+// public:
+//     int reverse(int n){
+//         int r=0;
+//         while(n>0){
+//             r*=10;
+//             r+=(n%10);
+//             n/=10;
+//         }   
+//         return r;
+//     }
+//     int countDistinctIntegers(vector<int>& nums) {
+//         int n =nums.size();
+//         unordered_set<int> s;
+//         for(int i =0;i<n;i++){
+//             int rev = reverse(nums[i]);
+//             s.insert(nums[i]);
+//             s.insert(rev);
+//         }
+        
+//         return s.size();
+//     }
+// };
+
+
+// 2744. Find Maximum Number of String Pairs
+
+// You are given a 0-indexed array words consisting of distinct strings.
+// The string words[i] can be paired with the string words[j] if:
+// The string words[i] is equal to the reversed string of words[j].
+// 0 <= i < j < words.length.
+// Return the maximum number of pairs that can be formed from the array words.
+
+// Note that each string can belong in at most one pair.
+
+// Example 1:
+
+// Input: words = ["cd","ac","dc","ca","zz"]
+// Output: 2
+// Explanation: In this example, we can form 2 pair of strings in the following way:
+// - We pair the 0th string with the 2nd string, as the reversed string of word[0] is "dc" and is equal to words[2].
+// - We pair the 1st string with the 3rd string, as the reversed string of word[1] is "ca" and is equal to words[3].
+// It can be proven that 2 is the maximum number of pairs that can be formed.
+
+// Not a good way as ony works in easy way
+
+// class Solution {
+// public:
+//     int maximumNumberOfStringPairs(vector<string>& words) {
+//         int n = words.size();
+//         int count =0;
+//         for(int i=0;i<n-1;i++){
+//             string rev = words[i];
+//             reverse(rev.begin(),rev.end());
+//             for(int j=i+1;j<n;j++){
+//                 if(rev==words[j]) count++;
+//             }
+//         }
+//         return count;
+//     }
+// };
+
+
+//or
+// class Solution {
+// public:
+//     int maximumNumberOfStringPairs(vector<string>& words) {
+//         int n = words.size();
+//         int count =0;
+//         unordered_set<string> s;
+//         for(int i=0;i<n;i++){
+//             s.insert(words[i]);
+//             }
+//             for(int i=0;i<n;i++){
+//                 string rev = words[i];
+//                 reverse(rev.begin(),rev.end());
+//                 if(words[i]==rev) continue;
+//                 if(s.find(rev)!=s.end()){
+//                     count++;
+//                     s.erase(words[i]);
+//                 }
+//             }
+//             return count;
+//     }
+// };
