@@ -66,7 +66,8 @@ int main(){
     for(auto p:m){//auto apne aap pehchan leta h
         cout<<p.first<<" "<<p.second<<endl;
     }
-    cout<<m.size();
+    cout<<m.size()<<endl;
+    cout<<m["ram"]<<endl;
 }
 
 
