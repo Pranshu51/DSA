@@ -26,6 +26,15 @@ int main(){
     s.insert(3);
     s.insert(4);
     s.insert(5);
+    s.erase(3);
+    int target = 4;
+    // s.find = it searches in the set and if it is  not found then it returns the last element of the set. if it is found then it returns the iterator of that element.
+    if(s.find(target) != s.end()){//target exists in the set
+        cout<<"Found"<<endl;
+    }else{
+        cout<<"Not Found"<<endl;
+    }
+    
     cout<<"Size of set: "<<s.size()<<endl;
     for(int ele: s){
         cout<<ele<<" ";
