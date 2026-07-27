@@ -331,3 +331,127 @@
 //         return root; 
 //     }
 // };
+
+
+
+
+// 106. Construct Binary Tree from Inorder and Postorder Traversal
+
+// Given two integer arrays inorder and postorder where inorder is the inorder traversal of a binary tree and postorder is the postorder traversal of the same tree, construct and return the binary tree.
+
+ 
+
+// Example 1:
+// Input: inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]
+// Output: [3,9,20,null,null,15,7]
+
+// class Solution {
+// public:
+//         TreeNode* build(vector<int>& po,int polo,int pohi, vector<int>& in,int inlo,int inhi){
+//         if(polo>pohi) return NULL;
+//         TreeNode* root = new TreeNode(po[pohi]);
+//         if(polo==pohi) return root;
+//         int i=inlo;
+//         while(i<=inhi){
+//             if(in[i]==po[pohi]) break;
+//             i++;
+//         }
+//         int leftCount=i-inlo;
+//         int rightCount=inhi-i;
+//         root->left=build(po,polo,polo+leftCount-1,in,inlo,i-1);
+//         root->right=build(po,polo+leftCount,pohi-1,in,i+1,inhi);
+//         return root;
+//     }
+//     TreeNode* buildTree(vector<int>& in, vector<int>& po) {
+//         int n= in.size();
+//         return build(po,0,n-1,in,0,n-1);
+//     }
+// };
+
+
+// class Solution {
+// public:
+//         TreeNode* build(vector<int>& po,int polo,int pohi, vector<int>& in,int inlo,int inhi){
+//         if(polo>pohi) return NULL;
+//         TreeNode* root = new TreeNode(po[pohi]);
+//         if(polo==pohi) return root;
+//         int i=inlo;
+//         while(i<=inhi){
+//             if(in[i]==po[pohi]) break;
+//             i++;
+//         }
+//         int leftCount=i-inlo;
+//         int rightCount=inhi-i;
+//         root->left=build(po,polo,polo+leftCount-1,in,inlo,i-1);
+//         root->right=build(po,polo+leftCount,pohi-1,in,i+1,inhi);
+//         return root;
+//     }
+//     TreeNode* buildTree(vector<int>& in, vector<int>& po) {
+//         int n= in.size();
+//         return build(po,0,n-1,in,0,n-1);
+//     }
+// };
+
+
+
+
+
+
+
+// 889. Construct Binary Tree from Preorder and Postorder Traversal
+
+// Given two integer arrays, preorder and postorder where preorder is the preorder traversal of a binary tree of distinct values and postorder is the postorder traversal of the same tree, reconstruct and return the binary tree.
+
+// If there exist multiple answers, you can return any of them.
+
+ 
+
+// Example 1:
+// Input: preorder = [1,2,4,5,3,6,7], postorder = [4,5,2,6,7,3,1]
+// Output: [1,2,3,4,5,6,7]
+
+
+// class Solution {
+// public:
+//     TreeNode* helper(vector<int>& pre,int prelo,int prehi, vector<int>& po,int polo,int pohi){
+//         if(prelo>prehi) return NULL;
+//         TreeNode* root =new TreeNode(pre[prelo]);
+//         if(prelo==prehi) return root;
+//         int i = polo;
+//         while (i <= pohi) {
+//             if (po[i] == pre[prelo + 1]) break;
+//             i++;
+//         }
+//         int count=i-polo+1;
+//         root->left=helper(pre,prelo+1,prelo+count,po,polo,i);
+//         root->right=helper(pre,prelo+count+1,prehi,po,i+1,pohi-1);
+//         return root;
+//     }
+//     TreeNode* constructFromPrePost(vector<int>& pre, vector<int>& po) {
+//         int n=pre.size();
+//         return helper(pre,0,n-1,po,0,n-1);
+//     }
+// };
+
+
+
+// class Solution {
+// public:
+//     TreeNode* helper(vector<int>& pre,int prelo,int prehi, vector<int>& po,int polo,int pohi){
+//         if(prelo>prehi) return NULL;
+//         TreeNode* root =new TreeNode(pre[prelo]);
+//         if(prelo==prehi) return root;
+//         int i = 0;
+//         while (po[i] != pre[prelo + 1]) {
+//             i++;
+//         }
+//         int count=i-polo+1;
+//         root->left=helper(pre,prelo+1,prelo+count,po,polo,i);
+//         root->right=helper(pre,prelo+count+1,prehi,po,i+1,pohi-1);
+//         return root;
+//     }
+//     TreeNode* constructFromPrePost(vector<int>& pre, vector<int>& po) {
+//         int n=pre.size();
+//         return helper(pre,0,n-1,po,0,n-1);
+//     }
+// };
