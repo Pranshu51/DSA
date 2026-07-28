@@ -254,6 +254,7 @@
 //             m1[str1[i]]++;
 //             m2[str2[i]]++;
 //         }
+//comparing map1 and map 2 only characters 
 //         unordered_map<int,int> s1,s2;
 //         for(auto x : m1){
 //             char ch = x.first;
@@ -267,6 +268,7 @@
 //             int s = b.second;
 //             s2[s]++;
 //         }
+// comparing every character with their frequencies
 //         for(auto x: s1){
 //             int key = x.first;
 //             if(s2.find(key)==s2.end()) return false;
@@ -275,3 +277,75 @@
 //         return true;
 //     }
 // };
+
+
+// 1497. Check If Array Pairs Are Divisible by k
+
+// Given an array of integers arr of even length n and an integer k.
+// We want to divide the array into exactly n / 2 pairs such that the sum of each pair is divisible by k.
+// Return true If you can find a way to do that or false otherwise.
+
+// Example 1:
+
+// Input: arr = [1,2,3,4,5,10,6,7,8,9], k = 5
+// Output: true
+// Explanation: Pairs are (1,9),(2,8),(3,7),(4,6) and (5,10).
+
+// class Solution {
+// public:
+//     bool canArrange(vector<int>& arr, int k) {
+//         int n = arr.size();
+//         for(int i=0;i<n;i++){
+//             arr[i]=((arr[i]%k)+k)%k;
+//         }
+//         unordered_map<int,int> mp;
+//         for (auto  x: arr){
+//             mp[x]++;
+//         }
+//         if(mp.find(0)!=mp.end()){
+//         if(mp[0]%2!=0) return false;
+//         mp.erase(0);
+//         }
+//         for(auto x : mp){
+//             int ele = x.first ;
+//             int rem = k-ele;;
+//             if(mp.find(rem)==mp.end()) return false;
+//             if(mp[ele]!=mp[rem]) return false; 
+            
+//         }
+//         return true;
+//     }
+// };
+
+
+
+// //or
+
+
+// class Solution {
+// public:
+//     bool canArrange(vector<int>& arr, int k) {
+//         int n = arr.size();
+//         for(int i=0;i<n;i++){
+//         }
+//         unordered_map<int,int> mp;
+//         for (auto  x: arr){
+//             x=((x%k)+k)%k;
+//             mp[x]++;
+//         }
+//         if(mp.find(0)!=mp.end()){
+//         if(mp[0]%2!=0) return false;
+//         mp.erase(0);
+//         }
+//         for(auto x : mp){
+//             int ele = x.first ;
+//             int rem = k-ele;;
+//             if(mp.find(rem)==mp.end()) return false;
+//             if(mp[ele]!=mp[rem]) return false; 
+            
+//         }
+//         return true;
+//     }
+// };
+
+
