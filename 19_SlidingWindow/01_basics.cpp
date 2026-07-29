@@ -83,7 +83,8 @@ int main(){
     }
     cout<<endl;
     int k = 4;
-     int ans[n-k+1];
+    //  int ans[n-k+1];
+    vector<int> ans(n - k + 1);
     int prevIdx =-1;
    for(int i=0;i<k;i++){//t.n.operations = k
        if(arr[i]<0) {
