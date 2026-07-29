@@ -102,20 +102,20 @@ using namespace std;
 
 // Que=> Find the Kth largest element in the array
 
-int main(){
-    int arr[] = {10,20,-4,5,18,24,1,-7,56};
-    int k=2;
-    int n = sizeof(arr)/sizeof(arr[0]);
-    priority_queue<int, vector<int>, greater<int>> pq;
-    for(int i=0;i<n;i++){
-        pq.push(arr[i]);//t.c=>O(logk)
-        if(pq.size() > k){
-            pq.pop();//t.c=>O(logk)
-        }
-    }
-    cout << "The " << k << "th largest element is: " << pq.top() << endl;
+// int main(){
+//     int arr[] = {10,20,-4,5,18,24,1,-7,56};
+//     int k=2;
+//     int n = sizeof(arr)/sizeof(arr[0]);
+//     priority_queue<int, vector<int>, greater<int>> pq;
+//     for(int i=0;i<n;i++){
+//         pq.push(arr[i]);//t.c=>O(logk)
+//         if(pq.size() > k){
+//             pq.pop();//t.c=>O(logk)
+//         }
+//     }
+//     cout << "The " << k << "th largest element is: " << pq.top() << endl;
 
-}//T.C => O(nlogk) S.C(Auxillary space) => O(k)else S.C= O(n)
+// }//T.C => O(nlogk) S.C(Auxillary space) => O(k)else S.C= O(n)
 
 
 
@@ -149,3 +149,40 @@ int main(){
 // };
 
 
+//or bad method
+// class Solution {
+// public:
+//     int findKthLargest(vector<int>& nums, int k) {
+//         sort(nums.begin(),nums.end());
+//         return nums[nums.size()-k];
+//     }
+// };
+
+
+
+// QUE=> Sort a nearly sorted (or K sorted) array
+// k sorted ka mtlb h wo element apne se max k position pe hoga sorted array me either right or left
+
+
+int main(){
+    int arr[] = {2, 6, 3, 12, 56, 8, 10, 15};
+    priority_queue<int,vector<int>, greater<int>> pq;
+    int k =3;
+    int n = sizeof(arr)/sizeof(arr[0]);  
+    vector<int> ans;
+    for(int i=0;i<n;i++){
+        pq.push(arr[i]);
+        if(pq.size() > k){
+            ans.push_back(pq.top());
+            pq.pop();
+        }
+    }
+    while(pq.size()>0){
+        ans.push_back(pq.top());
+        pq.pop();
+    }
+    // Print the sorted array
+    for(int i=0;i<ans.size();i++){
+        cout<<ans[i]<<" ";
+    }
+}
