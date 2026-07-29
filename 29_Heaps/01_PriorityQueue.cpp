@@ -164,25 +164,50 @@ using namespace std;
 // k sorted ka mtlb h wo element apne se max k position pe hoga sorted array me either right or left
 
 
+// int main(){
+//     int arr[] = {2, 6, 3, 12, 56, 8, 10, 15};
+//     priority_queue<int,vector<int>, greater<int>> pq;
+//     int k =3;
+//     int n = sizeof(arr)/sizeof(arr[0]);  
+//     vector<int> ans;
+//     for(int i=0;i<n;i++){
+//         pq.push(arr[i]);
+//         if(pq.size() > k){
+//             ans.push_back(pq.top());
+//             pq.pop();
+//         }
+//     }
+//     while(pq.size()>0){
+//         ans.push_back(pq.top());
+//         pq.pop();
+//     }
+//     // Print the sorted array
+//     for(int i=0;i<ans.size();i++){
+//         cout<<ans[i]<<" ";
+//     }
+// }
+
+//or
+
 int main(){
     int arr[] = {2, 6, 3, 12, 56, 8, 10, 15};
     priority_queue<int,vector<int>, greater<int>> pq;
     int k =3;
     int n = sizeof(arr)/sizeof(arr[0]);  
-    vector<int> ans;
+    int idx=0;
     for(int i=0;i<n;i++){
         pq.push(arr[i]);
         if(pq.size() > k){
-            ans.push_back(pq.top());
+            arr[idx++] = pq.top();
             pq.pop();
         }
     }
     while(pq.size()>0){
-        ans.push_back(pq.top());
+        arr[idx++] = pq.top();
         pq.pop();
     }
     // Print the sorted array
-    for(int i=0;i<ans.size();i++){
-        cout<<ans[i]<<" ";
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
     }
 }
