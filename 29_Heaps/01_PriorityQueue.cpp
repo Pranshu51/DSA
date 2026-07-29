@@ -66,3 +66,12 @@ int main(){
 
 // max heap-> priority_queue<int> pq; //by default max heap hota h
 // min heap-> priority_queue<int, vector<int>, greater<int>> pq; //min heap banane ke liye ye syntax use karte h
+
+
+
+//PROBLEM IDENTIFICATION
+
+//kth smallest,largest , top k frequent elements,closest k
+// 2. at any point min, and max elements are required
+//3.sorting(heap)
+
