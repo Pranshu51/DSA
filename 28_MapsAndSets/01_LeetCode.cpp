@@ -13,7 +13,7 @@
 // The reversed integers that were added to the end of the array are underlined. Note that for the integer 10, after reversing it, it becomes 01 which is just 1.
 // The number of distinct integers in this array is 6 (The numbers 1, 10, 12, 13, 21, and 31).
 
-
+ 
 // class Solution {
 // public:
 //     int reverse(int n){
