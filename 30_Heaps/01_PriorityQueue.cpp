@@ -213,6 +213,8 @@ using namespace std;
 // }
 
 
+//NOTE: JB BHI PRIORITY QUEUE ME PAIR JAATE H TO SIRF FIRST ELEMENT KI VALUE KE BASIS PE SORT HOTA H, AUR AGAR FIRST ELEMENT SAME H TO SECOND ELEMENT KI VALUE KE BASIS PE SORT HOTA H      
+
 
 // //QUE=> TOP K FREQUENT ELEMENTS
 
@@ -247,3 +249,5 @@ using namespace std;
 //         return ans;
 //     }
 // };
+
+
