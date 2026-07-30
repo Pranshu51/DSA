@@ -189,25 +189,61 @@ using namespace std;
 
 //or
 
-int main(){
-    int arr[] = {2, 6, 3, 12, 56, 8, 10, 15};
-    priority_queue<int,vector<int>, greater<int>> pq;
-    int k =3;
-    int n = sizeof(arr)/sizeof(arr[0]);  
-    int idx=0;
-    for(int i=0;i<n;i++){
-        pq.push(arr[i]);
-        if(pq.size() > k){
-            arr[idx++] = pq.top();
-            pq.pop();
-        }
-    }
-    while(pq.size()>0){
-        arr[idx++] = pq.top();
-        pq.pop();
-    }
-    // Print the sorted array
-    for(int i=0;i<n;i++){
-        cout<<arr[i]<<" ";
-    }
-}
+// int main(){
+//     int arr[] = {2, 6, 3, 12, 56, 8, 10, 15};
+//     priority_queue<int,vector<int>, greater<int>> pq;
+//     int k =3;
+//     int n = sizeof(arr)/sizeof(arr[0]);  
+//     int idx=0;
+//     for(int i=0;i<n;i++){
+//         pq.push(arr[i]);
+//         if(pq.size() > k){
+//             arr[idx++] = pq.top();
+//             pq.pop();
+//         }
+//     }
+//     while(pq.size()>0){
+//         arr[idx++] = pq.top();
+//         pq.pop();
+//     }
+//     // Print the sorted array
+//     for(int i=0;i<n;i++){
+//         cout<<arr[i]<<" ";
+//     }
+// }
+
+
+
+// //QUE=> TOP K FREQUENT ELEMENTS
+
+// 347. Top K Frequent Elements
+
+// Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+
+// Example 1:
+
+// Input: nums = [1,1,1,2,2,3], k = 2
+
+// Output: [1,2]
+
+// class Solution {
+// public:
+//     typedef pair<int,int> pi;
+//     vector<int> topKFrequent(vector<int>& nums, int k) {
+//         unordered_map<int,int> mp;
+//         for(auto x: nums){
+//             mp[x]++;
+//         }
+//         priority_queue<pi, vector<pi>, greater<pi>> pq;
+//         for(auto x: mp){
+//             pq.push({x.second,x.first});
+//             if(pq.size()>k) pq.pop();
+//         }
+//         vector<int> ans;
+//         while(pq.size()>0){
+//             ans.push_back(pq.top().second);
+//             pq.pop();
+//         }
+//         return ans;
+//     }
+// };
