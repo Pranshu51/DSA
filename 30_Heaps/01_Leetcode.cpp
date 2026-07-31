@@ -271,3 +271,48 @@
 //         return arr.empty() ? 0 : arr[0];
 //     }
 // };
+
+
+
+/*
+  PROBLEM STATEMENT: Minimum Cost to Connect All Ropes
+  
+  Given an array 'arr' of rope lengths, connect all ropes into one single rope.
+  The cost to connect two ropes of lengths X and Y is (X + Y).
+  Find the MINIMUM total cost required to connect all given ropes.
+
+  Example 1:
+    Input: arr = [4, 3, 2, 6]
+    Output: 29
+    Explanation:
+      1. Connect 2 and 3 -> cost = 5, ropes left = [4, 5, 6]
+      2. Connect 4 and 5 -> cost = 9, ropes left = [9, 6]
+      3. Connect 6 and 9 -> cost = 15, ropes left = [15]
+      Total Cost = 5 + 9 + 15 = 29
+
+  Example 2:
+    Input: arr = [4, 2, 7, 6, 9]
+    Output: 62
+*/
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+
+// using namespace std;
+
+// int main(){
+//     int arr[]{6,5,3,2,8,10,9};
+//     int n = sizeof(arr) / sizeof(arr[0]);
+//     priority_queue<int, vector<int>, greater<int>> pq(arr, arr + n);
+
+//     int minCost=0;
+//     while(pq.size() > 1) {
+//         int first = pq.top(); pq.pop();
+//         int second = pq.top(); pq.pop();
+//         int cost = first + second;
+//         minCost += cost;
+//         pq.push(cost);
+//     }
+//     cout << "Minimum cost to connect all ropes: " << minCost << endl;
+// }
