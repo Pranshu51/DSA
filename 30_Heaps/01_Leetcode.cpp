@@ -242,3 +242,32 @@
 //         return pq.empty() ? 0 : pq.top();
 //     }
 // };
+
+//or
+// class Solution {
+// public:
+//     int lastStoneWeight(vector<int>& arr) {
+//         // Continue until 0 or 1 stone remains
+//         while (arr.size() > 1) {
+//             // Step 1: Sort the array to bring the heaviest elements to the end
+//             sort(arr.begin(), arr.end());
+
+//             // Step 2: Extract the two heaviest stones
+//             int n = arr.size();
+//             int y = arr[n - 1]; // Heaviest stone
+//             int x = arr[n - 2]; // Second heaviest stone
+
+//             // Step 3: Remove the two heaviest stones
+//             arr.pop_back();
+//             arr.pop_back();
+
+//             // Step 4: If they are not equal, push the difference back
+//             if (y != x) {
+//                 arr.push_back(y - x);
+//             }
+//         }
+
+//         // Return the last stone weight or 0 if no stones are left
+//         return arr.empty() ? 0 : arr[0];
+//     }
+// };
