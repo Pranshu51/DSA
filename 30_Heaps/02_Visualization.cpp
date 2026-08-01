@@ -100,125 +100,190 @@ using namespace std;
 //MAX HEAP IMPLEMENTATION
 
 
-class MaxHeap {
-public:
-    int arr[100]; // array to store heap elements
+// class MaxHeap {
+// public:
+//     int arr[100]; // array to store heap elements
 
-    int idx;
+//     int idx;
 
-    MaxHeap() {
-        idx = 1; // initialize index to 1 for 1-based indexing
-    }
+//     MaxHeap() {
+//         idx = 1; // initialize index to 1 for 1-based indexing
+//     }
 
-    int top() {
-        return arr[1]; // return the root element of the heap
-    }
+//     int top() {
+//         return arr[1]; // return the root element of the heap
+//     }
 
-    void push(int x) {
-        arr[idx] = x; // insert new element at the end
+//     void push(int x) {
+//         arr[idx] = x; // insert new element at the end
 
-        int i = idx;
-        idx++;
+//         int i = idx;
+//         idx++;
 
-        // Heapify Up
-        while (i != 1) {
-            int parent = i / 2;
+//         // Heapify Up
+//         while (i != 1) {
+//             int parent = i / 2;
 
-            // For Max Heap, parent should be greater than child
-            if (arr[parent] < arr[i]) {
-                swap(arr[parent], arr[i]);
-                i = parent;
-            }
-            else {
-                break;
-            }
-        }
-    }
+//             // For Max Heap, parent should be greater than child
+//             if (arr[parent] < arr[i]) {
+//                 swap(arr[parent], arr[i]);
+//                 i = parent;
+//             }
+//             else {
+//                 break;
+//             }
+//         }
+//     }
 
-    int size() {
-        return idx - 1; // return number of elements
-    }
+//     int size() {
+//         return idx - 1; // return number of elements
+//     }
 
-    void pop() {
-        idx--;
+//     void pop() {
+//         idx--;
 
-        // Replace root with last element
-        arr[1] = arr[idx];
+//         // Replace root with last element
+//         arr[1] = arr[idx];
 
-        int i = 1;
+//         int i = 1;
 
-        // Heapify Down
-        while (true) {
-            int left = 2 * i;
-            int right = 2 * i + 1;
+//         // Heapify Down
+//         while (true) {
+//             int left = 2 * i;
+//             int right = 2 * i + 1;
 
-            // No left child
-            if (left > idx - 1)
-                break;
+//             // No left child
+//             if (left > idx - 1)
+//                 break;
 
-            // Only left child exists
-            if (right > idx - 1) {
-                if (arr[left] > arr[i]) {
-                    swap(arr[left], arr[i]);
-                    i = left;
-                }
-                break;
-            }
+//             // Only left child exists
+//             if (right > idx - 1) {
+//                 if (arr[left] > arr[i]) {
+//                     swap(arr[left], arr[i]);
+//                     i = left;
+//                 }
+//                 break;
+//             }
 
-            // Both children exist
-            // Choose the larger child
-            if (arr[left] > arr[right]) {
+//             // Both children exist
+//             // Choose the larger child
+//             if (arr[left] > arr[right]) {
 
-                if (arr[left] > arr[i]) {
-                    swap(arr[left], arr[i]);
-                    i = left;
-                }
-                else {
-                    break;
-                }
+//                 if (arr[left] > arr[i]) {
+//                     swap(arr[left], arr[i]);
+//                     i = left;
+//                 }
+//                 else {
+//                     break;
+//                 }
 
-            }
-            else {
+//             }
+//             else {
 
-                if (arr[right] > arr[i]) {
-                    swap(arr[right], arr[i]);
-                    i = right;
-                }
-                else {
-                    break;
-                }
-            }
-        }
-    }
+//                 if (arr[right] > arr[i]) {
+//                     swap(arr[right], arr[i]);
+//                     i = right;
+//                 }
+//                 else {
+//                     break;
+//                 }
+//             }
+//         }
+//     }
 
-    void display() {
-        for (int i = 1; i < idx; i++) {
-            cout << arr[i] << " ";
-        }
-        cout << endl;
-    }
-};
+//     void display() {
+//         for (int i = 1; i < idx; i++) {
+//             cout << arr[i] << " ";
+//         }
+//         cout << endl;
+//     }
+// };
 
-int main() {
+// int main() {
 
-    MaxHeap pq;
+//     MaxHeap pq;
 
-    pq.push(5);
-    pq.push(3);
-    pq.push(7);
+//     pq.push(5);
+//     pq.push(3);
+//     pq.push(7);
 
-    cout << "Size of the heap: " << pq.size() << endl;
+//     cout << "Size of the heap: " << pq.size() << endl;
 
-    cout << "Top element of the heap: " << pq.top() << endl;
+//     cout << "Top element of the heap: " << pq.top() << endl;
 
-    pq.display();
+//     pq.display();
 
-    pq.pop();
+//     pq.pop();
 
-    cout << "Size of the heap after pop: " << pq.size() << endl;
+//     cout << "Size of the heap after pop: " << pq.size() << endl;
 
-    pq.display();
+//     pq.display();
 
-    return 0;
-}
+//     return 0;
+// }
 
+
+
+//HEAP SORT
+// #include <iostream>
+// #include <algorithm>
+// using namespace std;
+
+// void heapify(int arr[], int n, int i) {
+
+//     int largest = i;
+//     int left = 2 * i + 1;
+//     int right = 2 * i + 2;
+
+//     // Check left child
+//     if (left < n && arr[left] > arr[largest]) {
+//         largest = left;
+//     }
+
+//     // Check right child
+//     if (right < n && arr[right] > arr[largest]) {
+//         largest = right;
+//     }
+
+//     // If largest is not the root
+//     if (largest != i) {
+//         swap(arr[i], arr[largest]);
+
+//         // Heapify the affected subtree
+//         heapify(arr, n, largest);
+//     }
+// }
+
+// void heapSort(int arr[], int n) {
+
+//     // Step 1: Build Max Heap
+//     for (int i = n / 2 - 1; i >= 0; i--) {
+//         heapify(arr, n, i);
+//     }
+
+//     // Step 2: Move maximum element to the end
+//     for (int i = n - 1; i > 0; i--) {
+
+//         swap(arr[0], arr[i]);
+
+//         // Heapify remaining elements
+//         heapify(arr, i, 0);
+//     }
+// }
+
+// int main() {
+
+//     int arr[] = {5, 3, 7, 2, 8, 1};
+
+//     int n = sizeof(arr) / sizeof(arr[0]);
+
+//     heapSort(arr, n);
+
+//     cout << "Sorted array: ";
+
+//     for (int i = 0; i < n; i++) {
+//         cout << arr[i] << " ";
+//     }
+
+//     return 0;
+// }
