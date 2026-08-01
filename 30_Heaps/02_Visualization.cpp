@@ -287,3 +287,72 @@ using namespace std;
 
 //     return 0;
 // }
+
+
+
+//MIN HEAP SORT
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+void heapify(int arr[], int n, int i) {
+
+    int smallest = i;
+
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    // Check left child
+    if (left < n && arr[left] < arr[smallest]) {
+        smallest = left;
+    }
+
+    // Check right child
+    if (right < n && arr[right] < arr[smallest]) {
+        smallest = right;
+    }
+
+    // If smallest is not the root
+    if (smallest != i) {
+
+        swap(arr[i], arr[smallest]);
+
+        // Heapify the affected subtree
+        heapify(arr, n, smallest);
+    }
+}
+
+void heapSort(int arr[], int n) {
+
+    // Step 1: Build Min Heap
+    for (int i = n / 2 - 1; i >= 0; i--) {
+        heapify(arr, n, i);
+    }
+
+    // Step 2: Move minimum element to the end
+    for (int i = n - 1; i > 0; i--) {
+
+        swap(arr[0], arr[i]);
+
+        // Heapify remaining elements
+        heapify(arr, i, 0);
+    }
+}
+
+int main() {
+
+    int arr[] = {5, 3, 7, 2, 8, 1};
+
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    heapSort(arr, n);
+
+    cout << "Sorted array: ";
+
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
