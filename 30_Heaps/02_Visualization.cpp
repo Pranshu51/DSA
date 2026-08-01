@@ -96,3 +96,129 @@ using namespace std;
 // }
 
 
+
+//MAX HEAP IMPLEMENTATION
+
+
+class MaxHeap {
+public:
+    int arr[100]; // array to store heap elements
+
+    int idx;
+
+    MaxHeap() {
+        idx = 1; // initialize index to 1 for 1-based indexing
+    }
+
+    int top() {
+        return arr[1]; // return the root element of the heap
+    }
+
+    void push(int x) {
+        arr[idx] = x; // insert new element at the end
+
+        int i = idx;
+        idx++;
+
+        // Heapify Up
+        while (i != 1) {
+            int parent = i / 2;
+
+            // For Max Heap, parent should be greater than child
+            if (arr[parent] < arr[i]) {
+                swap(arr[parent], arr[i]);
+                i = parent;
+            }
+            else {
+                break;
+            }
+        }
+    }
+
+    int size() {
+        return idx - 1; // return number of elements
+    }
+
+    void pop() {
+        idx--;
+
+        // Replace root with last element
+        arr[1] = arr[idx];
+
+        int i = 1;
+
+        // Heapify Down
+        while (true) {
+            int left = 2 * i;
+            int right = 2 * i + 1;
+
+            // No left child
+            if (left > idx - 1)
+                break;
+
+            // Only left child exists
+            if (right > idx - 1) {
+                if (arr[left] > arr[i]) {
+                    swap(arr[left], arr[i]);
+                    i = left;
+                }
+                break;
+            }
+
+            // Both children exist
+            // Choose the larger child
+            if (arr[left] > arr[right]) {
+
+                if (arr[left] > arr[i]) {
+                    swap(arr[left], arr[i]);
+                    i = left;
+                }
+                else {
+                    break;
+                }
+
+            }
+            else {
+
+                if (arr[right] > arr[i]) {
+                    swap(arr[right], arr[i]);
+                    i = right;
+                }
+                else {
+                    break;
+                }
+            }
+        }
+    }
+
+    void display() {
+        for (int i = 1; i < idx; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+
+    MaxHeap pq;
+
+    pq.push(5);
+    pq.push(3);
+    pq.push(7);
+
+    cout << "Size of the heap: " << pq.size() << endl;
+
+    cout << "Top element of the heap: " << pq.top() << endl;
+
+    pq.display();
+
+    pq.pop();
+
+    cout << "Size of the heap after pop: " << pq.size() << endl;
+
+    pq.display();
+
+    return 0;
+}
+
