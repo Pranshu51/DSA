@@ -466,3 +466,92 @@ using namespace std;
 //     }
 //     print(arr,n);
 // }
+
+
+//Convert BST to Max Heap
+
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// class Node {
+// public:
+//     int val;
+//     Node* left;
+//     Node* right;
+
+//     Node(int val) {
+//         this->val = val;
+//         this->left = NULL;
+//         this->right = NULL;
+//     }
+// };
+
+// void print(const vector<int>& arr) {
+//     for (int val : arr) {
+//         cout << val << " ";
+//     }
+//     cout << endl;
+// }
+
+// void inOrder(Node* root, vector<int>& arr) {
+//     if (root == NULL) {
+//         return;
+//     }
+//     inOrder(root->right, arr);
+//     arr.push_back(root->val);
+//     inOrder(root->left, arr);
+// }
+
+// void preOrder(Node* root, const vector<int>& arr, int& i) {
+//     if (root == NULL) {
+//         return;
+//     }
+//     root->val = arr[i++];
+//     preOrder(root->left, arr, i);
+//     preOrder(root->right, arr, i);
+// }
+
+// void levelOrder(Node* root) {
+//     if (root == NULL) {
+//         return;
+//     }
+//     vector<Node*> queue;
+//     queue.push_back(root);
+//     while (!queue.empty()) {
+//         Node* current = queue.front();
+//         queue.erase(queue.begin());
+//         cout << current->val << " ";
+//         if (current->left != NULL) {
+//             queue.push_back(current->left);
+//         }
+//         if (current->right != NULL) {
+//             queue.push_back(current->right);
+//         }
+//     }
+//     cout << endl;
+// }
+
+// int main() {
+//     Node* a = new Node(10);
+//     Node* b = new Node(5);
+//     Node* c = new Node(16);
+//     Node* d = new Node(1);
+//     Node* e = new Node(8);
+//     Node* f = new Node(12);
+//     Node* g = new Node(20);
+
+//     a->left = b; 
+//     a->right = c;
+//     b->left = d; 
+//     b->right = e;
+//     c->left = f; 
+//     c->right = g;
+//     vector<int> arr;
+//     inOrder(a,arr);
+//     levelOrder(a);
+//     int i =0;
+//     preOrder(a,arr,i);
+//     levelOrder(a);
+//     return 0;
+// }
