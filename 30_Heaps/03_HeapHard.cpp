@@ -109,5 +109,8 @@
 //         ans.push_back(start);
 //         ans.push_back(end);
 //         return ans;
+///////////////////////////////
+// or         return {start,end};
+
 //     }
 // };
