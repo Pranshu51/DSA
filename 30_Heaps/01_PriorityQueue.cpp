@@ -81,7 +81,7 @@ using namespace std;
 //Method 3:Quick Select T.c=>O(n)
 //Method 4:Using head T.c=>O(nlogk) S.C=>O(k)
 
-//NOTE: agr kth largest dia h to maxheap , aur kth smallest dia h to min heap use karenge
+//NOTE: agr kth largest dia h to minheap , aur kth smallest dia h to max heap use karenge
 
 
 
@@ -161,7 +161,7 @@ using namespace std;
 
 
 // QUE=> Sort a nearly sorted (or K sorted) array
-// k sorted ka mtlb h wo element apne se max k position pe hoga sorted array me either right or left
+// k sorted ka mtlb h wo element apne se max, k position pe hoga sorted array me either right or left
 
 
 // int main(){
