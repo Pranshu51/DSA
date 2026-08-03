@@ -46,6 +46,7 @@ using namespace std;
 //     void pop(){
 //         idx--;
 //         arr[1]=arr[idx]; // replace root with last element
+//rearranging the heap to maintain the min-heap property
 //         int i = 1;
 //         while(true){
 //             int left = 2*i;
@@ -555,3 +556,7 @@ using namespace std;
 //     levelOrder(a);
 //     return 0;
 // }
+
+
+
+// Check if given Binary Tree is Heap or not
