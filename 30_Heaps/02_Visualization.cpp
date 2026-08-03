@@ -473,6 +473,8 @@ using namespace std;
 
 // #include <iostream>
 // #include <vector>
+// #include <queue>
+// #include <algorithm>
 // using namespace std;
 
 // class Node {
@@ -559,4 +561,96 @@ using namespace std;
 
 
 
-// Check if given Binary Tree is Heap or not
+// Check if given Binary Tree is MaxHeap or not
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <algorithm>
+using namespace std;
+
+class Node {
+public:
+    int val;
+    Node* left;
+    Node* right;
+
+    Node(int val) {
+        this->val = val;
+        this->left = NULL;
+        this->right = NULL;
+    }
+};
+
+
+int sizeOfTree(Node* root) {
+    if (root == NULL) {
+        return 0;
+    }
+    return 1 + sizeOfTree(root->left) + sizeOfTree(root->right);
+}
+
+bool isCBT(Node* root) {
+    int size = sizeOfTree(root);
+    int count = 0;
+    if (root == NULL) {
+        return true;
+    }
+    queue<Node*> queue;
+    queue.push(root);
+    while (count < size) {
+        Node* current = queue.front();
+        queue.pop();
+        count++;
+        if (current != NULL) {
+            queue.push(current->left);
+        }
+        if (current!= NULL) {
+            queue.push(current->right);
+        }
+    }
+    if(queue.size()>0){
+        Node*temp = queue.front();
+        if(temp!=NULL) return false;
+        queue.pop();
+    }
+    return true;
+}
+
+
+bool isMaxHeap(Node* root) {
+    if (root == NULL) {
+        return true;
+    }
+    if (root->left != NULL && root->val < root->left->val) {
+        return false;
+    }
+    if (root->right != NULL && root->val < root->right->val) {
+        return false;
+    }
+    return isMaxHeap(root->left) && isMaxHeap(root->right);
+}
+
+
+int main() {
+    Node* a = new Node(20);
+    Node* b = new Node(15);
+    Node* c = new Node(10);
+    Node* d = new Node(8);
+    Node* e = new Node(11);
+    Node* f = new Node(6);
+    Node* g = NULL;
+
+    a->left = b; 
+    a->right = c;
+    b->left = d; 
+    b->right = e;
+    c->left = f; 
+    c->right = g;
+    
+
+    if(isCBT(a) && isMaxHeap(a)){
+        cout<<"Yes it is a Max Heap"<<endl;
+    }else{
+        cout<<"No it is not a Max Heap"<<endl;
+    }   
+}
