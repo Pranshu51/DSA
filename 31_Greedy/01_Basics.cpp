@@ -10,10 +10,8 @@
 // 1005. Maximize Sum Of Array After K Negations
 
 // Given an integer array nums and an integer k, modify the array in the following way:
-
 // choose an index i and replace nums[i] with -nums[i].
 // You should apply this process exactly k times. You may choose the same index i multiple times.
-
 // Return the largest possible sum of the array after modifying it in this way.
 
  
@@ -25,13 +23,13 @@
 // Explanation: Choose index 1 and nums becomes [4,-2,3].
 // class Solution {
 // public:
-//     int largestSumAfterKNegations(vector<int>& nums, int k) {
-//         priority_queue<int, vector<int>, greater<int>> pq(nums.begin(),nums.end());
+//     int largestSumAfterKNegations(vector<int>& nums, int k) {//t.c=O(klongn+n)
+//         priority_queue<int, vector<int>, greater<int>> pq(nums.begin(),nums.end());//O(n)
 //         int sum = 0;
 //         for(int i =0;i<nums.size();i++){
 //             sum+=nums[i];
 //         }
-//         while(k--){
+//         while(k--){//O(klogn)
 //             int ele =  pq.top();
 //             if(ele==0) break;
 //             pq.pop();
@@ -42,3 +40,31 @@
 //         return sum;
 //     }
 // };
+
+
+
+
+//FRACTIONAL KNAPSACK PROBLEM
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+bool cmp(pair<int,int> &a, pair<int,int> &b){//first=profit, second=weight
+    double r1 = (double)a.first/a.second;
+    double r2 = (double)b.first/b.second;
+    return r1>r2;
+}
+
+int fractionalKnapsack(vector<int> &profit, vector<int> &weights,int n, int w){
+
+}
+
+int main(){
+    vector<int> profit = {60, 100, 120};
+    vector<int> weights = {10, 20, 30};
+    int n = profit.size();
+    int w = 50;
+    cout << fractionalKnapsack(profit, weights, n, w) << endl;
+    return 0;
+}
