@@ -56,8 +56,26 @@ bool cmp(pair<int,int> &a, pair<int,int> &b){//first=profit, second=weight
     return r1>r2;
 }
 
-int fractionalKnapsack(vector<int> &profit, vector<int> &weights,int n, int w){
-
+double fractionalKnapsack(vector<int> &profit, vector<int> &weights,int n, int w){
+    //T.c=>O(nlogn) S.C=>O(n) or sorting algo s.c
+    vector<pair<int,int>> arr;
+    for(int i=0;i<n;i++){
+        arr.push_back({profit[i],weights[i]});
+    }
+    sort(arr.begin(),arr.end(),cmp);
+    double ans=0;
+    for(int i=0;i<n;i++){
+        if(arr[i].second<=w){
+            ans+=arr[i].first;
+            w-=arr[i].second;
+        }else{
+            // ans+=arr[i].first*((double)w/arr[i].second);//or
+            ans+=((arr[i].first*1.0)/arr[i].second*1.0)*w;
+            w=0;
+            break;
+        }
+    }
+    return ans;
 }
 
 int main(){
