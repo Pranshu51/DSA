@@ -47,42 +47,87 @@
 //FRACTIONAL KNAPSACK PROBLEM
 #include <iostream>
 #include <vector>
+#include <climits>
 #include <algorithm>
 using namespace std;
 
-bool cmp(pair<int,int> &a, pair<int,int> &b){//first=profit, second=weight
-    double r1 = (double)a.first/a.second;
-    double r2 = (double)b.first/b.second;
-    return r1>r2;
-}
+// bool cmp(pair<int,int> &a, pair<int,int> &b){//first=profit, second=weight
+//     double r1 = (double)a.first/a.second;
+//     double r2 = (double)b.first/b.second;
+//     return r1>r2;
+// }
 
-double fractionalKnapsack(vector<int> &profit, vector<int> &weights,int n, int w){
-    //T.c=>O(nlogn) S.C=>O(n) or sorting algo s.c
-    vector<pair<int,int>> arr;
-    for(int i=0;i<n;i++){
-        arr.push_back({profit[i],weights[i]});
-    }
-    sort(arr.begin(),arr.end(),cmp);
-    double ans=0;
-    for(int i=0;i<n;i++){
-        if(arr[i].second<=w){
-            ans+=arr[i].first;
-            w-=arr[i].second;
-        }else{
-            // ans+=arr[i].first*((double)w/arr[i].second);//or
-            ans+=((arr[i].first*1.0)/arr[i].second*1.0)*w;
-            w=0;
-            break;
-        }
-    }
-    return ans;
-}
+// double fractionalKnapsack(vector<int> &profit, vector<int> &weights,int n, int w){
+//     //T.c=>O(nlogn) S.C=>O(n) or sorting algo s.c
+//     vector<pair<int,int>> arr;
+//     for(int i=0;i<n;i++){
+//         arr.push_back({profit[i],weights[i]});
+//     }
+//     sort(arr.begin(),arr.end(),cmp);
+//     double ans=0;
+//     for(int i=0;i<n;i++){
+//         if(arr[i].second<=w){
+//             ans+=arr[i].first;
+//             w-=arr[i].second;
+//         }else{
+//             // ans+=arr[i].first*((double)w/arr[i].second);//or
+//             ans+=((arr[i].first*1.0)/arr[i].second*1.0)*w;
+//             w=0;
+//             break;
+//         }
+//     }
+//     return ans;
+// }
 
-int main(){
-    vector<int> profit = {60, 100, 120};
-    vector<int> weights = {10, 20, 30};
-    int n = profit.size();
-    int w = 50;
-    cout << fractionalKnapsack(profit, weights, n, w) << endl;
-    return 0;
-}
+// int main(){
+//     vector<int> profit = {60, 100, 120};
+//     vector<int> weights = {10, 20, 30};
+//     int n = profit.size();
+//     int w = 50;
+//     cout << fractionalKnapsack(profit, weights, n, w) << endl;
+//     return 0;
+// }
+
+
+
+
+//MINIMUM PRODUCT SUBSET
+// Given an array of integers, the task is to find the minimum product that can be obtained from a subset of the given array. The subset can be of any size, including the empty set. The minimum product can be negative, zero, or positive, depending on the elements in the array.
+
+
+
+
+// int minProduct(vector<int> &arr){
+//     int prod_pos=1; int prod_neg=1;
+//     int cn =0; int cz=0;int cp=0;
+//     int largest_neg = INT_MIN;
+//     for(int i =0;i<arr.size();i++){
+//         if(arr[i]<0) {
+//             cn++;
+//             prod_neg*=arr[i];
+//             largest_neg = max(largest_neg,arr[i]);
+//         }
+//         if(arr[i]==0) cz++;
+//         if(arr[i]>0) {
+//             cp++;
+//             prod_pos*=arr[i];
+//         }
+//     }
+//     if(cn==0){
+//         if(cz>0) return 0;
+//         else return *min_element(arr.begin(),arr.end());
+//     }else{
+//         if(cn%2==0){//even negative numbers
+//             return (prod_neg/largest_neg)*prod_pos;
+//         }else{
+//             return prod_neg*prod_pos;
+//         }
+//     }
+// }
+
+// int main(){
+//     vector<int> arr = { -2, -3,1,4, -2, -5};
+//     cout << minProduct(arr) << endl;
+//     return 0;
+    
+// }
