@@ -134,102 +134,104 @@ using namespace std;
 
 
 // Minimum Cost to cut a board into square
-bool cmp(int a,int b){
-    return a>b;
-} 
-    int minCost(int n, int m, vector<int>& x, vector<int>& y) {//x=vertical cuts, y=horizontal cuts
-        //  code here
-            sort(x.begin(),x.end(),cmp);    
-            sort(y.begin(),y.end(),cmp);    
+// bool cmp(int a,int b){
+//     return a>b;
+// } 
+//     int minCost(int n, int m, vector<int>& x, vector<int>& y) {//x=vertical cuts, y=horizontal cuts
+//         //  code here
+//             sort(x.begin(),x.end(),cmp);    
+//             sort(y.begin(),y.end(),cmp);    
 
-            int hr=1;int vr=1;
-            int v=0;int h=0;
-            int ans=0;
+//             int hr=1;int vr=1;
+//             int v=0;int h=0;
+//             int ans=0;
 
-            while(v<x.size() && h<y.size()){
-                if(x[v]>y[h]){
-                    ans+=x[v]*hr;
-                    vr++;
-                    v++;
-                }else{
-                    ans+=y[h]*vr;
-                    hr++;
-                    h++;
-                }
-            }
-            while(v<x.size()){
-                    ans+=x[v]*hr;
-                    vr++;
-                    v++;
-                }
-                while(h<y.size()){
-                    ans+=y[h]*vr;
-                    hr++;
-                    h++;
-                }
-            return ans;
-}
-
-
-    int main(){
-        int n = 6, m = 4;
-        vector<int> x = {2, 1, 3, 1, 4};
-        vector<int> y = {4, 1, 2};
-        cout << minCost(n, m, x, y) << endl;
-        return 0;
-    }
+//             while(v<x.size() && h<y.size()){
+//                 if(x[v]>y[h]){
+//                     ans+=x[v]*hr;
+//                     vr++;
+//                     v++;
+//                 }else{
+//                     ans+=y[h]*vr;
+//                     hr++;
+//                     h++;
+//                 }
+//             }
+//             while(v<x.size()){
+//                     ans+=x[v]*hr;
+//                     vr++;
+//                     v++;
+//                 }
+//                 while(h<y.size()){
+//                     ans+=y[h]*vr;
+//                     hr++;
+//                     h++;
+//                 }
+//             return ans;
+// }
 
 
+//     int main(){
+//         int n = 6, m = 4;
+//         vector<int> x = {2, 1, 3, 1, 4};
+//         vector<int> y = {4, 1, 2};
+//         cout << minCost(n, m, x, y) << endl;
+//         return 0;
+//     }
 
-    //or
-    #include <iostream>
-#include <vector>
-#include <algorithm>
 
-using namespace std;
 
-int minCost(int n, int m, vector<int>& x, vector<int>& y) {
-    // Sort both cut cost vectors in descending order
-    sort(x.begin(), x.end(), greater<int>());    
-    sort(y.begin(), y.end(), greater<int>());    
+//     //or
+//     #include <iostream>
+// #include <vector>
+// #include <algorithm>
 
-    int hr = 1; // Count of horizontal pieces
-    int vr = 1; // Count of vertical pieces
-    int v = 0, h = 0;
-    int ans = 0;
+// using namespace std;
 
-    // Interleave greedy choices based on highest cost first
-    while (v < x.size() && h < y.size()) {
-        if (x[v] > y[h]) {
-            ans += x[v] * hr;
-            vr++;
-            v++;
-        } else {
-            ans += y[h] * vr;
-            hr++;
-            h++;
-        }
-    }
+// int minCost(int n, int m, vector<int>& x, vector<int>& y) {
+//     // Sort both cut cost vectors in descending order
+//     sort(x.begin(), x.end(), greater<int>());    
+//     sort(y.begin(), y.end(), greater<int>());    
 
-    // Process remaining vertical cuts (placed OUTSIDE the loop)
-    while (v < x.size()) {
-        ans += x[v] * hr;
-        v++;
-    }
+//     int hr = 1; // Count of horizontal pieces
+//     int vr = 1; // Count of vertical pieces
+//     int v = 0, h = 0;
+//     int ans = 0;
 
-    // Process remaining horizontal cuts (placed OUTSIDE the loop)
-    while (h < y.size()) {
-        ans += y[h] * vr;
-        h++;
-    }
+//     // Interleave greedy choices based on highest cost first
+//     while (v < x.size() && h < y.size()) {
+//         if (x[v] > y[h]) {
+//             ans += x[v] * hr;
+//             vr++;
+//             v++;
+//         } else {
+//             ans += y[h] * vr;
+//             hr++;
+//             h++;
+//         }
+//     }
 
-    return ans;
-}
+//     // Process remaining vertical cuts (placed OUTSIDE the loop)
+//     while (v < x.size()) {
+//         ans += x[v] * hr;
+//         v++;
+//     }
 
-int main() {
-    int n = 6, m = 4;
-    vector<int> x = {2, 1, 3, 1, 4};
-    vector<int> y = {4, 1, 2};
-    cout << minCost(n, m, x, y) << endl; // Output: 42
-    return 0;
-}
+//     // Process remaining horizontal cuts (placed OUTSIDE the loop)
+//     while (h < y.size()) {
+//         ans += y[h] * vr;
+//         h++;
+//     }
+
+//     return ans;
+// }
+
+// int main() {
+//     int n = 6, m = 4;
+//     vector<int> x = {2, 1, 3, 1, 4};
+//     vector<int> y = {4, 1, 2};
+//     cout << minCost(n, m, x, y) << endl; // Output: 42
+//     return 0;
+// }
+
+
