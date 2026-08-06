@@ -186,3 +186,83 @@
 //         return result;
 //     }
 // };
+
+
+
+
+
+// 781. Rabbits in Forest
+
+// There is a forest with an unknown number of rabbits. We asked n rabbits "How many other rabbits have the same color as you?" and collected the answers in an integer array answers where answers[i] is the answer of the ith rabbit.
+// Given the array answers, return the minimum number of rabbits that could be in the forest.
+
+// Example 1:
+
+// Input: answers = [1,1,2]
+// Output: 5
+// Explanation:
+// The two rabbits that answered "1" could both be the same color, say red.
+// The rabbit that answered "2" can't be red or the answers would be inconsistent.
+// Say the rabbit that answered "2" was blue.
+// Then there should be 2 other blue rabbits in the forest that didn't answer into the array.
+// The smallest possible number of rabbits in the forest is therefore 5: 3 that answered plus 2 that didn't.
+
+
+
+// class Solution {
+// public:
+//     int numRabbits(vector<int>& ans) {
+//         unordered_map<int,int> mp;
+//         for(auto x: ans){
+//             mp[x]++;
+//         }
+//         int total=0;
+//         for(auto y: mp){
+//             int x = y.first;
+//             int count = y.second;
+//             int groupSize = x+1;
+//             int group = ceil((double)(count)/groupSize);
+//             total += group* groupSize;
+//         }
+//         return total;
+//     }
+// };
+
+
+// Meeting Rooms II
+
+// Given two arrays start[] and end[] such that start[i] is the starting time of ith meeting and end[i] is the ending time of ith meeting. Return the minimum number of rooms required to attend all meetings.
+
+// Note: A person can also attend a meeting if it's starting time is same as the previous meeting's ending time.
+
+// Examples:
+
+// Input: start[] = [1, 10, 7], end[] = [4, 15, 10]
+// Output: 1
+// Explanation: Since all the meetings are held at different times, it is possible to attend all the meetings in a single room.
+
+
+
+
+// class Solution {
+//   public:
+//     int minMeetingRooms(vector<int> &start, vector<int> &end) {
+//         // code here
+//         map <int,int> events;
+//         for(int i=0;i<start.size();i++){
+//             events[start[i]]++;
+//             events[end[i]]--;
+//         }
+//         int overlap =0;
+//         int maxOverlap=0;
+        
+//         for(auto x: events){
+//             overlap += x.second;
+//             if(overlap>maxOverlap){
+//                 maxOverlap=overlap;
+//             }
+//         }
+//          return maxOverlap;
+//     }         
+// };
+
