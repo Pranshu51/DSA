@@ -298,3 +298,44 @@
 //     }         
 // };
 
+
+
+// 56. Merge Intervals
+
+// Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+
+ 
+
+// Example 1:
+
+// Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+// Output: [[1,6],[8,10],[15,18]]
+// Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+
+
+
+
+// class Solution {
+// public:
+//     vector<vector<int>> merge(vector<vector<int>>& intervals) {
+//         vector<vector<int>> ans;
+//         sort(intervals.begin(),intervals.end());
+//         ans.push_back(intervals[0]);
+//         for(int i=1;i<intervals.size();i++){
+//             if(ans.back()[1]>=intervals[i][0]){//overlapping=>Merge krna pdega
+//                 // ans.back()[0] =min(intervals[i][0],ans.back()[0]);//ye nhi likhenge kyuki pehle hi array ko sort kar dia to min element hi hoga pehle se ans me
+//                 ans.back()[1] =max(intervals[i][1],ans.back()[1]);
+//             }else{
+//                 ans.push_back(intervals[i]);
+//             }
+//         }
+//         return ans;
+//     }
+// };
+
+
+
+
+
+
+
