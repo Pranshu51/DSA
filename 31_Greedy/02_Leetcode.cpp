@@ -413,3 +413,52 @@
 //     }
 // };
 
+
+
+// 435. Non-overlapping Intervals
+
+// Given an array of intervals intervals where intervals[i] = [starti, endi], return the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping.
+//Example 1:
+// Input: intervals = [[1,2],[2,3],[3,4],[1,3]]
+// Output: 1
+
+// class Solution {
+// public:
+//     int eraseOverlapIntervals(vector<vector<int>>& intervals) {
+//         int ans =0;
+//         sort(intervals.begin(),intervals.end(),[](vector<int> &a,vector<int> &b){
+//             return a[1]<b[1];//sorting on basis of end time of intervals so that we can check for overlapping intervals
+//         });
+//         int lastEndTime = intervals[0][1];
+//         for(int i=1;i<intervals.size();i++){
+//             if(intervals[i][0]<lastEndTime){
+//                 ans++;
+//             }else{
+//                 lastEndTime = intervals[i][1];
+//             }
+//         }
+//         return ans;
+//     }
+// };
+
+//or sorting on basis of start time of intervals and checking for overlapping intervals
+
+// class Solution {
+// public:
+//     int eraseOverlapIntervals(vector<vector<int>>& intervals) {
+//         int ans =0;
+//         sort(intervals.begin(),intervals.end(),[](vector<int> &a,vector<int> &b){
+//             return a[0]<b[0];//sorting on basis of start time of intervals so that we can check for overlapping intervals
+//         });
+//         int lastEndTime = intervals[0][1];
+//         for(int i=1;i<intervals.size();i++){
+//             if(intervals[i][0]<lastEndTime){
+//                 ans++;
+//                 lastEndTime = min(lastEndTime,intervals[i][1]);
+//             }else{
+//                 lastEndTime = intervals[i][1];
+//             }
+//         }
+//         return ans;
+//     }
+// };
