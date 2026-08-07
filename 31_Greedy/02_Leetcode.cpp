@@ -334,6 +334,27 @@
 // };
 
 
+//or
+// class Solution {
+// public:
+//     vector<vector<int>> merge(vector<vector<int>>& intervals) {
+//         vector<vector<int>> ans;
+//         sort(intervals.begin(),intervals.end());
+//         ans.push_back(intervals[0]);
+//         for(int i=1;i<intervals.size();i++){
+//             vector<int> curr= intervals[i];
+
+//             if(ans[ans.size()-1][1]>=curr[0]){//overlapping=>Merge krna pdega
+//                 ans[ans.size()-1][1] =max(curr[1],ans[ans.size()-1][1]);
+//                 ans[ans.size()-1][0] =min(curr[0],ans[ans.size()-1][0]);
+//             }else{
+//                 ans.push_back(intervals[i]);
+//             }
+//         }
+//         return ans;
+//     }
+// };
+
 
 
 // 3394. Check if Grid can be Cut into Sections
@@ -391,3 +412,4 @@
 //         else return false;
 //     }
 // };
+
