@@ -525,3 +525,41 @@
 //         return intervals.size()-ans;
 //     }
 // };
+
+
+// Activity Selection
+// Given two arrays start[] and finish[], where start[i] and finish[i] represent the start time and finish time of the i-th activity, find the maximum number of activities that a single person can perform.
+
+// A person can perform only one activity at a time, and no two selected activities can overlap. If an activity finishes at time x, the next selected activity must start at a time greater than x.
+
+// Examples:
+// Input: start[] = [1, 3, 0, 5, 8, 5], finish[] = [2, 4, 6, 7, 9, 9]
+// Output: 4
+// Explanation: One possible selection is activities {0, 1, 3, 4} with time intervals (1, 2), (3, 4), (5, 7), and (8, 9). Each activity starts after the previous one finishes, so a total of 4 activities can be performed.
+
+// class Solution {
+//   public:
+//     int activitySelection(vector<int> &start, vector<int> &finish) {
+//         vector<vector<int>> intervals;
+//         int n =start.size();
+//         if (n == 0) return 0;
+//         for(int i=0;i<n;i++){
+//             intervals.push_back({start[i],finish[i]});
+//         }
+//         // code here
+//             int ans =0;
+//         sort(intervals.begin(),intervals.end(),[](vector<int> &a,vector<int> &b){
+//             return a[1]<b[1];//sorting on basis of end time of intervals so that we can check for overlapping intervals
+//         });
+//         int lastEndTime = intervals[0][1];
+//         for(int i=1;i<intervals.size();i++){
+//             if(intervals[i][0]<=lastEndTime){
+//                 ans++;
+//             }else{
+//                 lastEndTime = intervals[i][1];
+//             }
+//         }
+//         // cout<<ans;
+//         return intervals.size()-ans;
+//     }
+// };
