@@ -336,6 +336,58 @@
 
 
 
+// 3394. Check if Grid can be Cut into Sections
 
+// You are given an integer n representing the dimensions of an n x n grid, with the origin at the bottom-left corner of the grid. You are also given a 2D array of coordinates rectangles, where rectangles[i] is in the form [startx, starty, endx, endy], representing a rectangle on the grid. Each rectangle is defined as follows:
 
+// (startx, starty): The bottom-left corner of the rectangle.
+// (endx, endy): The top-right corner of the rectangle.
+// Note that the rectangles do not overlap. Your task is to determine if it is possible to make either two horizontal or two vertical cuts on the grid such that:
 
+// Each of the three resulting sections formed by the cuts contains at least one rectangle.
+// Every rectangle belongs to exactly one section.
+// Return true if such cuts can be made; otherwise, return false.
+
+// Example 1:
+
+// Input: n = 5, rectangles = [[1,0,5,2],[0,2,2,4],[3,2,5,3],[0,4,4,5]]
+
+// Output: true
+
+// Explanation:
+// The grid is shown in the diagram. We can make horizontal cuts at y = 2 and y = 4. Hence, output is true.
+
+// class Solution {
+// public:
+//     vector<vector<int>> merge(vector<vector<int>>& intervals) {
+//         vector<vector<int>> ans;
+//         sort(intervals.begin(),intervals.end());
+//         ans.push_back(intervals[0]);
+//         for(int i=1;i<intervals.size();i++){
+//             if(ans.back()[1]>intervals[i][0]){//overlapping=>Merge krna pdega
+//                 ans.back()[1] =max(intervals[i][1],ans.back()[1]);
+//             }else{
+//                 ans.push_back(intervals[i]);
+//             }
+//         }
+//         return ans;
+//     }
+//     bool checkValidCuts(int n, vector<vector<int>>& rectangles) {
+//             vector<vector<int>> hr;//to store x coordinate
+//             vector<vector<int>> vr;//to store y coordinate
+//         int a =rectangles.size();
+//         for(int i =0;i<a;i++){
+//             int x1=rectangles[i][0];
+//             int y1=rectangles[i][1];
+//             int x2=rectangles[i][2];
+//             int y2=rectangles[i][3];
+//             hr.push_back({x1,x2});
+//             vr.push_back({y1,y2});
+//         }
+//         vector<vector<int>> result1 = merge(hr);
+//         vector<vector<int>> result2 = merge(vr);
+//         if(result1.size()>=3) return true;
+//         else if(result2.size()>=3) return true;
+//         else return false;
+//     }
+// };
