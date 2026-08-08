@@ -81,3 +81,97 @@
 //         return s.size();
 //     }
 // };
+
+
+// VALID PALLINDROME
+
+
+//     // bool alphaNumeric(char ch){
+//     //     return (ch>=97 && ch<=122 || ch>=48 && ch<=57);
+//     // }
+//     bool alphaNumeric(char ch) {
+//     return (ch >= 'a' && ch <= 'z') || 
+//            (ch >= 'A' && ch <= 'Z') || 
+//            (ch >= '0' && ch <= '9');
+// }
+//     bool isPalindrome(string s) {
+//         int n =s.length();
+//         int l=0;
+//         int r=n-1;
+//         while(l<r){
+//             char cl=tolower(s[l]);
+//             char cr=tolower(s[r]);
+//             if(!alphaNumeric(cl)) l++;
+//             else if(!alphaNumeric(cr)) r--;
+//             else{
+//                 if(cl!=cr) return false;
+//                 l++;
+//                 r--;
+//             }
+//         }
+//         return true;
+
+
+//or
+// class Solution {
+// public:
+//     bool isPalindrome(string s) {
+//         string clean= "";
+//         for(auto x: s){
+//             if(isalnum(x)) clean+=tolower(x);
+//         }
+//         int n = clean.length();
+//         for(int i =0;i<n/2;i++){
+//             if(clean[i]!=clean[n-1-i]) return false;
+//         }
+//         return true;
+//     }
+// };
+
+
+// 11. Container With Most Water
+
+// You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+// Find two lines that together with the x-axis form a container, such that the container contains the most water.
+// Return the maximum amount of water a container can store.
+// Notice that you may not slant the container.
+
+// Example 1:
+
+// class Solution {
+//     public int maxArea(int[] height) {
+//         int n=height.length;
+//         int i=0;
+//         int j=n-1;
+//         int maxArea=0;
+//         while(i<j){
+//             int length=j-i;
+//             int width=Math.min(height[i],height[j]);
+//             int area= width*length;
+//             maxArea=Math.max(area,maxArea);
+//             if(height[i]<height[j]) i++;
+//             else j--;
+//         }
+//         return maxArea;
+//     }
+// }
+
+
+// class Solution {
+// public:
+//     int maxArea(vector<int>& height) {
+//         int n=height.size();
+//         int i=0;
+//         int j=n-1;
+//         int maxArea=0;
+//         while(i<j){
+//             int length=j-i;
+//             int width=min(height[i],height[j]);
+//             int area= width*length;
+//             maxArea=max(area,maxArea);
+//             if(height[i]<height[j]) i++;
+//             else j--;
+//         }
+//         return maxArea;
+//     }
+// };

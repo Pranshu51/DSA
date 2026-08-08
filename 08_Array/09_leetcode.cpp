@@ -350,6 +350,7 @@ using namespace std;
 
 
 /*(Leetcode-88)
+Merge Sorter Array
 You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
 
 Merge nums1 and nums2 into a single array sorted in non-decreasing order.
@@ -486,5 +487,56 @@ The result of the merge is [1,2,2,3,5,6] with the underlined elements coming fro
 //              nums[idx] = nums[j];
 //              nums[j] = temp;
 //             return;
+//     }
+// };
+
+
+
+
+
+// 11. Container With Most Water
+
+// You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+// Find two lines that together with the x-axis form a container, such that the container contains the most water.
+// Return the maximum amount of water a container can store.
+// Notice that you may not slant the container.
+
+// Example 1:
+
+// class Solution {
+//     public int maxArea(int[] height) {
+//         int n=height.length;
+//         int i=0;
+//         int j=n-1;
+//         int maxArea=0;
+//         while(i<j){
+//             int length=j-i;
+//             int width=Math.min(height[i],height[j]);
+//             int area= width*length;
+//             maxArea=Math.max(area,maxArea);
+//             if(height[i]<height[j]) i++;
+//             else j--;
+//         }
+//         return maxArea;
+//     }
+// }
+
+
+// class Solution {
+// public:
+//     int maxArea(vector<int>& height) {
+//         int n=height.size();
+//         int i=0;
+//         int j=n-1;
+//         int maxArea=0;
+//         while(i<j){
+//             int length=j-i;
+//             int width=min(height[i],height[j]);
+//             int area= width*length;
+//             maxArea=max(area,maxArea);
+//             if(height[i]<height[j]) i++;
+//             else j--;
+//         }
+//         return maxArea;
 //     }
 // };
