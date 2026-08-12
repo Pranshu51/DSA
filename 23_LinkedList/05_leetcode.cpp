@@ -449,3 +449,89 @@
 //         return head;
 //     }
 // };
+
+
+// 382. Linked List Random Node
+
+// Given a singly linked list, return a random node's value from the linked list. Each node must have the same probability of being chosen.
+// Implement the Solution class:
+// Solution(ListNode head) Initializes the object with the head of the singly-linked list head.
+// int getRandom() Chooses a node randomly from the list and returns its value. All the nodes of the list should be equally likely to be chosen.
+
+// Example 1:
+
+// Input
+// ["Solution", "getRandom", "getRandom", "getRandom", "getRandom", "getRandom"]
+// [[[1, 2, 3]], [], [], [], [], []]
+// Output
+// [null, 1, 3, 2, 2, 3]
+
+// Explanation
+// Solution solution = new Solution([1, 2, 3]);
+// solution.getRandom(); // return 1
+// solution.getRandom(); // return 3
+// solution.getRandom(); // return 2
+// solution.getRandom(); // return 2
+// solution.getRandom(); // return 3
+// // getRandom() should return either 1, 2, or 3 randomly. Each element should have equal probability of returning.
+
+
+// class Solution {
+// public:
+//     vector<int> v;
+//     Solution(ListNode* head) {
+//         ListNode* temp =head;
+//         while(temp){
+//             v.push_back(temp->val);
+//             temp = temp->next;
+//         }
+//     }
+    
+//     int getRandom() {
+//         int n = v.size();
+//         int random_index = rand()%n;
+//         return v[random_index];
+//     }
+// };
+
+//or with K-reservoir technique
+// class Solution {
+// public:
+//     // Pointer to keep track of the head of the linked list
+//     ListNode* Head;
+
+//     /**
+//      * Initializes the object with the head of the singly-linked list.
+//      */
+//     Solution(ListNode* head) {
+//         Head = head;
+//     }
+    
+//     /**
+//      * Returns a random node's value from the linked list.
+//      * Each node must have an equal probability of being chosen.
+//      */
+//     int getRandom() {
+//         int count = 1;  // Tracks the current element index (1-based)
+//         int result = 0; // Stores the selected random node's value
+        
+//         ListNode* temp = Head;
+
+//         // Traverse through the entire linked list
+//         while (temp != NULL) {
+//             // Reservoir Sampling Condition:
+//             // Pick the current element with probability 1 / count.
+//             // rand() % count produces a value from 0 to (count - 1).
+//             // The probability that (rand() % count == 0) is exactly 1 / count.
+//             if (rand() % count == 0) {
+//                 result = temp->val;
+//             }
+
+//             // Move to the next node and increment the node counter
+//             count++;
+//             temp = temp->next;
+//         }
+
+//         return result;
+//     }
+// };
