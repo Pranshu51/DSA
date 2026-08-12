@@ -523,7 +523,7 @@
 //             // Pick the current element with probability 1 / count.
 //             // rand() % count produces a value from 0 to (count - 1).
 //             // The probability that (rand() % count == 0) is exactly 1 / count.
-//             if (rand() % count == 0) {
+//             if (rand() % count == 0) { //or (rand() % count < 1.0/count) 
 //                 result = temp->val;
 //             }
 
@@ -533,5 +533,43 @@
 //         }
 
 //         return result;
+//     }
+// };
+
+
+
+// 109. Convert Sorted List to Binary Search Tree
+
+// Given the head of a singly linked list where elements are sorted in ascending order, convert it to a height-balanced binary search tree.
+
+// Example 1:
+// Input: head = [-10,-3,0,5,9]
+// Output: [0,-3,9,-10,null,5]
+// Explanation: One possible answer is [0,-3,9,-10,null,5], which represents the shown height balanced BST.
+
+
+// class Solution {
+// public:
+//     TreeNode* sortedListToBST(ListNode* head) {
+//        if(!head)//head==NULL
+//         return NULL;
+//        if(!head->next) return new TreeNode(head->val);
+
+//         ListNode* slow = head;
+//         ListNode* fast = head;
+//         ListNode* slow_prev = NULL;
+
+//        while(fast!=NULL && fast->next!=NULL){
+//         slow_prev = slow;
+//         slow=slow->next;
+//         fast = fast->next->next;
+//        }
+//        TreeNode* root = new TreeNode(slow->val);
+
+//        slow_prev->next =NULL;
+
+//        root->left = sortedListToBST(head);
+//        root->right = sortedListToBST(slow->next);
+//        return root;
 //     }
 // };
