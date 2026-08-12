@@ -617,3 +617,87 @@
 //         return dummy->next;
 //     }
 // };
+
+
+
+// 1721. Swapping Nodes in a Linked List
+
+// You are given the head of a linked list, and an integer k.
+// Return the head of the linked list after swapping the values of the kth node from the beginning and the kth node from the end (the list is 1-indexed).
+ 
+// Example 1:
+// class Solution {
+// public:
+//     ListNode* swapNodes(ListNode* head, int k) {
+//         ListNode* temp = head;
+//         int size=0;
+//         while(temp!=NULL){
+//             size++;
+//             temp = temp->next;
+//         }
+//         temp=head;
+//         ListNode* kth = NULL;
+//         ListNode* lastkth = NULL;
+//         for(int i =0;i<size;i++){
+//             if(i==k-1){
+//              kth = temp;
+//             }
+//             if(i==size-k) lastkth=temp;
+//             temp=temp->next;
+//         }
+//         swap(kth->val,lastkth->val);
+//         return head;
+//     }
+// };
+
+//or
+
+// class Solution {
+// public:
+//     ListNode* swapNodes(ListNode* head, int k) {
+//         ListNode* temp = head;
+//         int size=0;
+//         while(temp!=NULL){
+//             size++;
+//             temp = temp->next;
+//         }
+//         int k1=k;
+//         ListNode* Node1 = head;
+//         while(k1>1){
+//             Node1=Node1->next;
+//             k1--;
+//         }
+//         int k2 =size-k+1;
+//         ListNode* Node2 = head;
+//         while(k2>1){
+//             Node2=Node2->next;
+//             k2--;
+//         }
+//         swap(Node1->val,Node2->val);
+//         return head;
+//     }
+// };
+
+//or
+// class Solution {
+// public:
+//     ListNode* swapNodes(ListNode* head, int k) {
+//         ListNode* p1 = NULL;
+//         ListNode* p2 = NULL;
+//         ListNode* temp = head;
+
+//         while(temp){//temp!=NULL
+//         if(p2!=NULL){
+//             p2=p2->next;
+//         }
+//         k--;
+//         if(k==0){
+//             p1=temp;
+//             p2=head;//activate
+//         }
+//         temp=temp->next;
+//         }
+//         swap(p1->val,p2->val);
+//         return head;
+//     }
+// };
