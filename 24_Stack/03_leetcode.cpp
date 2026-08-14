@@ -433,3 +433,125 @@
 //     }
 // };
 
+
+// 1047. Remove All Adjacent Duplicates In String
+
+// You are given a string s consisting of lowercase English letters. A duplicate removal consists of choosing two adjacent and equal letters and removing them.
+// We repeatedly make duplicate removals on s until we no longer can.
+// Return the final string after all such duplicate removals have been made. It can be proven that the answer is unique.
+
+// Example 1:
+
+// Input: s = "abbaca"
+// Output: "ca"
+// Explanation: 
+// For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, and this is the only possible move.  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is "ca".
+
+// class Solution {
+// public:
+//     string removeDuplicates(string s) {
+//         string ans = "";
+        
+//         for (int i = 0; i < s.length(); i++) {
+//             if (ans.length() > 0 && ans.back() == s[i]) {
+//                 ans.pop_back(); // Remove the adjacent duplicate
+//             } else {
+//                 ans += s[i];     // Keep the character
+//             }
+//         }
+        
+//         return ans;
+//     }
+// };
+
+
+//or
+// class Solution {
+// public:
+//     string removeDuplicates(string s) {
+//         string ans = "";
+//         stack<char> st;
+//         for(int i=0;i<s.length();i++){
+//             if(!st.empty() && st.top()==s[i]){
+//                 st.pop();
+//             }else {
+//                 st.push(s[i]);
+//             }
+//         }
+//         while (!st.empty()) {
+//             ans += st.top();
+//             st.pop();
+//         }
+//         reverse(ans.begin(),ans.end());
+//         return ans;
+//     }
+// };
+
+
+// 224. Basic Calculator
+
+// Given a string s representing a valid expression, implement a basic calculator to evaluate it, and return the result of the evaluation.
+// Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+
+// Example 1:
+
+// Input: s = "1 + 1"
+// Output: 2
+
+// class Solution {
+// public:
+//     int calculate(string s) {
+//         int n = s.length();
+
+//         stack<long long> st;
+
+//         long long result = 0;
+//         long long number = 0;
+//         long long sign = 1;
+
+//         for (int i = 0; i < n; i++) {
+
+//             if (isdigit(s[i])) {
+//                 number = number * 10 + (s[i] - '0');
+//             }
+
+//             else if (s[i] == '+') {
+//                 result += number * sign;
+//                 number = 0;
+//                 sign = 1;
+//             }
+
+//             else if (s[i] == '-') {
+//                 result += number * sign;
+//                 number = 0;
+//                 sign = -1;
+//             }
+
+//             else if (s[i] == '(') {
+//                 st.push(result);
+//                 st.push(sign);
+
+//                 result = 0;
+//                 number = 0;
+//                 sign = 1;
+//             }
+
+//             else if (s[i] == ')') {
+//                 result += number * sign;
+//                 number = 0;
+
+//                 long long stack_sign = st.top();
+//                 st.pop();
+
+//                 long long last_result = st.top();
+//                 st.pop();
+
+//                 result = result * stack_sign + last_result;
+//             }
+//         }
+
+//         result += number * sign;
+
+//         return result;
+//     }
+// };
