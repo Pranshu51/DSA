@@ -555,3 +555,76 @@
 //         return result;
 //     }
 // };
+
+
+// 907. Sum of Subarray Minimums
+
+// Given an array of integers arr, find the sum of min(b), where b ranges over every (contiguous) subarray of arr. Since the answer may be large, return the answer modulo 109 + 7.
+
+// Example 1:
+
+// Input: arr = [3,1,2,4]
+// Output: 17
+// Explanation: 
+// Subarrays are [3], [1], [2], [4], [3,1], [1,2], [2,4], [3,1,2], [1,2,4], [3,1,2,4]. 
+// Minimums are 3, 1, 2, 4, 1, 1, 2, 1, 1, 1.
+// Sum is 17.
+
+// class Solution {
+// public:
+//     vector<int> getLsl(vector<int> &arr,int n ){
+//         vector<int> result(n);
+//         stack<int> st;
+
+//         for(int i =0;i<n;i++){
+//             if(st.empty()){
+//                 result[i]=-1;
+//             }else{
+//                 while(!st.empty() && arr[st.top()]>=arr[i]) st.pop();
+
+//                 result[i] =st.empty()? -1 : st.top(); 
+//             }
+//             st.push(i);
+//         }
+//         return result;
+//     }
+
+//      vector<int> getNsr(vector<int> &arr,int n ){
+//         vector<int> result(n);
+//         stack<int> st;
+
+//         for(int i =n-1;i>=0;i--){
+//             if(st.empty()){
+//                 result[i]=n;
+//             }else{
+//                 while(!st.empty() && arr[st.top()]>arr[i]) st.pop();
+
+//                 result[i] =st.empty()? n : st.top(); 
+//             }
+//             st.push(i);
+//         }
+//         return result;
+//     }
+
+//     int sumSubarrayMins(vector<int>& arr) {
+//         int n = arr.size();
+//         long long sum = 0;
+//         int MOD = 1e9 + 7;
+//         vector<int> nsl = getLsl(arr,n);
+//         vector<int> nsr = getNsr(arr,n);
+
+//         for (int i = 0; i < n; i++) {
+//             long long ls = i-nsl[i];
+//             long long rs = nsr[i]-i;
+            
+//             long long totalways = ls*rs;
+
+//             long long totalSum = arr[i]*totalways;
+
+//             sum=(sum+totalSum)%MOD;
+            
+//         }
+
+//         return sum;
+//     }
+// };
