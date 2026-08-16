@@ -818,3 +818,144 @@
 //         return res;
 //     }
 // };
+
+//or
+// #include <string>
+
+// using namespace std;
+
+// class Solution {
+// public:
+//     string removeStars(string s) {
+//         int i = 0; // Write pointer
+        
+//         for (int j = 0; j < s.size(); j++) { // Read pointer
+//             if (s[j] == '*') {
+//                 i--; // Step back to "delete" the previous character
+//             } else {
+//                 s[i] = s[j]; // Overwrite in-place
+//                 i++;
+//             }
+//         }
+        
+//         s.resize(i); // Trim string to the valid length
+//         return s;
+//     }
+// };
+
+
+// 71. Simplify Path
+
+// You are given an absolute path for a Unix-style file system, which always begins with a slash '/'. Your task is to transform this absolute path into its simplified canonical path.
+
+// The rules of a Unix-style file system are as follows:
+
+// A single period '.' represents the current directory.
+// A double period '..' represents the previous/parent directory.
+// Multiple consecutive slashes such as '//' and '///' are treated as a single slash '/'.
+// Any sequence of periods that does not match the rules above should be treated as a valid directory or file name. For example, '...' and '....' are valid directory or file names.
+// The simplified canonical path should follow these rules:
+
+// The path must start with a single slash '/'.
+// Directories within the path must be separated by exactly one slash '/'.
+// The path must not end with a slash '/', unless it is the root directory.
+// The path must not have any single or double periods ('.' and '..') used to denote current or parent directories.
+// Return the simplified canonical path.
+
+ 
+
+// Example 1:
+
+// Input: path = "/home/"
+
+// Output: "/home"
+
+// Explanation:
+
+// The trailing slash should be removed.
+
+
+// class Solution {
+// public:
+//     string simplifyPath(string path) {
+//         string token = "";
+
+//         stringstream ss(path);
+//         stack<string> st;
+
+//         while (getline(ss, token, '/')) {
+
+//             // Ignore empty tokens and "."
+//             if (token == "" || token == ".")
+//                 continue;
+
+//             // Normal directory
+//             if (token != "..") {
+//                 st.push(token);
+//             }
+//             // Go one directory back
+//             else {
+//                 if (!st.empty())
+//                     st.pop();
+//             }
+//         }
+
+//         // Nothing left means root directory
+//         if (st.empty())
+//             return "/";
+
+//         string result = "";
+
+//         // Stack gives elements from back to front,
+//         // so prepend each element
+//         while (!st.empty()) {
+//             result = "/" + st.top() + result;
+//             st.pop();
+//         }
+
+//         return result;
+//     }
+// };
+
+//or
+
+// class Solution {
+// public:
+//     string simplifyPath(string path) {
+//         string token = "";
+        
+//         stringstream ss(path);
+//         vector<string> st;
+
+//         while (getline(ss, token, '/')) {
+
+//             // Ignore empty strings and "."
+//             if (token == "" || token == ".")
+//                 continue;
+
+//             // ".." means go one directory back
+//             if (token == "..") {
+//                 if (!st.empty())
+//                     st.pop_back();
+//             }
+//             else {
+//                 // Normal directory name
+//                 st.push_back(token);
+//             }
+//         }
+
+//         // If nothing is left, path is root
+//         if (st.empty())
+//             return "/";
+
+//         string result = "";
+
+//         // Construct the final path
+//         while (!st.empty()) {
+//             result = "/" + st.back() + result;
+//             st.pop_back();
+//         }
+
+//         return result;
+//     }
+// };
