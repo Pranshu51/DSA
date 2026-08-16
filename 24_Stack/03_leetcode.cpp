@@ -417,7 +417,7 @@
 // stockSpanner.next(85);  // return 6
 // class StockSpanner {
 // public:
-//     stack<pair<int,int>> st;//{price,pair}
+//     stack<pair<int,int>> st;//{price,span}
 //     StockSpanner() {
 
 //     }
@@ -680,5 +680,141 @@
 //             }
 //         }
 //         return st.top();
+//     }
+// };
+
+
+//or
+// class Solution {
+// public:
+//     int evalRPN(vector<string>& tokens) {
+//         unordered_map<string,function<int(int,int)>> mp ={
+//             {"+" , [](int a,int b) {return a+b;}},
+//             {"-" , [](int a,int b) {return a-b;}},
+//             {"*" , [](int a,int b) {return (long long)a*(long long)b;}},
+//             {"/" , [](int a,int b) {return a/b;}},
+//         };
+//         stack<int> st;
+//         for(string &x: tokens){
+//             if(x=="+" || x=="-"  || x=="*"  || x=="/"){
+//                 int b = st.top();
+//                 st.pop();
+
+//                 int a = st.top();
+//                 st.pop();
+
+//                 int result = mp[x](a,b);
+
+//                 st.push(result);
+//             }else{
+//                 st.push(stoi(x));
+//             }
+//         }
+//         return st.top();
+//     }
+// };
+
+
+// 739. Daily Temperatures
+
+// Given an array of integers temperatures represents the daily temperatures, return an array answer such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature. If there is no future day for which this is possible, keep answer[i] == 0 instead. 
+
+// Example 1:
+
+// Input: temperatures = [73,74,75,71,69,72,76,73]
+// Output: [1,1,4,2,1,1,0,0]
+
+// class Solution {
+// public:
+//     vector<int> dailyTemperatures(vector<int>& temperatures) {
+//         int n = temperatures.size();
+//         stack<int> st;
+//         vector<int> result(n);
+//         for(int i=n-1;i>=0;i--){
+//             while(!st.empty() && temperatures[i]>=temperatures[st.top()]){
+//                 st.pop();
+//             }
+//             if(st.empty()) result[i]=0;
+//             else result[i] =st.top() - i;
+//             st.push(i);
+//         }       
+//         return result;
+//     }
+// };
+
+
+
+
+
+// 2390. Removing Stars From a String
+
+// You are given a string s, which contains stars *.
+
+// In one operation, you can:
+
+// Choose a star in s.
+// Remove the closest non-star character to its left, as well as remove the star itself.
+// Return the string after all stars have been removed.
+
+// Note:
+
+// The input will be generated such that the operation is always possible.
+// It can be shown that the resulting string will always be unique.
+ 
+
+// Example 1:
+
+// Input: s = "leet**cod*e"
+// Output: "lecoe"
+// Explanation: Performing the removals from left to right:
+// - The closest character to the 1st star is 't' in "leet**cod*e". s becomes "lee*cod*e".
+// - The closest character to the 2nd star is 'e' in "lee*cod*e". s becomes "lecod*e".
+// - The closest character to the 3rd star is 'd' in "lecod*e". s becomes "lecoe".
+// There are no more stars, so we return "lecoe".
+
+
+// class Solution {
+// public:
+//     string removeStars(string s) {
+//        string res = "";
+
+//         for (char ch : s) {
+//             if (ch == '*') {
+//                 res.pop_back(); // Remove the closest non-star character
+//             } else {
+//                 res.push_back(ch); // Add character
+//             }
+//         }
+
+//         return res;
+//     }
+// };
+
+// //or
+
+// class Solution {
+// public:
+//     string removeStars(string s) {
+//        stack<char> st;
+
+//         for (char ch : s) {
+//             if (ch == '*') {
+//                 if (!st.empty()) {
+//                     st.pop();
+//                 }
+//             } else {
+//                 st.push(ch);
+//             }
+//         }
+
+//         // Reconstruct string from stack
+//         string res = "";
+//         while (!st.empty()) {
+//             res += st.top();
+//             st.pop();
+//         }
+
+//         reverse(res.begin(), res.end());
+//         return res;
 //     }
 // };
